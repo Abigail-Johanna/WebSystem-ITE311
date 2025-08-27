@@ -43,12 +43,24 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  *---------------------------------------------------------------
  * This process sets up the path constants, loads and registers
  * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
+ * and fires up an environment-specific bootstrapping.\
+ * 
  */
 
 // LOAD OUR PATHS CONFIG FILE
 // This is the line that might need to be changed, depending on your folder structure.
-require FCPATH . 'app/Config/Paths.php';
+// Path to the Paths config file
+$pathsConfig = FCPATH . 'app/Config/Paths.php';
+require $pathsConfig;
+
+// Load Composer autoload
+$autoloadPath = FCPATH . 'vendor/autoload.php';
+if (file_exists($autoloadPath)) {
+    require $autoloadPath;
+} else {
+    exit('Composer autoload not found. Please run "composer install".');
+}
+
 // ^^^ Change this line if you move your application folder
 
 $paths = new Paths();

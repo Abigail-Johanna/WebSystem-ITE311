@@ -1,6 +1,9 @@
-<IfModule authz_core_module>
-	Require all denied
-</IfModule>
-<IfModule !authz_core_module>
-	Deny from all
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ITE311-RUALES/
+
+    # Send all requests to index.php unless the file or directory exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
