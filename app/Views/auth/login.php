@@ -7,7 +7,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
+            background: linear-gradient(135deg, #10f214ff, #0dfda1ff);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,7 +24,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 1.5rem;
-            color: #0d6efd;
+            color: #000000ff;
         }
     </style>
 </head>

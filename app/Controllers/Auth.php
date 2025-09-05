@@ -7,7 +7,6 @@ use CodeIgniter\Controller;
 
 class Auth extends Controller
 {
-    // Show login form
     public function login()
     {
         return view('auth/login');
@@ -49,6 +48,7 @@ class Auth extends Controller
             'name'     => $this->request->getPost('name'),
             'email'    => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'role'     => $this->request->getPost('role'),
         ];
 
         $userModel->save($data);

@@ -8,6 +8,12 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
+        $fields = $this->db->getFieldNames('users');
+        if (!in_array('role', $fields)) {
+            echo "⚠️ The 'role' column does not exist in 'users' table. Please add it first.\n";
+            return;
+        }
+
         $data = [
             [
                 'name'       => 'Admin',
@@ -34,7 +40,15 @@ class UserSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
         ];
-       
-        $this->db->table('users')->insertBatch($data);
+
+        foreach ($data as $user) {
+            $exists = $this->db->table('users')->where('email', $user['email'])->get()->getRow();
+            if (!$exists) {
+                $this->db->table('users')->insert($user);
+                echo "✅ Inserted user: {$user['email']} with role: {$user['role']}\n";
+            } else {
+                echo "ℹ️ User already exists: {$user['email']}, skipped.\n";
+            }
+        }
     }
 }

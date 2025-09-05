@@ -7,7 +7,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #6610f2, #0d6efd);
+            background: linear-gradient(135deg, #10f214ff, #0dfda1ff);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,7 +24,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 1.5rem;
-            color: #6610f2;
+            color: #000000ff;
         }
     </style>
 </head>
@@ -33,12 +33,10 @@
 <div class="auth-card">
     <h2 class="auth-title">LMS Registration</h2>
 
-    <!-- Validation Errors -->
     <?php if(isset($validation)): ?>
         <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
     <?php endif; ?>
 
-    <!-- Flash Messages -->
     <?php if(session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
@@ -64,7 +62,17 @@
             <label for="password_confirm" class="form-label">Confirm Password</label>
             <input type="password" name="password_confirm" class="form-control" id="password_confirm" required>
         </div>
-
+        
+         <div class="mb-3">
+            <label for="role" class="form-label">User Role</label>
+            <select name="role" id="role" class="form-select" required>
+                <option value="">-- Select Role --</option>
+                <option value="student" <?= old('role') === 'student' ? 'selected' : '' ?>>Student</option>
+                <option value="instructor" <?= old('role') === 'instructor' ? 'selected' : '' ?>>Instructor</option>
+                <option value="admin" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
+            </select>
+        </div>
+       
         <button type="submit" class="btn btn-success w-100">Register</button>
     </form>
 
