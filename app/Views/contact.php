@@ -1,4 +1,4 @@
-<?= $this->extend('layout') ?>
+<?= $this->extend('template') ?>
 
 <?= $this->section('content') ?>
 <h1>Contact Us</h1>
