@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     {
         $fields = $this->db->getFieldNames('users');
         if (!in_array('role', $fields)) {
-            echo "⚠️ The 'role' column does not exist in 'users' table. Please add it first.\n";
+            echo "The 'role' column does not exist in 'users' table. Please add it first.\n";
             return;
         }
 
@@ -45,9 +45,9 @@ class UserSeeder extends Seeder
             $exists = $this->db->table('users')->where('email', $user['email'])->get()->getRow();
             if (!$exists) {
                 $this->db->table('users')->insert($user);
-                echo "✅ Inserted user: {$user['email']} with role: {$user['role']}\n";
+                echo "Inserted user: {$user['email']} with role: {$user['role']}\n";
             } else {
-                echo "ℹ️ User already exists: {$user['email']}, skipped.\n";
+                echo "ℹUser already exists: {$user['email']}, skipped.\n";
             }
         }
     }
