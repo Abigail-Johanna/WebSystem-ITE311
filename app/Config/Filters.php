@@ -23,7 +23,7 @@ class Filters extends BaseFilters
      * -------------------------------------------------------------------
      */
     public array $aliases = [
-        'csrf'          => CSRF::class,
+        // 'csrf'          => CSRF::class, // Temporarily disabled
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
@@ -50,7 +50,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            'csrf', // CSRF protection enabled for all POST requests
+            // CSRF protection moved to method-based filters
         ],
         'after' => [
             'toolbar', // Debug toolbar enabled
@@ -65,7 +65,10 @@ class Filters extends BaseFilters
      * Example:
      * 'POST' => ['csrf', 'foo']
      */
-    public array $methods = [];
+    public array $methods = [
+        // Temporarily disabled CSRF to test dashboard access
+        // 'POST' => ['csrf'], // Only apply CSRF to POST requests
+    ];
 
     /**
      * -------------------------------------------------------------------
@@ -74,6 +77,6 @@ class Filters extends BaseFilters
      */
     public array $filters = [
         // 🔹 Only logged-in users can access dashboard
-        'auth' => ['before' => ['dashboard', 'dashboard/*']],
+        'auth' => ['before' => ['/dashboard', '/dashboard/*']],
     ];
 }

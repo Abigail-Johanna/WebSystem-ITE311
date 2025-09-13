@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             ],
             'password'   => [
                             'type' => 'VARCHAR', 
-                            'constraint' => 100
+                            'constraint' => 255
             ],
             'role'       => [
                             'type' => 'ENUM',
