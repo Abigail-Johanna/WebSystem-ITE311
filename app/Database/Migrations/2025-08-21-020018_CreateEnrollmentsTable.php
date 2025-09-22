@@ -8,12 +8,27 @@ class CreateEnrollmentsTable extends Migration
 {
     public function up()
     {
-         $this->forge->addField([
-            'id'         => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
-            'student_id' => ['type' => 'INT', 'unsigned' => true],
-            'course_id'  => ['type' => 'INT', 'unsigned' => true],
-            'enrolled_at'=> ['type' => 'DATETIME', 'null' => true],
+        $this->forge->addField([
+            'id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'auto_increment' => true,
+            ],
+            // must reference a user with role = 'student'
+            'student_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+            ],
+            'course_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+            ],
+            'enrolled_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
+
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('student_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('course_id', 'courses', 'id', 'CASCADE', 'CASCADE');
