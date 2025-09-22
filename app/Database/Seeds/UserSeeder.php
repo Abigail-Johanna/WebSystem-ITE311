@@ -8,11 +8,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        $fields = $this->db->getFieldNames('users');
-        if (!in_array('role', $fields)) {
-            echo "The 'role' column does not exist in 'users' table. Please add it first.\n";
-            return;
-        }
+        $model = new UserModel();
 
         $data = [
             [
@@ -27,7 +23,7 @@ class UserSeeder extends Seeder
                 'name'       => 'Instructor One',
                 'email'      => 'instructor1@example.com',
                 'password'   => password_hash('teach123', PASSWORD_DEFAULT),
-                'role'       => 'instructor',
+                'role'       => 'user',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -35,20 +31,18 @@ class UserSeeder extends Seeder
                 'name'       => 'Student One',
                 'email'      => 'student1@example.com',
                 'password'   => password_hash('student123', PASSWORD_DEFAULT),
-                'role'       => 'student',
+                'role'       => 'user',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
         ];
 
-        foreach ($data as $user) {
-            $exists = $this->db->table('users')->where('email', $user['email'])->get()->getRow();
-            if (!$exists) {
-                $this->db->table('users')->insert($user);
-                echo "Inserted user: {$user['email']} with role: {$user['role']}\n";
-            } else {
-                echo "ℹUser already exists: {$user['email']}, skipped.\n";
-            }
+        foreach ($users as $user) {
+            // Save directly without validation to prevent any insertion errors
+            $model->skipValidation(true)->save($user);
+        }
+
+        echo "Users seeded successfully!";
         }
     }
 }

@@ -67,9 +67,8 @@
             <label for="role" class="form-label">User Role</label>
             <select name="role" id="role" class="form-select" required>
                 <option value="">-- Select Role --</option>
-                <option value="student" <?= old('role') === 'student' ? 'selected' : '' ?>>Student</option>
-                <option value="instructor" <?= old('role') === 'instructor' ? 'selected' : '' ?>>Instructor</option>
-                <option value="admin" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
+                <option value="student" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
+                <option value="student" <?= old('role') === 'user' ? 'selected' : '' ?>>User</option>
             </select>
         </div>
        

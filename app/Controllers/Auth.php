@@ -16,7 +16,7 @@ class Auth extends Controller
     {
         $session = session();
         $userModel = new UserModel();
-
+        
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
