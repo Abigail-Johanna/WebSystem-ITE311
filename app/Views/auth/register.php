@@ -86,9 +86,7 @@
                 <select id="role" name="role" class="form-select border-secondary" required>
                     <option value="">-- Select Role --</option>
                     <option value="admin" <?= old('role') === 'admin' ? 'selected' : '' ?>>Admin</option>
-                    <option value="user"  <?= old('role') === 'teacher'  ? 'selected' : '' ?>>Teacher</option>
-                    <option value="user"  <?= old('role') === 'student'  ? 'selected' : '' ?>>Student</option>
-                </select>
+                    <option value="user"  <?= old('role') === 'user'  ? 'selected' : '' ?>>User</option>
                 </select>
             </div>
             <button type="submit" class="btn w-100 text-white" style="background-color:#d4a373;">Register</button>

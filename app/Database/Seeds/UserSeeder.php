@@ -13,26 +13,21 @@ class UserSeeder extends Seeder
 
         $users = [
             [
-                'name'     => 'Admin',
+                'name'     => 'Admin User',
                 'email'    => 'admin@example.com',
                 'password' => 'admin123',
                 'role'     => 'admin'  
             ],
             [
-                'name'     => 'Teacher',
-                'email'    => 'teacher@example.com',
-                'password' => 'teacher123',  
-                'role'     => 'teacher'     
-            ],
-            [
-                'name'     => 'Student',
-                'email'    => 'teacher@example.com',
-                'password' => 'student123',  
-                'role'     => 'student'     
+                'name'     => 'Regular User',
+                'email'    => 'user@example.com',
+                'password' => 'user123',  
+                'role'     => 'user'     
             ]
         ];
 
         foreach ($users as $user) {
+
             $model->skipValidation(true)->save($user);
         }
 
