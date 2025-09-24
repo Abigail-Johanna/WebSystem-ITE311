@@ -9,20 +9,16 @@ class Auth extends BaseController
 {
     protected $helpers = ['form', 'url'];
 
-    // Handle login (GET: show form, POST: process login)
     public function login()
     {
-        // Check if already logged in
         if (session()->get('logged_in')) {
             return redirect()->to('/dashboard');
         }
 
-        // Handle GET request - show login form
         if ($this->request->getMethod() === 'GET') {
             return view('auth/login');
         }
 
-        // Handle POST request - process login
         if ($this->request->getMethod() === 'POST') {
             if (!$this->validate([
                 'email'    => 'required|valid_email',
@@ -49,15 +45,12 @@ class Auth extends BaseController
         }
     }
 
-    // Handle register (GET: show form, POST: process registration)
     public function register()
     {
-        // Handle GET request - show register form
         if ($this->request->getMethod() === 'GET') {
             return view('auth/register');
         }
 
-        // Handle POST request - process registration
         if ($this->request->getMethod() === 'POST') {
             if (!$this->validate([
                 'name'              => 'required|min_length[3]|max_length[255]',
@@ -81,14 +74,12 @@ class Auth extends BaseController
         }
     }
 
-    // Logout
     public function logout()
     {
         session()->destroy();
         return redirect()->to('/auth/login')->with('success', 'You have been logged out.');
     }
 
-    // Dashboard
     public function dashboard()
     {
         if (!session()->get('logged_in')) {
@@ -110,10 +101,9 @@ class Auth extends BaseController
 
         $userModel = new UserModel();
         $stats = $userModel->getDashboardStats($userRole, $userId);
-        
-        // Merge the stats into data array
+
         $data = array_merge($data, $stats);
 
         return view('dashboard/index', $data);
     }
-}
+}   
