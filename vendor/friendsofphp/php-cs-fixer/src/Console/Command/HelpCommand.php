@@ -28,8 +28,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 #[AsCommand(name: 'help')]
 final class HelpCommand extends BaseHelpCommand
@@ -53,7 +56,11 @@ final class HelpCommand extends BaseHelpCommand
     /**
      * Returns the allowed values of the given option that can be converted to a string.
      *
+<<<<<<< HEAD
      * @return null|non-empty-list<AllowedValueSubset|mixed>
+=======
+     * @return null|list<AllowedValueSubset|mixed>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     public static function getDisplayableAllowedValues(FixerOptionInterface $option): ?array
     {

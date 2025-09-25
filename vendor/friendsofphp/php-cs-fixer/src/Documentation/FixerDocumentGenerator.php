@@ -27,9 +27,13 @@ use PhpCsFixer\FixerDefinition\CodeSampleInterface;
 use PhpCsFixer\FixerDefinition\FileSpecificCodeSampleInterface;
 use PhpCsFixer\FixerDefinition\VersionSpecificCodeSampleInterface;
 use PhpCsFixer\Preg;
+<<<<<<< HEAD
 use PhpCsFixer\RuleSet\DeprecatedRuleSetDescriptionInterface;
 use PhpCsFixer\RuleSet\RuleSet;
 use PhpCsFixer\RuleSet\RuleSetDescriptionInterface;
+=======
+use PhpCsFixer\RuleSet\RuleSet;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\RuleSet\RuleSets;
 use PhpCsFixer\StdinFileInfo;
 use PhpCsFixer\Tokenizer\Tokens;
@@ -39,8 +43,11 @@ use PhpCsFixer\Utils;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class FixerDocumentGenerator
 {
@@ -48,14 +55,20 @@ final class FixerDocumentGenerator
 
     private FullDiffer $differ;
 
+<<<<<<< HEAD
     /** @var array<string, RuleSetDescriptionInterface> */
     private array $ruleSetDefinitions;
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     public function __construct(DocumentationLocator $locator)
     {
         $this->locator = $locator;
         $this->differ = new FullDiffer();
+<<<<<<< HEAD
         $this->ruleSetDefinitions = RuleSets::getSetDefinitions();
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     public function generateFixerDocumentation(FixerInterface $fixer): string
@@ -176,6 +189,7 @@ final class FixerDocumentGenerator
 
                 if (null === $allowed) {
                     $allowedKind = 'Allowed types';
+<<<<<<< HEAD
                     $allowedTypes = $option->getAllowedTypes();
                     if (null !== $allowedTypes) {
                         $allowed = array_map(
@@ -183,6 +197,12 @@ final class FixerDocumentGenerator
                             $allowedTypes,
                         );
                     }
+=======
+                    $allowed = array_map(
+                        static fn (string $value): string => '``'.Utils::convertArrayTypeToList($value).'``',
+                        $option->getAllowedTypes(),
+                    );
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 } else {
                     $allowedKind = 'Allowed values';
                     $allowed = array_map(static fn ($value): string => $value instanceof AllowedValueSubset
@@ -190,10 +210,15 @@ final class FixerDocumentGenerator
                         : '``'.Utils::toString($value).'``', $allowed);
                 }
 
+<<<<<<< HEAD
                 if (null !== $allowed) {
                     $allowed = Utils::naturalLanguageJoin($allowed, '');
                     $optionInfo .= "\n\n{$allowedKind}: {$allowed}";
                 }
+=======
+                $allowed = Utils::naturalLanguageJoin($allowed, '');
+                $optionInfo .= "\n\n{$allowedKind}: {$allowed}";
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
                 if ($option->hasDefault()) {
                     $default = Utils::toString($option->getDefault());
@@ -253,16 +278,23 @@ final class FixerDocumentGenerator
                 $ruleSetPath = $this->locator->getRuleSetsDocumentationFilePath($set);
                 $ruleSetPath = substr($ruleSetPath, strrpos($ruleSetPath, '/'));
 
+<<<<<<< HEAD
                 \assert(isset($this->ruleSetDefinitions[$set]));
                 $ruleSetDescription = $this->ruleSetDefinitions[$set];
                 $deprecatedDesc = ($ruleSetDescription instanceof DeprecatedRuleSetDescriptionInterface) ? ' *(deprecated)*' : '';
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 $configInfo = (null !== $config)
                     ? " with config:\n\n  ``".Utils::toString($config)."``\n"
                     : '';
 
                 $doc .= <<<RST
+<<<<<<< HEAD
                     - `{$set} <./../../ruleSets{$ruleSetPath}>`_{$deprecatedDesc}{$configInfo}\n
+=======
+                    - `{$set} <./../../ruleSets{$ruleSetPath}>`_{$configInfo}\n
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     RST;
             }
 

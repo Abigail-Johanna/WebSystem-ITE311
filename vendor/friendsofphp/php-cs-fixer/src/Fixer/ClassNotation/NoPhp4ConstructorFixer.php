@@ -23,11 +23,15 @@ use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
 /**
+<<<<<<< HEAD
  * @phpstan-import-type _PhpTokenPrototypePartial from Token
  *
  * @author Matteo Beccati <matteo@beccati.com>
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+ * @author Matteo Beccati <matteo@beccati.com>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class NoPhp4ConstructorFixer extends AbstractFixer
 {
@@ -36,6 +40,7 @@ final class NoPhp4ConstructorFixer extends AbstractFixer
         return new FixerDefinition(
             'Convert PHP4-style constructors to `__construct`.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -48,6 +53,16 @@ final class NoPhp4ConstructorFixer extends AbstractFixer
 
                         PHP
                 ),
+=======
+                new CodeSample('<?php
+class Foo
+{
+    public function Foo($bar)
+    {
+    }
+}
+'),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ],
             null,
             'Risky when old style constructor being fixed is overridden or overrides parent one.'
@@ -298,7 +313,11 @@ final class NoPhp4ConstructorFixer extends AbstractFixer
      * @param int    $startIndex function/method start index
      * @param int    $bodyIndex  function/method body index
      *
+<<<<<<< HEAD
      * @return array{non-empty-list<non-empty-list<_PhpTokenPrototypePartial>>, array{3: false}}
+=======
+     * @return array{list<non-empty-list<array{0: int, 1?: string}|string>>, array{3: false}}
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function getWrapperMethodSequence(Tokens $tokens, string $method, int $startIndex, int $bodyIndex): array
     {

@@ -41,6 +41,11 @@ abstract class AbstractRuleset implements ConfigurableAllowedUnsupportedPhpVersi
 
     /**
      * Allow unsupported PHP versions.
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-ignore-next-line greater.alwaysFalse
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     protected bool $isUnsupportedPhpVersionAllowed = \PHP_VERSION_ID > self::PHP_CS_FIXER_MAX_SUPPORTED_PHP_VERSION_ID;
 

@@ -23,6 +23,7 @@ use PhpCsFixer\Tokenizer\Token as PhpToken;
  * @internal
  *
  * @extends \SplFixedArray<Token>
+<<<<<<< HEAD
  *
  * `SplFixedArray` uses `T|null` in return types because value can be null if an offset is unset or if the size does not match the number of elements.
  * But our class takes care of it and always ensures correct size and indexes, so that these methods never return `null` instead of `Token`.
@@ -32,6 +33,8 @@ use PhpCsFixer\Tokenizer\Token as PhpToken;
  * @method array<int, Token>        toArray()
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Tokens extends \SplFixedArray
 {
@@ -246,8 +249,23 @@ final class Tokens extends \SplFixedArray
 
     public function offsetSet($index, $token): void
     {
+<<<<<<< HEAD
         if (!$token instanceof Token) {
             throw new \InvalidArgumentException(\sprintf('Token must be an instance of %s, "%s" given.', Token::class, get_debug_type($token)));
+=======
+        if (null === $token) {
+            throw new \InvalidArgumentException('Token must be an instance of PhpCsFixer\Doctrine\Annotation\Token, "null" given.');
+        }
+
+        if (!$token instanceof Token) {
+            $type = \gettype($token);
+
+            if ('object' === $type) {
+                $type = \get_class($token);
+            }
+
+            throw new \InvalidArgumentException(\sprintf('Token must be an instance of PhpCsFixer\Doctrine\Annotation\Token, "%s" given.', $type));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         parent::offsetSet($index, $token);

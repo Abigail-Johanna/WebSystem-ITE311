@@ -23,9 +23,12 @@ use PhpCsFixer\Tokenizer\CT;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class PowToExponentiationFixer extends AbstractFunctionReferenceFixer
 {
     public function isCandidate(Tokens $tokens): bool
@@ -208,7 +211,11 @@ final class PowToExponentiationFixer extends AbstractFunctionReferenceFixer
     }
 
     /**
+<<<<<<< HEAD
      * @return non-empty-list<int>
+=======
+     * @return list<int>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function getAllowedKinds(): array
     {

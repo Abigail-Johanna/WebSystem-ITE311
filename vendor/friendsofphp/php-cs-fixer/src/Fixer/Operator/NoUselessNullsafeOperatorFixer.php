@@ -22,9 +22,12 @@ use PhpCsFixer\FixerDefinition\VersionSpecificCodeSample;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class NoUselessNullsafeOperatorFixer extends AbstractFixer
 {
     public function getDefinition(): FixerDefinitionInterface
@@ -33,6 +36,7 @@ final class NoUselessNullsafeOperatorFixer extends AbstractFixer
             'There should not be useless Null-safe operator `?->` used.',
             [
                 new VersionSpecificCodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         class Foo extends Bar
@@ -43,6 +47,16 @@ final class NoUselessNullsafeOperatorFixer extends AbstractFixer
                         }
 
                         PHP,
+=======
+                    '<?php
+class Foo extends Bar
+{
+    public function test() {
+        echo $this?->parentMethod();
+    }
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     new VersionSpecification(8_00_00)
                 ),
             ]

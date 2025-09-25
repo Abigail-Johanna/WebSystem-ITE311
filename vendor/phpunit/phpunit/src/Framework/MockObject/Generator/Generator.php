@@ -88,7 +88,22 @@ final class Generator
     /**
      * @var array<non-empty-string, true>
      */
+<<<<<<< HEAD
     private static $excludedMethodNames = [];
+=======
+    private const EXCLUDED_METHOD_NAMES = [
+        '__CLASS__'       => true,
+        '__DIR__'         => true,
+        '__FILE__'        => true,
+        '__FUNCTION__'    => true,
+        '__LINE__'        => true,
+        '__METHOD__'      => true,
+        '__NAMESPACE__'   => true,
+        '__TRAIT__'       => true,
+        '__clone'         => true,
+        '__halt_compiler' => true,
+    ];
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
     /**
      * @var array<non-empty-string, MockClass>
@@ -1003,6 +1018,7 @@ final class Generator
 
     private function isMethodNameExcluded(string $name): bool
     {
+<<<<<<< HEAD
         if (self::$excludedMethodNames === []) {
             self::$excludedMethodNames = [
                 '__CLASS__'       => true,
@@ -1024,6 +1040,9 @@ final class Generator
         }
 
         return isset(self::$excludedMethodNames[$name]);
+=======
+        return isset(self::EXCLUDED_METHOD_NAMES[$name]);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**

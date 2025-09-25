@@ -41,8 +41,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @author Marc Aubé
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SpacesInsideParenthesesFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -54,6 +57,7 @@ final class SpacesInsideParenthesesFixer extends AbstractFixer implements Config
         return new FixerDefinition(
             'Parentheses must be declared using the configured whitespace.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -91,6 +95,25 @@ final class SpacesInsideParenthesesFixer extends AbstractFixer implements Config
                         }
 
                         PHP,
+=======
+                new CodeSample("<?php\nif ( \$a ) {\n    foo( );\n}\n"),
+                new CodeSample(
+                    "<?php
+function foo( \$bar, \$baz )
+{
+}\n",
+                    ['space' => 'none']
+                ),
+                new CodeSample(
+                    "<?php\nif (\$a) {\n    foo( );\n}\n",
+                    ['space' => 'single']
+                ),
+                new CodeSample(
+                    "<?php
+function foo(\$bar, \$baz)
+{
+}\n",
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['space' => 'single']
                 ),
             ],

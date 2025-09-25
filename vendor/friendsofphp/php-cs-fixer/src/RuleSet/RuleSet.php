@@ -15,7 +15,10 @@ declare(strict_types=1);
 namespace PhpCsFixer\RuleSet;
 
 use PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Utils;
 
 /**
@@ -26,8 +29,11 @@ use PhpCsFixer\Utils;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class RuleSet implements RuleSetInterface
 {
@@ -140,7 +146,11 @@ final class RuleSet implements RuleSetInterface
                 ? 'No replacement available'
                 : \sprintf('Use %s instead', Utils::naturalLanguageJoin($ruleSet->getSuccessorsNames()));
 
+<<<<<<< HEAD
             Future::triggerDeprecation(new \RuntimeException("Rule set \"{$setName}\" is deprecated. {$messageEnd}."));
+=======
+            Utils::triggerDeprecation(new \RuntimeException("Rule set \"{$setName}\" is deprecated. {$messageEnd}."));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         $rules = $ruleSet->getRules();

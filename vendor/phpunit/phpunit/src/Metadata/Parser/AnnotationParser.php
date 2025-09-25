@@ -186,14 +186,22 @@ final class AnnotationParser implements Parser
         if (!empty($result) &&
             !isset(self::$deprecationEmittedForClass[$className]) &&
             !str_starts_with($className, 'PHPUnit\TestFixture')) {
+<<<<<<< HEAD
             self::$deprecationEmittedForClass[$className] = true;
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             EventFacade::emitter()->testRunnerTriggeredPhpunitDeprecation(
                 sprintf(
                     'Metadata found in doc-comment for class %s. Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.',
                     $className,
                 ),
             );
+<<<<<<< HEAD
+=======
+
+            self::$deprecationEmittedForClass[$className] = true;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         return MetadataCollection::fromArray($result);
@@ -429,8 +437,11 @@ final class AnnotationParser implements Parser
         if (!empty($result) &&
             !isset(self::$deprecationEmittedForMethod[$className . '::' . $methodName]) &&
             !str_starts_with($className, 'PHPUnit\TestFixture')) {
+<<<<<<< HEAD
             self::$deprecationEmittedForMethod[$className . '::' . $methodName] = true;
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             EventFacade::emitter()->testRunnerTriggeredPhpunitDeprecation(
                 sprintf(
                     'Metadata found in doc-comment for method %s::%s(). Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.',
@@ -438,6 +449,11 @@ final class AnnotationParser implements Parser
                     $methodName,
                 ),
             );
+<<<<<<< HEAD
+=======
+
+            self::$deprecationEmittedForMethod[$className . '::' . $methodName] = true;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         return MetadataCollection::fromArray($result);

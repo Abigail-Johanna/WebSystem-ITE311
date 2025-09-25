@@ -45,8 +45,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
  *
  * @author Javier Spagnoletti <phansys@gmail.com>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SingleClassElementPerStatementFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -74,6 +77,7 @@ final class SingleClassElementPerStatementFixer extends AbstractFixer implements
             'There MUST NOT be more than one property or constant declared per statement.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         final class Example
@@ -94,6 +98,24 @@ final class SingleClassElementPerStatementFixer extends AbstractFixer implements
                         }
 
                         PHP,
+=======
+                    '<?php
+final class Example
+{
+    const FOO_1 = 1, FOO_2 = 2;
+    private static $bar1 = array(1,2,3), $bar2 = [1,2,3];
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+final class Example
+{
+    const FOO_1 = 1, FOO_2 = 2;
+    private static $bar1 = array(1,2,3), $bar2 = [1,2,3];
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['elements' => ['property']]
                 ),
             ]

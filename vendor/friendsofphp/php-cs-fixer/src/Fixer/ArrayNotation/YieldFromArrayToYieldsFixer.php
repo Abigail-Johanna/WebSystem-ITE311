@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Kuba Werłos <werlos@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class YieldFromArrayToYieldsFixer extends AbstractFixer
 {
@@ -34,6 +37,7 @@ final class YieldFromArrayToYieldsFixer extends AbstractFixer
         return new FixerDefinition(
             'Yield from array must be unpacked to series of yields.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php function generate() {
@@ -46,6 +50,16 @@ final class YieldFromArrayToYieldsFixer extends AbstractFixer
 
                         PHP
                 ),
+=======
+                new CodeSample('<?php function generate() {
+    yield from [
+        1,
+        2,
+        3,
+    ];
+}
+'),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ],
             'The conversion will make the array in `yield from` changed in arrays of 1 less dimension.',
             'The rule is risky in case of `yield from` being used multiple times within single function scope, while using list-alike data sources (e.g. `function foo() { yield from ["a"]; yield from ["b"]; }`). It only matters when consuming such iterator with key-value context, because set of yielded keys may be changed after applying this rule.'

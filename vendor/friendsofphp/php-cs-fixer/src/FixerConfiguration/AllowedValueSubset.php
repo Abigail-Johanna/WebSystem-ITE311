@@ -18,18 +18,29 @@ namespace PhpCsFixer\FixerConfiguration;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class AllowedValueSubset
 {
     /**
+<<<<<<< HEAD
      * @var non-empty-list<string>
+=======
+     * @var list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private array $allowedValues;
 
     /**
+<<<<<<< HEAD
      * @param non-empty-list<string> $allowedValues
+=======
+     * @param list<string> $allowedValues
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     public function __construct(array $allowedValues)
     {
@@ -58,7 +69,11 @@ final class AllowedValueSubset
     }
 
     /**
+<<<<<<< HEAD
      * @return non-empty-list<string>
+=======
+     * @return list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     public function getAllowedValues(): array
     {

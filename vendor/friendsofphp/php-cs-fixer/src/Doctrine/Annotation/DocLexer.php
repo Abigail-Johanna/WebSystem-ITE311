@@ -30,8 +30,11 @@ use PhpCsFixer\Preg;
  * copies or substantial portions of the Software.
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class DocLexer
 {
@@ -53,6 +56,7 @@ final class DocLexer
     public const T_COLON = 112;
     public const T_MINUS = 113;
 
+<<<<<<< HEAD
     private const CATCHABLE_PATTERNS = [
         '[a-z_\\\][a-z0-9_\:\\\]*[a-z_][a-z0-9_]*',
         '(?:[+-]?[0-9]+(?:[\.][0-9]+)*)(?:[eE][+-]?[0-9]+)?',
@@ -61,6 +65,8 @@ final class DocLexer
 
     private const NON_CATCHABLE_PATTERNS = ['\s+', '\*+', '(.)'];
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     /** @var array<string, self::T_*> */
     private array $noCase = [
         '@' => self::T_AT,
@@ -107,6 +113,29 @@ final class DocLexer
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @return list<string>
+     */
+    private function getCatchablePatterns(): array
+    {
+        return [
+            '[a-z_\\\][a-z0-9_\:\\\]*[a-z_][a-z0-9_]*',
+            '(?:[+-]?[0-9]+(?:[\.][0-9]+)*)(?:[eE][+-]?[0-9]+)?',
+            '"(?:""|[^"])*+"',
+        ];
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getNonCatchablePatterns(): array
+    {
+        return ['\s+', '\*+', '(.)'];
+    }
+
+    /**
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * @return self::T_*
      */
     private function getType(string &$value): int
@@ -128,7 +157,11 @@ final class DocLexer
         }
 
         if (is_numeric($value)) {
+<<<<<<< HEAD
             return str_contains($value, '.') || str_contains(strtolower($value), 'e')
+=======
+            return str_contains($value, '.') || false !== stripos($value, 'e')
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ? self::T_FLOAT : self::T_INTEGER;
         }
 
@@ -139,8 +172,13 @@ final class DocLexer
     {
         $this->regex ??= \sprintf(
             '/(%s)|%s/%s',
+<<<<<<< HEAD
             implode(')|(', self::CATCHABLE_PATTERNS),
             implode('|', self::NON_CATCHABLE_PATTERNS),
+=======
+            implode(')|(', $this->getCatchablePatterns()),
+            implode('|', $this->getNonCatchablePatterns()),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'iu'
         );
 

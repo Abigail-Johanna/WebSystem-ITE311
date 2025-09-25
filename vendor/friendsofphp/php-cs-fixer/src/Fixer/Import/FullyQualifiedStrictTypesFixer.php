@@ -62,8 +62,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * @author Michael Vorisek <https://github.com/mvorisek>
  *
  * @phpstan-import-type _ImportType from \PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceUseAnalysis
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -124,6 +127,7 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
             'Removes the leading part of fully qualified symbol references if a given symbol is imported or belongs to the current namespace.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -219,6 +223,95 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
                         }
 
                         PHP,
+=======
+                    '<?php
+
+use Foo\Bar;
+use Foo\Bar\Baz;
+use Foo\OtherClass;
+use Foo\SomeContract;
+use Foo\SomeException;
+
+/**
+ * @see \Foo\Bar\Baz
+ */
+class SomeClass extends \Foo\OtherClass implements \Foo\SomeContract
+{
+    /**
+     * @var \Foo\Bar\Baz
+     */
+    public $baz;
+
+    /**
+     * @param \Foo\Bar\Baz $baz
+     */
+    public function __construct($baz) {
+        $this->baz = $baz;
+    }
+
+    /**
+     * @return \Foo\Bar\Baz
+     */
+    public function getBaz() {
+        return $this->baz;
+    }
+
+    public function doX(\Foo\Bar $foo, \Exception $e): \Foo\Bar\Baz
+    {
+        try {}
+        catch (\Foo\SomeException $e) {}
+    }
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+
+class SomeClass
+{
+    public function doY(Foo\NotImported $u, \Foo\NotImported $v)
+    {
+    }
+}
+',
+                    ['leading_backslash_in_global_namespace' => true]
+                ),
+                new CodeSample(
+                    '<?php
+namespace {
+    use Foo\A;
+    try {
+        foo();
+    } catch (\Exception|\Foo\A $e) {
+    }
+}
+namespace Foo\Bar {
+    class SomeClass implements \Foo\Bar\Baz
+    {
+    }
+}
+',
+                    ['leading_backslash_in_global_namespace' => true]
+                ),
+                new CodeSample(
+                    '<?php
+
+namespace Foo\Test;
+
+class Foo extends \Other\BaseClass implements \Other\Interface1, \Other\Interface2
+{
+    /** @var \Other\PropertyPhpDoc */
+    private $array;
+    public function __construct(\Other\FunctionArgument $arg) {}
+    public function foo(): \Other\FunctionReturnType
+    {
+        try {
+            \Other\StaticFunctionCall::bar();
+        } catch (\Other\CaughtThrowable $e) {}
+    }
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['import_symbols' => true]
                 ),
             ]
@@ -341,7 +434,10 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
                     } elseif ($token->equals('}')) {
                         unset($this->reservedIdentifiersByLevel[$openedCurlyBrackets]);
                         --$openedCurlyBrackets;
+<<<<<<< HEAD
                         \assert($openedCurlyBrackets >= 0);
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     } elseif ($token->isGivenKind(\T_VARIABLE)) {
                         $prevIndex = $tokens->getPrevMeaningfulToken($index);
                         if (null !== $prevIndex && $tokens[$prevIndex]->isGivenKind(\T_STRING)) {
@@ -888,7 +984,11 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
      * @param _ImportType  $importKind
      * @param _Uses        $uses
      *
+<<<<<<< HEAD
      * @return null|non-empty-list<Token>
+=======
+     * @return null|list<Token>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function determineShortType(string $typeName, string $importKind, array $uses, string $namespaceName): ?array
     {
@@ -961,7 +1061,11 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
     }
 
     /**
+<<<<<<< HEAD
      * @return non-empty-list<Token>
+=======
+     * @return list<Token>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function namespacedStringToTokens(string $input): array
     {
@@ -985,7 +1089,11 @@ final class FullyQualifiedStrictTypesFixer extends AbstractFixer implements Conf
     }
 
     /**
+<<<<<<< HEAD
      * We need to create import processor dynamically (not in constructor), because actual whitespace configuration
+=======
+     * We need to create import processor dynamically (not in costructor), because actual whitespace configuration
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * is set later, not when fixer's instance is created.
      */
     private function createImportProcessor(): ImportProcessor

@@ -44,8 +44,11 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Jakub Kwaśniewski <jakub@zero-85.pl>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocSeparationFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -55,7 +58,11 @@ final class PhpdocSeparationFixer extends AbstractFixer implements ConfigurableF
     /**
      * @internal
      *
+<<<<<<< HEAD
      * @var non-empty-list<non-empty-list<string>>
+=======
+     * @var list<list<string>>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     public const OPTION_GROUPS_DEFAULT = [
         ['author', 'copyright', 'license'],

@@ -46,8 +46,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @author Andreas Möller <am@localheinz.com>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SingleSpaceAroundConstructFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -163,6 +166,7 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
             'Ensures a single space after language constructs.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -177,6 +181,18 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
                         function foo() { yield  from  baz(); }
 
                         PHP,
+=======
+                    '<?php
+
+throw  new  \Exception();
+'
+                ),
+                new CodeSample(
+                    '<?php
+
+function foo() { yield  from  baz(); }
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'constructs_contain_a_single_space' => [
                             'yield_from',
@@ -187,6 +203,7 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -194,6 +211,13 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
                         };
 
                         PHP,
+=======
+                    '<?php
+
+$foo = function& ()use($bar) {
+};
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'constructs_preceded_by_a_single_space' => [
                             'use_lambda',
@@ -204,12 +228,19 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
                         echo  "Hello!";
 
                         PHP,
+=======
+                    '<?php
+
+echo  "Hello!";
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'constructs_followed_by_a_single_space' => [
                             'echo',
@@ -217,12 +248,19 @@ final class SingleSpaceAroundConstructFixer extends AbstractFixer implements Con
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
                         yield  from  baz();
 
                         PHP,
+=======
+                    '<?php
+
+yield  from  baz();
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'constructs_followed_by_a_single_space' => [
                             'yield_from',

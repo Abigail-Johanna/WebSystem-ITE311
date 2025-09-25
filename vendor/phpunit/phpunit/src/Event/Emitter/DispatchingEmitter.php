@@ -1208,6 +1208,7 @@ final class DispatchingEmitter implements Emitter
      */
     public function testRunnerTriggeredPhpunitDeprecation(string $message): void
     {
+<<<<<<< HEAD
         try {
             if (TestMethodBuilder::fromCallStack()->metadata()->isIgnorePhpunitDeprecations()->isNotEmpty()) {
                 return;
@@ -1215,6 +1216,8 @@ final class DispatchingEmitter implements Emitter
         } catch (NoTestCaseObjectOnCallStackException) {
         }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         $this->dispatcher->dispatch(
             new TestRunner\DeprecationTriggered(
                 $this->telemetryInfo(),

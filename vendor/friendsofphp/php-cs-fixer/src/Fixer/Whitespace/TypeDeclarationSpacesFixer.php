@@ -45,8 +45,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author John Paul E. Balandan, CPA <paulbalandan@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class TypeDeclarationSpacesFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -61,6 +64,7 @@ final class TypeDeclarationSpacesFixer extends AbstractFixer implements Configur
             'Ensure single space between a variable and its type declaration in function arguments and properties.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         class Bar
@@ -111,6 +115,50 @@ final class TypeDeclarationSpacesFixer extends AbstractFixer implements Configur
                         }
 
                         PHP,
+=======
+                    '<?php
+class Bar
+{
+    private string    $a;
+    private bool   $b;
+
+    public function __invoke(array   $c) {}
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+class Foo
+{
+    public int   $bar;
+
+    public function baz(string     $a)
+    {
+        return fn(bool    $c): string => (string) $c;
+    }
+}
+',
+                    ['elements' => ['function']]
+                ),
+                new CodeSample(
+                    '<?php
+class Foo
+{
+    public int   $bar;
+
+    public function baz(string     $a) {}
+}
+',
+                    ['elements' => ['property']]
+                ),
+                new VersionSpecificCodeSample(
+                    '<?php
+class Foo
+{
+    public  const string   BAR = "";
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     new VersionSpecification(8_03_00),
                     ['elements' => ['constant']]
                 ),

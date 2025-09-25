@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Graham Campbell <hello@gjcampbell.co.uk>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocNoEmptyReturnFixer extends AbstractFixer
 {
@@ -41,6 +44,7 @@ final class PhpdocNoEmptyReturnFixer extends AbstractFixer
             '`@return void` and `@return null` annotations must be removed from PHPDoc.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         /**
@@ -59,6 +63,22 @@ final class PhpdocNoEmptyReturnFixer extends AbstractFixer
                         function foo() {}
 
                         PHP
+=======
+                    '<?php
+/**
+ * @return null
+*/
+function foo() {}
+'
+                ),
+                new CodeSample(
+                    '<?php
+/**
+ * @return void
+*/
+function foo() {}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

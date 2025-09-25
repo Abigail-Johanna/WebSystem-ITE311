@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Kuba Werłos <werlos@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class LowercaseStaticReferenceFixer extends AbstractFixer
 {
@@ -34,6 +37,7 @@ final class LowercaseStaticReferenceFixer extends AbstractFixer
         return new FixerDefinition(
             'Class static references `self`, `static` and `parent` MUST be in lower case.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -69,6 +73,37 @@ final class LowercaseStaticReferenceFixer extends AbstractFixer
                         }
 
                         PHP
+=======
+                new CodeSample('<?php
+class Foo extends Bar
+{
+    public function baz1()
+    {
+        return STATIC::baz2();
+    }
+
+    public function baz2($x)
+    {
+        return $x instanceof Self;
+    }
+
+    public function baz3(PaRent $x)
+    {
+        return true;
+    }
+}
+'),
+                new CodeSample(
+                    '<?php
+class Foo extends Bar
+{
+    public function baz(?self $x) : SELF
+    {
+        return false;
+    }
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

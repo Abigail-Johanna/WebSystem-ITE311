@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Kuba Werłos <werlos@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocVarAnnotationCorrectOrderFixer extends AbstractFixer
 {
@@ -33,6 +36,7 @@ final class PhpdocVarAnnotationCorrectOrderFixer extends AbstractFixer
     {
         return new FixerDefinition(
             '`@var` and `@type` annotations must have type and name in the correct order.',
+<<<<<<< HEAD
             [
                 new CodeSample(
                     <<<'PHP'
@@ -43,6 +47,12 @@ final class PhpdocVarAnnotationCorrectOrderFixer extends AbstractFixer
                         PHP
                 ),
             ]
+=======
+            [new CodeSample('<?php
+/** @var $foo int */
+$foo = 2 + 2;
+')]
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         );
     }
 

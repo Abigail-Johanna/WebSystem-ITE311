@@ -20,8 +20,11 @@ use PhpCsFixer\Utils;
  * @author Andreas Möller <am@localheinz.com>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Cache implements CacheInterface
 {
@@ -68,6 +71,7 @@ final class Cache implements CacheInterface
 
     public function toJson(): string
     {
+<<<<<<< HEAD
         try {
             return json_encode(
                 [
@@ -86,6 +90,25 @@ final class Cache implements CacheInterface
                 $e->getMessage()
             ));
         }
+=======
+        $json = json_encode([
+            'php' => $this->getSignature()->getPhpVersion(),
+            'version' => $this->getSignature()->getFixerVersion(),
+            'indent' => $this->getSignature()->getIndent(),
+            'lineEnding' => $this->getSignature()->getLineEnding(),
+            'rules' => $this->getSignature()->getRules(),
+            'hashes' => $this->hashes,
+        ]);
+
+        if (\JSON_ERROR_NONE !== json_last_error() || false === $json) {
+            throw new \UnexpectedValueException(\sprintf(
+                'Cannot encode cache signature to JSON, error: "%s". If you have non-UTF8 chars in your signature, like in license for `header_comment`, consider enabling `ext-mbstring` or install `symfony/polyfill-mbstring`.',
+                json_last_error_msg()
+            ));
+        }
+
+        return $json;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**
@@ -93,6 +116,7 @@ final class Cache implements CacheInterface
      */
     public static function fromJson(string $json): self
     {
+<<<<<<< HEAD
         try {
             $data = json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
@@ -100,6 +124,15 @@ final class Cache implements CacheInterface
                 'Value needs to be a valid JSON string, got "%s", error: "%s".',
                 $json,
                 $e->getMessage()
+=======
+        $data = json_decode($json, true);
+
+        if (null === $data && \JSON_ERROR_NONE !== json_last_error()) {
+            throw new \InvalidArgumentException(\sprintf(
+                'Value needs to be a valid JSON string, got "%s", error: "%s".',
+                $json,
+                json_last_error_msg()
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ));
         }
 
@@ -132,7 +165,11 @@ final class Cache implements CacheInterface
         $cache = new self($signature);
 
         // before v3.11.1 the hashes were crc32 encoded and saved as integers
+<<<<<<< HEAD
         // @TODO v4: remove the to string cast/array_map
+=======
+        // @TODO: remove the to string cast/array_map in v4.0
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         $cache->hashes = array_map(static fn ($v): string => \is_int($v) ? (string) $v : $v, $data['hashes']);
 
         return $cache;

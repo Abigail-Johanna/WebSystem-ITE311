@@ -15,6 +15,10 @@ use function array_key_exists;
 use function assert;
 use function explode;
 use function get_debug_type;
+<<<<<<< HEAD
+=======
+use function is_a;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use function is_array;
 use function is_int;
 use function is_string;
@@ -26,16 +30,27 @@ use function preg_replace;
 use function rtrim;
 use function sprintf;
 use function str_replace;
+<<<<<<< HEAD
+=======
+use function str_starts_with;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use function strlen;
 use function substr;
 use function trim;
 use PHPUnit\Event;
 use PHPUnit\Framework\InvalidDataProviderException;
+<<<<<<< HEAD
+=======
+use PHPUnit\Framework\TestCase;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PHPUnit\Metadata\DataProvider as DataProviderMetadata;
 use PHPUnit\Metadata\MetadataCollection;
 use PHPUnit\Metadata\Parser\Registry as MetadataRegistry;
 use PHPUnit\Metadata\TestWith;
+<<<<<<< HEAD
 use PHPUnit\Util\Test;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use ReflectionClass;
 use ReflectionMethod;
 use Throwable;
@@ -57,9 +72,14 @@ final readonly class DataProvider
      */
     public function providedData(string $className, string $methodName): ?array
     {
+<<<<<<< HEAD
         $metadataCollection = MetadataRegistry::parser()->forMethod($className, $methodName);
         $dataProvider       = $metadataCollection->isDataProvider();
         $testWith           = $metadataCollection->isTestWith();
+=======
+        $dataProvider = MetadataRegistry::parser()->forMethod($className, $methodName)->isDataProvider();
+        $testWith     = MetadataRegistry::parser()->forMethod($className, $methodName)->isTestWith();
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         if ($dataProvider->isEmpty() && $testWith->isEmpty()) {
             return $this->dataProvidedByTestWithAnnotation($className, $methodName);
@@ -109,6 +129,22 @@ final readonly class DataProvider
         foreach ($dataProvider as $_dataProvider) {
             assert($_dataProvider instanceof DataProviderMetadata);
 
+<<<<<<< HEAD
+=======
+            if (is_a($_dataProvider->className(), TestCase::class, true) &&
+                str_starts_with($_dataProvider->methodName(), 'test')) {
+                Event\Facade::emitter()->testRunnerTriggeredPhpunitWarning(
+                    sprintf(
+                        'The name of the data provider method %s::%s() used by test method %s::%s() begins with "test", therefore PHPUnit also treats it as a test method',
+                        $_dataProvider->className(),
+                        $_dataProvider->methodName(),
+                        $className,
+                        $methodName,
+                    ),
+                );
+            }
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $dataProviderMethod = new Event\Code\ClassMethod($_dataProvider->className(), $_dataProvider->methodName());
 
             Event\Facade::emitter()->dataProviderMethodCalled(
@@ -122,6 +158,7 @@ final readonly class DataProvider
                 $class  = new ReflectionClass($_dataProvider->className());
                 $method = $class->getMethod($_dataProvider->methodName());
 
+<<<<<<< HEAD
                 if (Test::isTestMethod($method)) {
                     Event\Facade::emitter()->testRunnerTriggeredPhpunitWarning(
                         sprintf(
@@ -134,6 +171,8 @@ final readonly class DataProvider
                     );
                 }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 if (!$method->isPublic()) {
                     throw new InvalidDataProviderException(
                         sprintf(

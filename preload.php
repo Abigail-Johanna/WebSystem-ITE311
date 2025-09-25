@@ -57,6 +57,10 @@ class preload
                 '/system/Config/Routes.php',
                 '/system/Language/',
                 '/system/bootstrap.php',
+<<<<<<< HEAD
+=======
+                '/system/util_bootstrap.php',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 '/system/rewrite.php',
                 '/Views/',
                 // Errors occur.

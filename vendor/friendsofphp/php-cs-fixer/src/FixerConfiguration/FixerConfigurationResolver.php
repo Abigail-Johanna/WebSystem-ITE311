@@ -14,15 +14,23 @@ declare(strict_types=1);
 
 namespace PhpCsFixer\FixerConfiguration;
 
+<<<<<<< HEAD
 use PhpCsFixer\Future;
 use PhpCsFixer\Preg;
+=======
+use PhpCsFixer\Preg;
+use PhpCsFixer\Utils;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @readonly
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class FixerConfigurationResolver implements FixerConfigurationResolverInterface
 {
@@ -68,7 +76,11 @@ final class FixerConfigurationResolver implements FixerConfigurationResolverInte
                         throw new InvalidOptionsException(\sprintf('Aliased option "%s"/"%s" is passed multiple times.', $name, $alias));
                     }
 
+<<<<<<< HEAD
                     Future::triggerDeprecation(new \RuntimeException(\sprintf(
+=======
+                    Utils::triggerDeprecation(new \RuntimeException(\sprintf(
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                         'Option "%s" is deprecated, use "%s" instead.',
                         $alias,
                         $name

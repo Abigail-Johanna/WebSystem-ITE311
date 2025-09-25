@@ -21,7 +21,11 @@ use PhpCsFixer\Console\Application;
 use PhpCsFixer\FixerConfiguration\DeprecatedFixerOption;
 use PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface;
 use PhpCsFixer\FixerConfiguration\InvalidOptionsForEnvException;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+use PhpCsFixer\Utils;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use Symfony\Component\OptionsResolver\Exception\ExceptionInterface;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 
@@ -32,8 +36,11 @@ use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
  * @template TFixerComputedConfig of array<string, mixed>
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 trait ConfigurableFixerTrait
 {
@@ -58,7 +65,11 @@ trait ConfigurableFixerTrait
 
             $name = $option->getName();
             if (\array_key_exists($name, $configuration)) {
+<<<<<<< HEAD
                 Future::triggerDeprecation(new \InvalidArgumentException(\sprintf(
+=======
+                Utils::triggerDeprecation(new \InvalidArgumentException(\sprintf(
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     'Option "%s" for rule "%s" is deprecated and will be removed in version %d.0. %s',
                     $name,
                     $this->getName(),

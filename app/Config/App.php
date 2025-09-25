@@ -16,8 +16,12 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
+<<<<<<< HEAD
      public string $baseURL = 'http://localhost/ITE311-RUALES/';
 
+=======
+    public string $baseURL = 'http://localhost/ITE311-RUALES/';
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -58,7 +62,11 @@ class App extends BaseConfig
      *
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      */
+<<<<<<< HEAD
     public string $uriProtocol = 'PATH_INFO';
+=======
+    public string $uriProtocol = 'REQUEST_URI';
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
     /*
     |--------------------------------------------------------------------------

@@ -43,8 +43,11 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
  *
  * @author Volodymyr Kupriienko <vldmr.kuprienko@gmail.com>
  * @author Greg Korba <greg@codito.dev>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class GroupImportFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -152,7 +155,11 @@ final class GroupImportFixer extends AbstractFixer implements ConfigurableFixerI
     /**
      * Gets namespace use analyzers with same namespaces.
      *
+<<<<<<< HEAD
      * @return array<NamespaceUseAnalysis::TYPE_*, non-empty-list<NamespaceUseAnalysis>>
+=======
+     * @return array<NamespaceUseAnalysis::TYPE_*, list<NamespaceUseAnalysis>>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function getSameNamespacesByType(Tokens $tokens): array
     {

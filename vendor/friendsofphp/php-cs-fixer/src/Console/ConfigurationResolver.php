@@ -33,7 +33,10 @@ use PhpCsFixer\Finder;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerFactory;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Linter\Linter;
 use PhpCsFixer\Linter\LinterInterface;
 use PhpCsFixer\ParallelAwareConfigInterface;
@@ -76,8 +79,11 @@ use Symfony\Component\Finder\Finder as SymfonyFinder;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Katsuhiro Ogawa <ko.fivestar@gmail.com>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class ConfigurationResolver
 {
@@ -95,11 +101,14 @@ final class ConfigurationResolver
         self::BOOL_NO,
     ];
 
+<<<<<<< HEAD
     /**
      * @TODO v4: this is no longer needed due to `MARKER-multi-paths-vs-only-cwd-config`
      */
     private ?string $deprecatedNestedConfigDir = null;
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     private ?bool $allowRisky = null;
 
     private ?ConfigInterface $config = null;
@@ -262,6 +271,7 @@ final class ConfigurationResolver
                     throw new InvalidConfigurationException("Configuration file `{$configFileBasename}` is outdated, rename to `{$deprecatedConfigs[$configFileBasename]}`.");
                 }
 
+<<<<<<< HEAD
                 if (null !== $this->deprecatedNestedConfigDir && str_starts_with($configFile, $this->deprecatedNestedConfigDir)) {
                     // @TODO v4: when removing, remove also TODO with `MARKER-multi-paths-vs-only-cwd-config`
                     Future::triggerDeprecation(
@@ -269,6 +279,8 @@ final class ConfigurationResolver
                     );
                 }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 $this->config = self::separatedContextLessInclude($configFile);
                 $this->configFile = $configFile;
 
@@ -566,8 +578,11 @@ final class ConfigurationResolver
     /**
      * Compute file candidates for config file.
      *
+<<<<<<< HEAD
      * @TODO v4: don't offer configs from passed `path` CLI argument
      *
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * @return list<string>
      */
     private function computeConfigFiles(): array
@@ -587,7 +602,10 @@ final class ConfigurationResolver
         if ($this->isStdIn() || 0 === \count($path)) {
             $configDir = $this->cwd;
         } elseif (1 < \count($path)) {
+<<<<<<< HEAD
             // @TODO v4: this is no longer needed due to `MARKER-multi-paths-vs-only-cwd-config`
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             throw new InvalidConfigurationException('For multiple paths config parameter is required.');
         } elseif (!is_file($path[0])) {
             $configDir = $path[0];
@@ -612,8 +630,11 @@ final class ConfigurationResolver
             // @TODO v4 drop handling (triggering error) for v2 config names
             $candidates[] = $this->cwd.\DIRECTORY_SEPARATOR.'.php_cs'; // old v2 config, present here only to throw nice error message later
             $candidates[] = $this->cwd.\DIRECTORY_SEPARATOR.'.php_cs.dist'; // old v2 config, present here only to throw nice error message later
+<<<<<<< HEAD
 
             $this->deprecatedNestedConfigDir = $configDir;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         return $candidates;
@@ -704,11 +725,21 @@ final class ConfigurationResolver
         }
 
         if (str_starts_with($rules, '{')) {
+<<<<<<< HEAD
             try {
                 return json_decode($rules, true, 512, \JSON_THROW_ON_ERROR);
             } catch (\JsonException $e) {
                 throw new InvalidConfigurationException(\sprintf('Invalid JSON rules input: "%s".', $e->getMessage()));
             }
+=======
+            $rules = json_decode($rules, true);
+
+            if (\JSON_ERROR_NONE !== json_last_error()) {
+                throw new InvalidConfigurationException(\sprintf('Invalid JSON rules input: "%s".', json_last_error_msg()));
+            }
+
+            return $rules;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         $rules = [];
@@ -856,7 +887,11 @@ final class ConfigurationResolver
                     ? \sprintf(' and will be removed in version %d.0.', Application::getMajorVersion() + 1)
                     : \sprintf('. Use %s instead.', str_replace('`', '"', Utils::naturalLanguageJoinWithBackticks($successors)));
 
+<<<<<<< HEAD
                 Future::triggerDeprecation(new \RuntimeException("Rule \"{$fixerName}\" is deprecated{$messageEnd}"));
+=======
+                Utils::triggerDeprecation(new \RuntimeException("Rule \"{$fixerName}\" is deprecated{$messageEnd}"));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             }
         }
     }
@@ -999,7 +1034,11 @@ final class ConfigurationResolver
 
         // verify that the config has an instance of Config
         if (!$config instanceof ConfigInterface) {
+<<<<<<< HEAD
             throw new InvalidConfigurationException(\sprintf('The config file: "%s" does not return a "%s" instance. Got: "%s".', $path, ConfigInterface::class, get_debug_type($config)));
+=======
+            throw new InvalidConfigurationException(\sprintf('The config file: "%s" does not return a "PhpCsFixer\ConfigInterface" instance. Got: "%s".', $path, \is_object($config) ? \get_class($config) : \gettype($config)));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         return $config;

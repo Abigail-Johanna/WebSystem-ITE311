@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpUnitFqcnAnnotationFixer extends AbstractPhpUnitFixer
 {
@@ -33,6 +36,7 @@ final class PhpUnitFqcnAnnotationFixer extends AbstractPhpUnitFixer
     {
         return new FixerDefinition(
             'PHPUnit annotations should be a FQCNs including a root namespace.',
+<<<<<<< HEAD
             [
                 new CodeSample(
                     <<<'PHP'
@@ -53,6 +57,24 @@ final class PhpUnitFqcnAnnotationFixer extends AbstractPhpUnitFixer
                         PHP
                 ),
             ]
+=======
+            [new CodeSample(
+                '<?php
+final class MyTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @expectedException InvalidArgumentException
+     * @covers Project\NameSpace\Something
+     * @coversDefaultClass Project\Default
+     * @uses Project\Test\Util
+     */
+    public function testSomeTest()
+    {
+    }
+}
+'
+            )]
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         );
     }
 

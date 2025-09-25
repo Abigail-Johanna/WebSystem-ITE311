@@ -23,8 +23,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class ClassKeywordFixer extends AbstractFixer implements ExperimentalFixerInterface
 {
@@ -34,6 +37,7 @@ final class ClassKeywordFixer extends AbstractFixer implements ExperimentalFixer
             'Converts FQCN strings to `*::class` keywords.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -41,6 +45,13 @@ final class ClassKeywordFixer extends AbstractFixer implements ExperimentalFixer
                         $bar = "\PhpCsFixer\Tokenizer\Tokens";
 
                         PHP
+=======
+                    '<?php
+
+$foo = \'PhpCsFixer\Tokenizer\Tokens\';
+$bar = "\PhpCsFixer\Tokenizer\Tokens";
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             'This rule does not have an understanding of whether a class exists in the scope of the codebase or not, relying on run-time and autoloaded classes to determine it, which makes the rule useless when running on a single file out of codebase context.',

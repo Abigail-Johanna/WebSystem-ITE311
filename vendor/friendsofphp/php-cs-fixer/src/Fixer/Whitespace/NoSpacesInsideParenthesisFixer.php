@@ -28,8 +28,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @deprecated in favor of SpacesInsideParenthesisFixer
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class NoSpacesInsideParenthesisFixer extends AbstractProxyFixer implements DeprecatedFixerInterface
 {
@@ -38,6 +41,7 @@ final class NoSpacesInsideParenthesisFixer extends AbstractProxyFixer implements
         return new FixerDefinition(
             'There MUST NOT be a space after the opening parenthesis. There MUST NOT be a space before the closing parenthesis.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -55,6 +59,14 @@ final class NoSpacesInsideParenthesisFixer extends AbstractProxyFixer implements
                         }
 
                         PHP
+=======
+                new CodeSample("<?php\nif ( \$a ) {\n    foo( );\n}\n"),
+                new CodeSample(
+                    "<?php
+function foo( \$bar, \$baz )
+{
+}\n"
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

@@ -3,7 +3,11 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
+<<<<<<< HEAD
         'reference' => 'a13fa712af72c17cfd743c54549325ced87f9376',
+=======
+        'reference' => '4f3a9e7f866ad750845780e6b7b8b3d482c80cef',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +35,11 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+<<<<<<< HEAD
             'reference' => 'a13fa712af72c17cfd743c54549325ced87f9376',
+=======
+            'reference' => '4f3a9e7f866ad750845780e6b7b8b3d482c80cef',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -92,9 +100,15 @@
             'dev_requirement' => true,
         ),
         'friendsofphp/php-cs-fixer' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v3.87.2',
             'version' => '3.87.2.0',
             'reference' => 'da5f0a7858c79b56fc0b8c36d3efcfe5f37f0992',
+=======
+            'pretty_version' => 'v3.86.0',
+            'version' => '3.86.0.0',
+            'reference' => '4a952bd19dc97879b0620f495552ef09b55f7d36',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'application',
             'install_path' => __DIR__ . '/../friendsofphp/php-cs-fixer',
             'aliases' => array(),
@@ -137,9 +151,15 @@
             'dev_requirement' => true,
         ),
         'nexusphp/cs-config' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v3.26.3',
             'version' => '3.26.3.0',
             'reference' => '56a5d0e689e45e417470f41784cefa9262905872',
+=======
+            'pretty_version' => 'v3.26.2',
+            'version' => '3.26.2.0',
+            'reference' => 'fbbeb83f0601af5737174682cc7fae1da6d0a7db',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../nexusphp/cs-config',
             'aliases' => array(),
@@ -173,9 +193,15 @@
             'dev_requirement' => true,
         ),
         'phpunit/php-code-coverage' => array(
+<<<<<<< HEAD
             'pretty_version' => '11.0.11',
             'version' => '11.0.11.0',
             'reference' => '4f7722aa9a7b76aa775e2d9d4e95d1ea16eeeef4',
+=======
+            'pretty_version' => '11.0.10',
+            'version' => '11.0.10.0',
+            'reference' => '1a800a7446add2d79cc6b3c01c45381810367d76',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -218,9 +244,15 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
+<<<<<<< HEAD
             'pretty_version' => '11.5.39',
             'version' => '11.5.39.0',
             'reference' => 'ad5597f79d8489d2870073ac0bc0dd0ad1fa9931',
+=======
+            'pretty_version' => '11.5.34',
+            'version' => '11.5.34.0',
+            'reference' => '3e4c6ef395f7cb61a6206c23e0e04b31724174f2',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -491,9 +523,15 @@
             'dev_requirement' => true,
         ),
         'symfony/console' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v7.3.3',
             'version' => '7.3.3.0',
             'reference' => 'cb0102a1c5ac3807cf3fdf8bea96007df7fdbea7',
+=======
+            'pretty_version' => 'v7.3.2',
+            'version' => '7.3.2.0',
+            'reference' => '5f360ebc65c55265a74d23d7fe27f957870158a1',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -509,9 +547,15 @@
             'dev_requirement' => true,
         ),
         'symfony/event-dispatcher' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v7.3.3',
             'version' => '7.3.3.0',
             'reference' => 'b7dc69e71de420ac04bc9ab830cf3ffebba48191',
+=======
+            'pretty_version' => 'v7.3.0',
+            'version' => '7.3.0.0',
+            'reference' => '497f73ac996a598c92409b44ac43b6690c4f666d',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/event-dispatcher',
             'aliases' => array(),
@@ -551,9 +595,15 @@
             'dev_requirement' => true,
         ),
         'symfony/options-resolver' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v7.3.3',
             'version' => '7.3.3.0',
             'reference' => '0ff2f5c3df08a395232bbc3c2eb7e84912df911d',
+=======
+            'pretty_version' => 'v7.3.2',
+            'version' => '7.3.2.0',
+            'reference' => '119bcf13e67dbd188e5dbc74228b1686f66acd37',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/options-resolver',
             'aliases' => array(),
@@ -614,9 +664,15 @@
             'dev_requirement' => true,
         ),
         'symfony/process' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v7.3.3',
             'version' => '7.3.3.0',
             'reference' => '32241012d521e2e8a9d713adb0812bb773b907f1',
+=======
+            'pretty_version' => 'v7.3.0',
+            'version' => '7.3.0.0',
+            'reference' => '40c295f2deb408d5e9d2d32b8ba1dd61e36f05af',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
@@ -641,9 +697,15 @@
             'dev_requirement' => true,
         ),
         'symfony/string' => array(
+<<<<<<< HEAD
             'pretty_version' => 'v7.3.3',
             'version' => '7.3.3.0',
             'reference' => '17a426cce5fd1f0901fefa9b2a490d0038fd3c9c',
+=======
+            'pretty_version' => 'v7.3.2',
+            'version' => '7.3.2.0',
+            'reference' => '42f505aff654e62ac7ac2ce21033818297ca89ca',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),

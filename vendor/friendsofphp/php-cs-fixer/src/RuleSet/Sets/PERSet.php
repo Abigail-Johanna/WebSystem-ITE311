@@ -25,8 +25,11 @@ use PhpCsFixer\RuleSet\DeprecatedRuleSetDescriptionInterface;
  * @TODO 4.0 remove me
  *
  * Last updated to PER Coding Style v2.0.
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PERSet extends AbstractRuleSetDescription implements DeprecatedRuleSetDescriptionInterface
 {

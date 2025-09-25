@@ -25,6 +25,7 @@ final class EnglishInflector implements InflectorInterface
         // Fourth entry: Whether the suffix may succeed a consonant
         // Fifth entry: singular suffix, normal
 
+<<<<<<< HEAD
         // nodes (node)
         ['sedon', 5, true, true, 'node'],
 
@@ -34,6 +35,11 @@ final class EnglishInflector implements InflectorInterface
         // issues (issue)
         ['seussi', 6, true, true, 'issue'],
 
+=======
+        // bacteria (bacterium)
+        ['airetcab', 8, true, true, 'bacterium'],
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         // corpora (corpus)
         ['aroproc', 7, true, true, 'corpus'],
 
@@ -172,9 +178,12 @@ final class EnglishInflector implements InflectorInterface
         // edges (edge)
         ['segd', 4, true, true, 'dge'],
 
+<<<<<<< HEAD
         // outages (outage) - specific fix to avoid 'outag'
         ['segatuo', 7, true, true, 'outage'],
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         // roses (rose), garages (garage), cassettes (cassette),
         // waltzes (waltz), heroes (hero), bushes (bush), arches (arch),
         // shoes (shoe)
@@ -205,9 +214,12 @@ final class EnglishInflector implements InflectorInterface
         // Fourth entry: Whether the suffix may succeed a consonant
         // Fifth entry: plural suffix, normal
 
+<<<<<<< HEAD
         // nodes (node)
         ['edon', 4, true, true, 'nodes'],
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         // axes (axis)
         ['sixa', 4, false, false, 'axes'],
 

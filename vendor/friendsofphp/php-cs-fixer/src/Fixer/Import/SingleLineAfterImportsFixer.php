@@ -29,8 +29,11 @@ use PhpCsFixer\Utils;
  *
  * @author Ceeram <ceeram@cakephp.org>
  * @author Graham Campbell <hello@gjcampbell.co.uk>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SingleLineAfterImportsFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
 {
@@ -45,6 +48,7 @@ final class SingleLineAfterImportsFixer extends AbstractFixer implements Whitesp
             'Each namespace use MUST go on its own line and there MUST be one blank line after the use statements block.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         namespace Foo;
@@ -71,6 +75,30 @@ final class SingleLineAfterImportsFixer extends AbstractFixer implements Whitesp
                         }
 
                         PHP
+=======
+                    '<?php
+namespace Foo;
+
+use Bar;
+use Baz;
+final class Example
+{
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+namespace Foo;
+
+use Bar;
+use Baz;
+
+
+final class Example
+{
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

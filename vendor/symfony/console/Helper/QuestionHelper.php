@@ -516,16 +516,23 @@ class QuestionHelper extends Helper
         $ret = '';
         $cp = $this->setIOCodepage();
         while (false !== ($char = fgetc($multiLineStreamReader))) {
+<<<<<<< HEAD
             if ("\x4" === $char || \PHP_EOL === "{$ret}{$char}") {
+=======
+            if (\PHP_EOL === "{$ret}{$char}") {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 break;
             }
             $ret .= $char;
         }
 
+<<<<<<< HEAD
         if (stream_get_meta_data($inputStream)['seekable']) {
             fseek($inputStream, ftell($multiLineStreamReader));
         }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         return $this->resetIOCodepage($cp, $ret);
     }
 

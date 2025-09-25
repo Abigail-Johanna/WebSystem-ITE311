@@ -21,9 +21,12 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class PhpdocListTypeFixer extends AbstractPhpdocTypesFixer
 {
     public function isCandidate(Tokens $tokens): bool
@@ -41,6 +44,7 @@ final class PhpdocListTypeFixer extends AbstractPhpdocTypesFixer
         return new FixerDefinition(
             'PHPDoc `list` type must be used instead of `array` without a key.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -51,6 +55,16 @@ final class PhpdocListTypeFixer extends AbstractPhpdocTypesFixer
 
                         PHP
                 ),
+=======
+                new CodeSample(<<<'PHP'
+                    <?php
+                    /**
+                     * @param array<int> $x
+                     * @param array<array<string>> $y
+                     */
+
+                    PHP),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ],
             null,
             'Risky when `array` key should be present, but is missing.'

@@ -22,12 +22,16 @@ use PhpCsFixer\Tokenizer\Tokens;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 abstract class AbstractProxyFixer extends AbstractFixer
 {
     /**
+<<<<<<< HEAD
      * @var non-empty-array<string, FixerInterface>
      */
     protected array $proxyFixers;
@@ -39,6 +43,17 @@ abstract class AbstractProxyFixer extends AbstractFixer
             $proxyFixers[$proxyFixer->getName()] = $proxyFixer;
         }
         $this->proxyFixers = $proxyFixers;
+=======
+     * @var array<string, FixerInterface>
+     */
+    protected array $proxyFixers = [];
+
+    public function __construct()
+    {
+        foreach (Utils::sortFixers($this->createProxyFixers()) as $proxyFixer) {
+            $this->proxyFixers[$proxyFixer->getName()] = $proxyFixer;
+        }
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         parent::__construct();
     }
@@ -104,7 +119,11 @@ abstract class AbstractProxyFixer extends AbstractFixer
     }
 
     /**
+<<<<<<< HEAD
      * @return non-empty-list<FixerInterface>
+=======
+     * @return list<FixerInterface>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     abstract protected function createProxyFixers(): array;
 }

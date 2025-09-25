@@ -21,9 +21,12 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class PhpdocArrayTypeFixer extends AbstractPhpdocTypesFixer
 {
     public function isCandidate(Tokens $tokens): bool
@@ -41,6 +44,7 @@ final class PhpdocArrayTypeFixer extends AbstractPhpdocTypesFixer
         return new FixerDefinition(
             'PHPDoc `array<T>` type must be used instead of `T[]`.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -51,6 +55,16 @@ final class PhpdocArrayTypeFixer extends AbstractPhpdocTypesFixer
 
                         PHP
                 ),
+=======
+                new CodeSample(<<<'PHP'
+                    <?php
+                    /**
+                     * @param int[] $x
+                     * @param string[][] $y
+                     */
+
+                    PHP),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ],
             null,
             'Risky when using `T[]` in union types.'

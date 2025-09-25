@@ -44,7 +44,11 @@ final class SeparateProcessTestRunner implements IsolatedTestRunner
      * @throws NoPreviousThrowableException
      * @throws ProcessIsolationException
      */
+<<<<<<< HEAD
     public function run(TestCase $test, bool $runEntireClass, bool $preserveGlobalState, bool $requiresXdebug): void
+=======
+    public function run(TestCase $test, bool $runEntireClass, bool $preserveGlobalState): void
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     {
         $class = new ReflectionClass($test);
 
@@ -139,7 +143,11 @@ final class SeparateProcessTestRunner implements IsolatedTestRunner
 
         assert($code !== '');
 
+<<<<<<< HEAD
         JobRunnerRegistry::runTestJob(new Job($code, requiresXdebug: $requiresXdebug), $processResultFile, $test);
+=======
+        JobRunnerRegistry::runTestJob(new Job($code), $processResultFile, $test);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         @unlink($serializedConfiguration);
     }

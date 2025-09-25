@@ -21,9 +21,12 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class CombineConsecutiveIssetsFixer extends AbstractFixer
 {
     public function getDefinition(): FixerDefinitionInterface
@@ -119,7 +122,11 @@ final class CombineConsecutiveIssetsFixer extends AbstractFixer
     /**
      * @param int $index of T_ISSET
      *
+<<<<<<< HEAD
      * @return non-empty-list<int> indices of meaningful tokens belonging to the isset statement
+=======
+     * @return list<int> indices of meaningful tokens belonging to the isset statement
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function getIssetInfo(Tokens $tokens, int $index): array
     {

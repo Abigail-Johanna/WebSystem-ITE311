@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class RegularCallableCallFixer extends AbstractFixer
 {
@@ -36,6 +39,7 @@ final class RegularCallableCallFixer extends AbstractFixer
             'Callables must be called without using `call_user_func*` when possible.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             call_user_func("var_dump", 1, 2);
@@ -54,6 +58,22 @@ final class RegularCallableCallFixer extends AbstractFixer
                         call_user_func(static function ($a, $b) { var_dump($a, $b); }, 1, 2);
 
                         PHP
+=======
+                    '<?php
+    call_user_func("var_dump", 1, 2);
+
+    call_user_func("Bar\Baz::d", 1, 2);
+
+    call_user_func_array($callback, [1, 2]);
+'
+                ),
+                new CodeSample(
+                    '<?php
+call_user_func(function ($a, $b) { var_dump($a, $b); }, 1, 2);
+
+call_user_func(static function ($a, $b) { var_dump($a, $b); }, 1, 2);
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             null,

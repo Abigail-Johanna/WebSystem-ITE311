@@ -18,8 +18,11 @@ namespace PhpCsFixer\Tokenizer\Analyzer\Analysis;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class TypeAnalysis
 {
@@ -28,7 +31,11 @@ final class TypeAnalysis
      *
      * More info:
      *
+<<<<<<< HEAD
      * @var non-empty-list<string>
+=======
+     * @var list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      *
      * @see https://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.types
      * @see https://php.net/manual/en/reserved.other-reserved-words.php

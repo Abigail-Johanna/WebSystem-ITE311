@@ -42,8 +42,11 @@ use Symfony\Component\OptionsResolver\Options;
  *
  * @author Filippo Tessarotto <zoeslam@gmail.com>
  * @author Andreas Möller <am@localheinz.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocOrderByValueFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -56,6 +59,7 @@ final class PhpdocOrderByValueFixer extends AbstractFixer implements Configurabl
             'Order PHPDoc tags by value.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         /**
@@ -78,6 +82,26 @@ final class PhpdocOrderByValueFixer extends AbstractFixer implements Configurabl
                         {}
 
                         PHP,
+=======
+                    '<?php
+/**
+ * @covers Foo
+ * @covers Bar
+ */
+final class MyTest extends \PHPUnit_Framework_TestCase
+{}
+'
+                ),
+                new CodeSample(
+                    '<?php
+/**
+ * @author Bob
+ * @author Alice
+ */
+final class MyTest extends \PHPUnit_Framework_TestCase
+{}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'annotations' => [
                             'author',

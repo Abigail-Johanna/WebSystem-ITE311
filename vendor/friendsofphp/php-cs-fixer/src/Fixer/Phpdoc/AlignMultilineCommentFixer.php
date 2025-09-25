@@ -40,8 +40,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @author Filippo Tessarotto <zoeslam@gmail.com>
  * @author Julien Falque <julien.falque@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class AlignMultilineCommentFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -49,7 +52,11 @@ final class AlignMultilineCommentFixer extends AbstractFixer implements Configur
     use ConfigurableFixerTrait;
 
     /**
+<<<<<<< HEAD
      * @var null|non-empty-list<int>
+=======
+     * @var null|list<int>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private ?array $tokenKinds = null;
 
@@ -59,6 +66,7 @@ final class AlignMultilineCommentFixer extends AbstractFixer implements Configur
             'Each line of multi-line DocComments must have an asterisk [PSR-5] and must be aligned with the first one.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             /**
@@ -89,6 +97,32 @@ final class AlignMultilineCommentFixer extends AbstractFixer implements Configur
                            */
 
                         PHP,
+=======
+                    '<?php
+    /**
+            * This is a DOC Comment
+with a line not prefixed with asterisk
+
+   */
+'
+                ),
+                new CodeSample(
+                    '<?php
+    /*
+            * This is a doc-like multiline comment
+*/
+',
+                    ['comment_type' => 'phpdocs_like']
+                ),
+                new CodeSample(
+                    '<?php
+    /*
+            * This is a doc-like multiline comment
+with a line not prefixed with asterisk
+
+   */
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['comment_type' => 'all_multiline']
                 ),
             ]
@@ -98,7 +132,11 @@ final class AlignMultilineCommentFixer extends AbstractFixer implements Configur
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * Must run before CommentToPhpdocFixer, GeneralPhpdocAnnotationRemoveFixer, GeneralPhpdocTagRenameFixer, NoBlankLinesAfterPhpdocFixer, NoEmptyPhpdocFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAddMissingParamAnnotationFixer, PhpdocAlignFixer, PhpdocAnnotationWithoutDotFixer, PhpdocArrayTypeFixer, PhpdocInlineTagNormalizerFixer, PhpdocLineSpanFixer, PhpdocListTypeFixer, PhpdocNoAccessFixer, PhpdocNoAliasTagFixer, PhpdocNoEmptyReturnFixer, PhpdocNoPackageFixer, PhpdocNoUselessInheritdocFixer, PhpdocOrderByValueFixer, PhpdocOrderFixer, PhpdocParamOrderFixer, PhpdocReadonlyClassCommentToKeywordFixer, PhpdocReturnSelfReferenceFixer, PhpdocSeparationFixer, PhpdocSingleLineVarSpacingFixer, PhpdocSummaryFixer, PhpdocTagCasingFixer, PhpdocTagNoNamedArgumentsFixer, PhpdocTagTypeFixer, PhpdocToParamTypeFixer, PhpdocToPropertyTypeFixer, PhpdocToReturnTypeFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer, PhpdocTrimFixer, PhpdocTypesOrderFixer, PhpdocVarAnnotationCorrectOrderFixer, PhpdocVarWithoutNameFixer.
+=======
+     * Must run before CommentToPhpdocFixer, GeneralPhpdocAnnotationRemoveFixer, GeneralPhpdocTagRenameFixer, NoBlankLinesAfterPhpdocFixer, NoEmptyPhpdocFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAddMissingParamAnnotationFixer, PhpdocAlignFixer, PhpdocAnnotationWithoutDotFixer, PhpdocArrayTypeFixer, PhpdocInlineTagNormalizerFixer, PhpdocLineSpanFixer, PhpdocListTypeFixer, PhpdocNoAccessFixer, PhpdocNoAliasTagFixer, PhpdocNoEmptyReturnFixer, PhpdocNoPackageFixer, PhpdocNoUselessInheritdocFixer, PhpdocOrderByValueFixer, PhpdocOrderFixer, PhpdocParamOrderFixer, PhpdocReadonlyClassCommentToKeywordFixer, PhpdocReturnSelfReferenceFixer, PhpdocSeparationFixer, PhpdocSingleLineVarSpacingFixer, PhpdocSummaryFixer, PhpdocTagCasingFixer, PhpdocTagTypeFixer, PhpdocToParamTypeFixer, PhpdocToPropertyTypeFixer, PhpdocToReturnTypeFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer, PhpdocTrimFixer, PhpdocTypesOrderFixer, PhpdocVarAnnotationCorrectOrderFixer, PhpdocVarWithoutNameFixer.
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * Must run after ArrayIndentationFixer.
      */
     public function getPriority(): int

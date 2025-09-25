@@ -28,8 +28,11 @@ use PhpCsFixer\Tokenizer\Analyzer\GotoLabelAnalyzer;
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author Gregor Harlan <gharlan@web.de>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class TokensAnalyzer
 {
@@ -109,7 +112,11 @@ final class TokensAnalyzer
      *
      * @param bool $perNamespace Return namespace uses per namespace
      *
+<<<<<<< HEAD
      * @return ($perNamespace is true ? array<int, non-empty-list<int>> : list<int>)
+=======
+     * @return ($perNamespace is true ? array<int, list<int>> : list<int>)
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     public function getImportUseIndexes(bool $perNamespace = false): array
     {

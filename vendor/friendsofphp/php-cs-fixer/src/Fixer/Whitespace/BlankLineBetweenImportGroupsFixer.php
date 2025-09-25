@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
 /**
  * @author Sander Verkuil <s.verkuil@pm.me>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class BlankLineBetweenImportGroupsFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
 {
@@ -43,6 +46,7 @@ final class BlankLineBetweenImportGroupsFixer extends AbstractFixer implements W
             'Putting blank lines between `use` statement groups.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -90,6 +94,47 @@ final class BlankLineBetweenImportGroupsFixer extends AbstractFixer implements W
                         use Bar;
 
                         PHP
+=======
+                    '<?php
+
+use function AAC;
+use const AAB;
+use AAA;
+'
+                ),
+                new CodeSample(
+                    '<?php
+use const AAAA;
+use const BBB;
+use Bar;
+use AAC;
+use Acme;
+use function CCC\AA;
+use function DDD;
+'
+                ),
+                new CodeSample(
+                    '<?php
+use const BBB;
+use const AAAA;
+use Acme;
+use AAC;
+use Bar;
+use function DDD;
+use function CCC\AA;
+'
+                ),
+                new CodeSample(
+                    '<?php
+use const AAAA;
+use const BBB;
+use Acme;
+use function DDD;
+use AAC;
+use function CCC\AA;
+use Bar;
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

@@ -27,8 +27,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Jonathan Gruber <gruberjonathan@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocParamOrderFixer extends AbstractFixer
 {
@@ -56,6 +59,7 @@ final class PhpdocParamOrderFixer extends AbstractFixer
             'Orders all `@param` annotations in DocBlocks according to method signature.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         /**
@@ -68,6 +72,18 @@ final class PhpdocParamOrderFixer extends AbstractFixer
                         function m($a, array $b, Foo $c) {}
 
                         PHP
+=======
+                    '<?php
+/**
+ * Annotations in wrong order
+ *
+ * @param int   $a
+ * @param Foo   $c
+ * @param array $b
+ */
+function m($a, array $b, Foo $c) {}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );
@@ -128,8 +144,13 @@ final class PhpdocParamOrderFixer extends AbstractFixer
     /**
      * Overwrite the param annotations in order.
      *
+<<<<<<< HEAD
      * @param list<Token>                $paramNames
      * @param non-empty-list<Annotation> $paramAnnotations
+=======
+     * @param list<Token>      $paramNames
+     * @param list<Annotation> $paramAnnotations
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function rewriteDocBlock(DocBlock $doc, array $paramNames, array $paramAnnotations): DocBlock
     {
@@ -165,22 +186,43 @@ final class PhpdocParamOrderFixer extends AbstractFixer
     /**
      * Sort the param annotations according to the function parameters.
      *
+<<<<<<< HEAD
      * @param list<Token>                $funcParamNames
      * @param non-empty-list<Annotation> $paramAnnotations
      *
      * @return non-empty-list<string>
+=======
+     * @param list<Token>      $funcParamNames
+     * @param list<Annotation> $paramAnnotations
+     *
+     * @return list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function sortParamAnnotations(array $funcParamNames, array $paramAnnotations): array
     {
         $validParams = [];
         foreach ($funcParamNames as $paramName) {
+<<<<<<< HEAD
             foreach ($this->findParamAnnotationByIdentifier($paramAnnotations, $paramName->getContent()) as $index => $annotation) {
                 // Found an exactly matching @param annotation
                 $validParams[$index] = $annotation->getContent();
+=======
+            $indices = $this->findParamAnnotationByIdentifier($paramAnnotations, $paramName->getContent());
+
+            // Found an exactly matching @param annotation
+            if (\is_array($indices)) {
+                foreach ($indices as $index) {
+                    $validParams[$index] = $paramAnnotations[$index]->getContent();
+                }
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             }
         }
 
         // Detect superfluous annotations
+<<<<<<< HEAD
+=======
+        /** @var list<Annotation> $invalidParams */
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         $invalidParams = array_values(
             array_diff_key($paramAnnotations, $validParams)
         );
@@ -190,7 +232,10 @@ final class PhpdocParamOrderFixer extends AbstractFixer
         foreach ($invalidParams as $params) {
             $orderedParams[] = $params->getContent();
         }
+<<<<<<< HEAD
         \assert(\count($orderedParams) > 0);
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         return $orderedParams;
     }
@@ -230,9 +275,15 @@ final class PhpdocParamOrderFixer extends AbstractFixer
      *
      * @param list<Annotation> $paramAnnotations
      *
+<<<<<<< HEAD
      * @return array<int, Annotation> Mapping of found indices and corresponding Annotations
      */
     private function findParamAnnotationByIdentifier(array $paramAnnotations, string $identifier): array
+=======
+     * @return ?list<int>
+     */
+    private function findParamAnnotationByIdentifier(array $paramAnnotations, string $identifier): ?array
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     {
         $blockLevel = 0;
         $blockMatch = false;
@@ -248,7 +299,11 @@ final class PhpdocParamOrderFixer extends AbstractFixer
                 if ($blockStart) {
                     $blockMatch = true; // Start of a nested block
                 } else {
+<<<<<<< HEAD
                     return [$i => $param]; // Top level match
+=======
+                    return [$i]; // Top level match
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 }
             }
 
@@ -261,13 +316,21 @@ final class PhpdocParamOrderFixer extends AbstractFixer
             }
 
             if ($blockMatch) {
+<<<<<<< HEAD
                 $blockIndices[$i] = $param;
+=======
+                $blockIndices[] = $i;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 if (0 === $blockLevel) {
                     return $blockIndices;
                 }
             }
         }
 
+<<<<<<< HEAD
         return [];
+=======
+        return null;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 }

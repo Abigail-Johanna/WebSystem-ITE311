@@ -24,10 +24,17 @@ use PhpCsFixer\Console\Command\SelfUpdateCommand;
 use PhpCsFixer\Console\Command\WorkerCommand;
 use PhpCsFixer\Console\SelfUpdate\GithubClient;
 use PhpCsFixer\Console\SelfUpdate\NewVersionChecker;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
 use PhpCsFixer\PharChecker;
 use PhpCsFixer\Runner\Parallel\WorkerException;
 use PhpCsFixer\ToolInfo;
+=======
+use PhpCsFixer\PharChecker;
+use PhpCsFixer\Runner\Parallel\WorkerException;
+use PhpCsFixer\ToolInfo;
+use PhpCsFixer\Utils;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\CompleteCommand;
@@ -42,13 +49,20 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Application extends BaseApplication
 {
     public const NAME = 'PHP CS Fixer';
+<<<<<<< HEAD
     public const VERSION = '3.87.2';
+=======
+    public const VERSION = '3.86.0';
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     public const VERSION_CODENAME = 'Alexander';
 
     /**
@@ -119,7 +133,11 @@ final class Application extends BaseApplication
             null !== $stdErr
             && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE
         ) {
+<<<<<<< HEAD
             $triggeredDeprecations = Future::getTriggeredDeprecations();
+=======
+            $triggeredDeprecations = Utils::getTriggeredDeprecations();
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
             if (\count($triggeredDeprecations) > 0) {
                 $stdErr->writeln('');
@@ -209,8 +227,12 @@ final class Application extends BaseApplication
                     'line' => $e->getLine(),
                     'code' => $e->getCode(),
                     'trace' => $e->getTraceAsString(),
+<<<<<<< HEAD
                 ],
                 \JSON_THROW_ON_ERROR
+=======
+                ]
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ));
 
             return;

@@ -170,6 +170,7 @@ final readonly class Requirements
 
         return $notSatisfied;
     }
+<<<<<<< HEAD
 
     public function requiresXdebug(string $className, string $methodName): bool
     {
@@ -183,4 +184,6 @@ final readonly class Requirements
 
         return false;
     }
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 }

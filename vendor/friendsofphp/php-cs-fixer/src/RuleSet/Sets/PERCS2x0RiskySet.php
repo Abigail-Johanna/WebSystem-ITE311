@@ -22,8 +22,11 @@ use PhpCsFixer\RuleSet\AbstractRuleSetDescription;
  * PER Coding Style v2.0.
  *
  * @see https://github.com/php-fig/per-coding-style/blob/2.0.0/spec.md
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PERCS2x0RiskySet extends AbstractRuleSetDescription
 {

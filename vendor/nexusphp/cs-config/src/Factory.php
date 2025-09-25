@@ -18,7 +18,10 @@ use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
+<<<<<<< HEAD
 use PhpCsFixer\Fixer\FixerInterface;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 /**
@@ -30,8 +33,13 @@ final class Factory
     /**
      * @param array{
      *     cacheFile: non-empty-string,
+<<<<<<< HEAD
      *     customFixers: iterable<FixerInterface>,
      *     finder: Finder|iterable<\SplFileInfo>,
+=======
+     *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
+     *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      *     format: string,
      *     hideProgress: bool,
      *     indent: non-empty-string,
@@ -53,8 +61,13 @@ final class Factory
      * @param array<string, array<string, mixed>|bool> $overrides
      * @param array{
      *     cacheFile?: non-empty-string,
+<<<<<<< HEAD
      *     customFixers?: iterable<FixerInterface>,
      *     finder?: Finder|iterable<\SplFileInfo>,
+=======
+     *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
+     *     finder?: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      *     format?: string,
      *     hideProgress?: bool,
      *     indent?: non-empty-string,

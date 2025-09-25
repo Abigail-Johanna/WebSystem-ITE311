@@ -24,9 +24,12 @@ use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class ReturnAssignmentFixer extends AbstractFixer
 {
     private TokensAnalyzer $tokensAnalyzer;
@@ -238,6 +241,7 @@ final class ReturnAssignmentFixer extends AbstractFixer
 
             // Note: here we are @ "; return $a;" (or "; return $a ? >")
             while (true) {
+<<<<<<< HEAD
                 $prevMeaningful = $tokens->getPrevMeaningfulToken($assignVarEndIndex);
 
                 if (!$tokens[$prevMeaningful]->equals(')')) {
@@ -245,6 +249,15 @@ final class ReturnAssignmentFixer extends AbstractFixer
                 }
 
                 $assignVarEndIndex = $tokens->findBlockStart(Tokens::BLOCK_TYPE_PARENTHESIS_BRACE, $prevMeaningful);
+=======
+                $prevMeaningFul = $tokens->getPrevMeaningfulToken($assignVarEndIndex);
+
+                if (!$tokens[$prevMeaningFul]->equals(')')) {
+                    break;
+                }
+
+                $assignVarEndIndex = $tokens->findBlockStart(Tokens::BLOCK_TYPE_PARENTHESIS_BRACE, $prevMeaningFul);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             }
 
             $assignVarOperatorIndex = $tokens->getPrevTokenOfKind(

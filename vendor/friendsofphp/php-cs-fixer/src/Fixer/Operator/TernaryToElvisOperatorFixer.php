@@ -20,6 +20,7 @@ use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Analyzer\RangeAnalyzer;
 use PhpCsFixer\Tokenizer\CT;
+<<<<<<< HEAD
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
@@ -28,6 +29,10 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+use PhpCsFixer\Tokenizer\Tokens;
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class TernaryToElvisOperatorFixer extends AbstractFixer
 {
     /**
@@ -35,7 +40,11 @@ final class TernaryToElvisOperatorFixer extends AbstractFixer
      *
      * Ordered by most common types first.
      *
+<<<<<<< HEAD
      * @var non-empty-list<_PhpTokenPrototypePartial>
+=======
+     * @var list<array{int}|string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private const VALID_BEFORE_ENDTYPES = [
         '=',

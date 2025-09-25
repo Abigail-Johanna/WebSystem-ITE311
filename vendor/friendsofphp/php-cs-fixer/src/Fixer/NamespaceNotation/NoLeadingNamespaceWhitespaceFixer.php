@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * @author Bram Gotink <bram@gotink.me>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class NoLeadingNamespaceWhitespaceFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
 {
@@ -41,12 +44,19 @@ final class NoLeadingNamespaceWhitespaceFixer extends AbstractFixer implements W
             'The namespace declaration line shouldn\'t contain leading whitespace.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                          namespace Test8a;
                             namespace Test8b;
 
                         PHP
+=======
+                    '<?php
+ namespace Test8a;
+    namespace Test8b;
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

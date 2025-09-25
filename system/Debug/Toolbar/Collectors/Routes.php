@@ -51,7 +51,11 @@ class Routes extends BaseCollector
      * Returns the data of this collector to be formatted in the toolbar
      *
      * @return array{
+<<<<<<< HEAD
      *      matchedRoute: array<array{
+=======
+     *      matchedRoute: list<array{
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      *          directory: string,
      *          controller: string,
      *          method: string,

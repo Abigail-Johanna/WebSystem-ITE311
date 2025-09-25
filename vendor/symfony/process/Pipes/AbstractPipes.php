@@ -52,14 +52,18 @@ abstract class AbstractPipes implements PipesInterface
 
     /**
      * Returns true if a system call has been interrupted.
+<<<<<<< HEAD
      *
      * stream_select() returns false when the `select` system call is interrupted by an incoming signal.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     protected function hasSystemCallBeenInterrupted(): bool
     {
         $lastError = $this->lastError;
         $this->lastError = null;
 
+<<<<<<< HEAD
         if (null === $lastError) {
             return false;
         }
@@ -72,6 +76,10 @@ abstract class AbstractPipes implements PipesInterface
         // it's translated. So we also check for the SOCKET_EINTR constant which is defined under
         // Windows and UNIX-like platforms (if available on the platform).
         return \defined('SOCKET_EINTR') && str_starts_with($lastError, 'stream_select(): Unable to select ['.\SOCKET_EINTR.']');
+=======
+        // stream_select returns false when the `select` system call is interrupted by an incoming signal
+        return null !== $lastError && false !== stripos($lastError, 'interrupted system call');
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**
@@ -84,10 +92,17 @@ abstract class AbstractPipes implements PipesInterface
         }
 
         foreach ($this->pipes as $pipe) {
+<<<<<<< HEAD
             stream_set_blocking($pipe, false);
         }
         if (\is_resource($this->input)) {
             stream_set_blocking($this->input, false);
+=======
+            stream_set_blocking($pipe, 0);
+        }
+        if (\is_resource($this->input)) {
+            stream_set_blocking($this->input, 0);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         $this->blocked = false;
@@ -109,7 +124,11 @@ abstract class AbstractPipes implements PipesInterface
             if (!$input->valid()) {
                 $input = null;
             } elseif (\is_resource($input = $input->current())) {
+<<<<<<< HEAD
                 stream_set_blocking($input, false);
+=======
+                stream_set_blocking($input, 0);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             } elseif (!isset($this->inputBuffer[0])) {
                 if (!\is_string($input)) {
                     if (!\is_scalar($input)) {

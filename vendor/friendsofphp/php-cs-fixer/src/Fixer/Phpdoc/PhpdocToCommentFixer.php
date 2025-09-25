@@ -42,8 +42,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @author Ceeram <ceeram@cakephp.org>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocToCommentFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -64,7 +67,11 @@ final class PhpdocToCommentFixer extends AbstractFixer implements ConfigurableFi
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * Must run before GeneralPhpdocAnnotationRemoveFixer, GeneralPhpdocTagRenameFixer, NoBlankLinesAfterPhpdocFixer, NoEmptyCommentFixer, NoEmptyPhpdocFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAddMissingParamAnnotationFixer, PhpdocAlignFixer, PhpdocAnnotationWithoutDotFixer, PhpdocArrayTypeFixer, PhpdocIndentFixer, PhpdocInlineTagNormalizerFixer, PhpdocLineSpanFixer, PhpdocListTypeFixer, PhpdocNoAccessFixer, PhpdocNoAliasTagFixer, PhpdocNoEmptyReturnFixer, PhpdocNoPackageFixer, PhpdocNoUselessInheritdocFixer, PhpdocOrderByValueFixer, PhpdocOrderFixer, PhpdocParamOrderFixer, PhpdocReadonlyClassCommentToKeywordFixer, PhpdocReturnSelfReferenceFixer, PhpdocSeparationFixer, PhpdocSingleLineVarSpacingFixer, PhpdocSummaryFixer, PhpdocTagCasingFixer, PhpdocTagNoNamedArgumentsFixer, PhpdocTagTypeFixer, PhpdocToParamTypeFixer, PhpdocToPropertyTypeFixer, PhpdocToReturnTypeFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer, PhpdocTrimFixer, PhpdocTypesOrderFixer, PhpdocVarAnnotationCorrectOrderFixer, PhpdocVarWithoutNameFixer, SingleLineCommentSpacingFixer, SingleLineCommentStyleFixer.
+=======
+     * Must run before GeneralPhpdocAnnotationRemoveFixer, GeneralPhpdocTagRenameFixer, NoBlankLinesAfterPhpdocFixer, NoEmptyCommentFixer, NoEmptyPhpdocFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAddMissingParamAnnotationFixer, PhpdocAlignFixer, PhpdocAnnotationWithoutDotFixer, PhpdocArrayTypeFixer, PhpdocIndentFixer, PhpdocInlineTagNormalizerFixer, PhpdocLineSpanFixer, PhpdocListTypeFixer, PhpdocNoAccessFixer, PhpdocNoAliasTagFixer, PhpdocNoEmptyReturnFixer, PhpdocNoPackageFixer, PhpdocNoUselessInheritdocFixer, PhpdocOrderByValueFixer, PhpdocOrderFixer, PhpdocParamOrderFixer, PhpdocReadonlyClassCommentToKeywordFixer, PhpdocReturnSelfReferenceFixer, PhpdocSeparationFixer, PhpdocSingleLineVarSpacingFixer, PhpdocSummaryFixer, PhpdocTagCasingFixer, PhpdocTagTypeFixer, PhpdocToParamTypeFixer, PhpdocToPropertyTypeFixer, PhpdocToReturnTypeFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer, PhpdocTrimFixer, PhpdocTypesOrderFixer, PhpdocVarAnnotationCorrectOrderFixer, PhpdocVarWithoutNameFixer, SingleLineCommentSpacingFixer, SingleLineCommentStyleFixer.
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * Must run after CommentToPhpdocFixer.
      */
     public function getPriority(): int
@@ -83,6 +90,7 @@ final class PhpdocToCommentFixer extends AbstractFixer implements ConfigurableFi
             'Docblocks should only be used on structural elements.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         $first = true;// needed because by default first docblock is never fixed.
@@ -128,6 +136,47 @@ final class PhpdocToCommentFixer extends AbstractFixer implements ConfigurableFi
                         }
 
                         PHP,
+=======
+                    '<?php
+$first = true;// needed because by default first docblock is never fixed.
+
+/** This should be a comment */
+foreach($connections as $key => $sqlite) {
+    $sqlite->open($path);
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+$first = true;// needed because by default first docblock is never fixed.
+
+/** This should be a comment */
+foreach($connections as $key => $sqlite) {
+    $sqlite->open($path);
+}
+
+/** @todo This should be a PHPDoc as the tag is on "ignored_tags" list */
+foreach($connections as $key => $sqlite) {
+    $sqlite->open($path);
+}
+',
+                    ['ignored_tags' => ['todo']]
+                ),
+                new CodeSample(
+                    '<?php
+$first = true;// needed because by default first docblock is never fixed.
+
+/** This should be a comment */
+foreach($connections as $key => $sqlite) {
+    $sqlite->open($path);
+}
+
+function returnClassName() {
+    /** @var class-string */
+    return \StdClass::class;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['allow_before_return_statement' => true]
                 ),
             ]

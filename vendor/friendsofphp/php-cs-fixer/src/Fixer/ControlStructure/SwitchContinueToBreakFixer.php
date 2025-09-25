@@ -22,9 +22,12 @@ use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class SwitchContinueToBreakFixer extends AbstractFixer
 {
     /**
@@ -38,6 +41,7 @@ final class SwitchContinueToBreakFixer extends AbstractFixer
             'Switch case must not be ended with `continue` but with `break`.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         switch ($foo) {
@@ -66,6 +70,32 @@ final class SwitchContinueToBreakFixer extends AbstractFixer
                         }
 
                         PHP
+=======
+                    '<?php
+switch ($foo) {
+    case 1:
+        continue;
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+switch ($foo) {
+    case 1:
+        while($bar) {
+            do {
+                continue 3;
+            } while(false);
+
+            if ($foo + 1 > 3) {
+                continue;
+            }
+
+            continue 2;
+        }
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

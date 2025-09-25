@@ -23,8 +23,11 @@ use PhpCsFixer\Utils;
  * @author Michael Vorisek <https://github.com/mvorisek>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class TypeExpression
 {
@@ -223,6 +226,7 @@ final class TypeExpression
             |)
         )';
 
+<<<<<<< HEAD
     private const ALIASES = [
         'boolean' => 'bool',
         'callback' => 'callable',
@@ -234,6 +238,8 @@ final class TypeExpression
         'true' => 'bool',
     ];
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     private string $value;
 
     private bool $isCompositeType;
@@ -385,6 +391,11 @@ final class TypeExpression
 
     public function getCommonType(): ?string
     {
+<<<<<<< HEAD
+=======
+        $aliases = $this->getAliases();
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         $mainType = null;
 
         foreach ($this->getTypes() as $type) {
@@ -402,8 +413,13 @@ final class TypeExpression
                 $type = $matches[1];
             }
 
+<<<<<<< HEAD
             if (isset(self::ALIASES[$type])) {
                 $type = self::ALIASES[$type];
+=======
+            if (isset($aliases[$type])) {
+                $type = $aliases[$type];
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             }
 
             if (null === $mainType || $type === $mainType) {
@@ -798,8 +814,15 @@ final class TypeExpression
 
     private function normalize(string $type): string
     {
+<<<<<<< HEAD
         if (isset(self::ALIASES[$type])) {
             return self::ALIASES[$type];
+=======
+        $aliases = $this->getAliases();
+
+        if (isset($aliases[$type])) {
+            return $aliases[$type];
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         }
 
         if (\in_array($type, [
@@ -846,4 +869,24 @@ final class TypeExpression
 
         return "{$this->namespace->getFullName()}\\{$type}";
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * @return array<string, string>
+     */
+    private function getAliases(): array
+    {
+        return [
+            'boolean' => 'bool',
+            'callback' => 'callable',
+            'double' => 'float',
+            'false' => 'bool',
+            'integer' => 'int',
+            'list' => 'array',
+            'real' => 'float',
+            'true' => 'bool',
+        ];
+    }
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 }

@@ -15,7 +15,11 @@ declare(strict_types=1);
 namespace PhpCsFixer\Fixer\Basic;
 
 use PhpCsFixer\AbstractFixer;
+<<<<<<< HEAD
 use PhpCsFixer\Fixer\IndentationTrait;
+=======
+use PhpCsFixer\Fixer\Indentation;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
@@ -26,12 +30,19 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * Fixer for rules defined in PSR2 ¶2.3 Lines: There must not be more than one statement per line.
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
 final class NoMultipleStatementsPerLineFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
 {
     use IndentationTrait;
+=======
+ */
+final class NoMultipleStatementsPerLineFixer extends AbstractFixer implements WhitespacesAwareFixerInterface
+{
+    use Indentation;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
     public function getDefinition(): FixerDefinitionInterface
     {

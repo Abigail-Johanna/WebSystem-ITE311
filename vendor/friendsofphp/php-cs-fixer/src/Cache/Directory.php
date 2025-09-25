@@ -20,8 +20,11 @@ namespace PhpCsFixer\Cache;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Directory implements DirectoryInterface
 {
@@ -38,7 +41,11 @@ final class Directory implements DirectoryInterface
 
         if (
             '' === $this->directoryName
+<<<<<<< HEAD
             || !str_starts_with(strtolower($file), strtolower($this->directoryName.\DIRECTORY_SEPARATOR))
+=======
+            || 0 !== stripos($file, $this->directoryName.\DIRECTORY_SEPARATOR)
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         ) {
             return $file;
         }

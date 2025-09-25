@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Vladimir Reznichenko <kalessil@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class ModernizeTypesCastingFixer extends AbstractFunctionReferenceFixer
 {
@@ -35,6 +38,7 @@ final class ModernizeTypesCastingFixer extends AbstractFunctionReferenceFixer
             'Replaces `intval`, `floatval`, `doubleval`, `strval` and `boolval` function calls with according type casting operator.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             $a = intval($b);
@@ -44,6 +48,15 @@ final class ModernizeTypesCastingFixer extends AbstractFunctionReferenceFixer
                             $a = boolval($b);
 
                         PHP
+=======
+                    '<?php
+    $a = intval($b);
+    $a = floatval($b);
+    $a = doubleval($b);
+    $a = strval ($b);
+    $a = boolval($b);
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             null,

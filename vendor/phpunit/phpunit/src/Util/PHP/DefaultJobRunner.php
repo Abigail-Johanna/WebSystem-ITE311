@@ -66,7 +66,10 @@ final readonly class DefaultJobRunner extends JobRunner
                 $job->arguments(),
                 null,
                 $job->redirectErrors(),
+<<<<<<< HEAD
                 $job->requiresXdebug(),
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             );
         }
 
@@ -193,12 +196,17 @@ final readonly class DefaultJobRunner extends JobRunner
                 ),
             );
 
+<<<<<<< HEAD
             if (
                 !CodeCoverage::instance()->isActive() &&
                 xdebug_is_debugger_active() === false &&
                 !$job->requiresXdebug()
             ) {
                 // disable xdebug to speedup test execution
+=======
+            if (!CodeCoverage::instance()->isActive() &&
+                xdebug_is_debugger_active() === false) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 $phpSettings['xdebug.mode'] = 'xdebug.mode=off';
             }
         }

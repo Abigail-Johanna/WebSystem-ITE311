@@ -28,8 +28,11 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 #[AsCommand(name: 'documentation', description: 'Dumps the documentation of the project into its "/doc" directory.')]
 final class DocumentationCommand extends Command

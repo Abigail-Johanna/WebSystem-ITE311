@@ -43,7 +43,10 @@ final readonly class Job
      */
     private ?string $input;
     private bool $redirectErrors;
+<<<<<<< HEAD
     private bool $requiresXdebug;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
     /**
      * @param non-empty-string       $code
@@ -52,7 +55,11 @@ final readonly class Job
      * @param list<non-empty-string> $arguments
      * @param ?non-empty-string      $input
      */
+<<<<<<< HEAD
     public function __construct(string $code, array $phpSettings = [], array $environmentVariables = [], array $arguments = [], ?string $input = null, bool $redirectErrors = false, bool $requiresXdebug = false)
+=======
+    public function __construct(string $code, array $phpSettings = [], array $environmentVariables = [], array $arguments = [], ?string $input = null, bool $redirectErrors = false)
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     {
         $this->code                 = $code;
         $this->phpSettings          = $phpSettings;
@@ -60,7 +67,10 @@ final readonly class Job
         $this->arguments            = $arguments;
         $this->input                = $input;
         $this->redirectErrors       = $redirectErrors;
+<<<<<<< HEAD
         $this->requiresXdebug       = $requiresXdebug;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**
@@ -137,9 +147,12 @@ final readonly class Job
     {
         return $this->redirectErrors;
     }
+<<<<<<< HEAD
 
     public function requiresXdebug(): bool
     {
         return $this->requiresXdebug;
     }
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 }

@@ -367,7 +367,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             $this,
             $this->runClassInSeparateProcess && !$this->runTestInSeparateProcess,
             $this->preserveGlobalState,
+<<<<<<< HEAD
             $this->requiresXdebug(),
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         );
     }
 
@@ -2590,11 +2593,14 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         return (new Requirements)->requirementsNotSatisfiedFor(static::class, $this->methodName) !== [];
     }
 
+<<<<<<< HEAD
     private function requiresXdebug(): bool
     {
         return (new Requirements)->requiresXdebug(static::class, $this->methodName);
     }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     /**
      * @see https://github.com/sebastianbergmann/phpunit/issues/6095
      */

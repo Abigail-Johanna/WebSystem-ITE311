@@ -22,16 +22,24 @@ use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
 /**
+<<<<<<< HEAD
  * @phpstan-import-type _PhpTokenPrototypePartial from Token
  *
  * @author Filippo Tessarotto <zoeslam@gmail.com>
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+ * @author Filippo Tessarotto <zoeslam@gmail.com>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SimplifiedIfReturnFixer extends AbstractFixer
 {
     /**
+<<<<<<< HEAD
      * @var list<array{isNegative: bool, sequence: non-empty-list<_PhpTokenPrototypePartial>}>
+=======
+     * @var list<array{isNegative: bool, sequence: non-empty-list<array{0: int, 1?: string}|string>}>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private array $sequences = [
         [

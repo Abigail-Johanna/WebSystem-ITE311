@@ -29,8 +29,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Dave van der Brugge <dmvdbrugge@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocVarWithoutNameFixer extends AbstractFixer
 {
@@ -40,6 +43,7 @@ final class PhpdocVarWithoutNameFixer extends AbstractFixer
     {
         return new FixerDefinition(
             '`@var` and `@type` annotations of classy properties should not contain the name.',
+<<<<<<< HEAD
             [
                 new CodeSample(
                     <<<'PHP'
@@ -60,6 +64,22 @@ final class PhpdocVarWithoutNameFixer extends AbstractFixer
                         PHP
                 ),
             ]
+=======
+            [new CodeSample('<?php
+final class Foo
+{
+    /**
+     * @var int $bar
+     */
+    public $bar;
+
+    /**
+     * @type $baz float
+     */
+    public $baz;
+}
+')]
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         );
     }
 

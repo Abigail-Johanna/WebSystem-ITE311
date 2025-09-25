@@ -26,7 +26,10 @@ use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
+<<<<<<< HEAD
 use PhpCsFixer\Utils;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 /**
@@ -41,8 +44,11 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Jakub Kwaśniewski <jakub@zero-85.pl>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -56,9 +62,12 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
      */
     private const ORDER_DEFAULT = ['param', 'throws', 'return'];
 
+<<<<<<< HEAD
     /** @var list<string> */
     private array $configurationOrder;
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     public function getDefinition(): FixerDefinitionInterface
     {
         $code = <<<'EOF'
@@ -112,6 +121,7 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
                         throw new InvalidOptionsException('The option "order" value is invalid. Minimum two tags are required.');
                     }
 
+<<<<<<< HEAD
                     $unique = array_unique($order);
                     if (\count($order) !== \count($unique)) {
                         $duplicates = array_keys(array_filter(array_count_values($order), static fn (int $count): bool => $count > 1));
@@ -124,6 +134,8 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
                         ));
                     }
 
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     return true;
                 }])
                 ->setDefault(self::ORDER_DEFAULT)
@@ -131,6 +143,7 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
         ]);
     }
 
+<<<<<<< HEAD
     protected function configurePostNormalisation(): void
     {
         $this->configurationOrder = [];
@@ -147,6 +160,17 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
 
     protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
     {
+=======
+    protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
+    {
+        $configurationOrder = [];
+        foreach ($this->configuration['order'] as $type) {
+            $configurationOrder[] = $type;
+            $configurationOrder[] = 'phpstan-'.$type;
+            $configurationOrder[] = 'psalm-'.$type;
+        }
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         foreach ($tokens as $index => $token) {
             if (!$token->isGivenKind(\T_DOC_COMMENT)) {
                 continue;
@@ -156,7 +180,11 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
             $content = $token->getContent();
 
             // sort annotations
+<<<<<<< HEAD
             $successors = $this->configurationOrder;
+=======
+            $successors = $configurationOrder;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             while (\count($successors) >= 3) {
                 $predecessor = array_shift($successors);
                 $content = $this->moveAnnotationsBefore($predecessor, $successors, $content);
@@ -164,7 +192,11 @@ final class PhpdocOrderFixer extends AbstractFixer implements ConfigurableFixerI
 
             // we're parsing the content last time to make sure the internal
             // state of the docblock is correct after the modifications
+<<<<<<< HEAD
             $predecessors = $this->configurationOrder;
+=======
+            $predecessors = $configurationOrder;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $last = array_pop($predecessors);
             $content = $this->moveAnnotationsAfter($last, $predecessors, $content);
 

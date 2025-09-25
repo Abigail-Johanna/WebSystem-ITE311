@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
 /**
  * @author Filippo Tessarotto <zoeslam@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class ProtectedToPrivateFixer extends AbstractFixer
 {
@@ -40,6 +43,7 @@ final class ProtectedToPrivateFixer extends AbstractFixer
             'Converts `protected` variables and methods to `private` where possible.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         final class Sample
@@ -52,6 +56,18 @@ final class ProtectedToPrivateFixer extends AbstractFixer
                         }
 
                         PHP
+=======
+                    '<?php
+final class Sample
+{
+    protected $a;
+
+    protected function test()
+    {
+    }
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

@@ -41,8 +41,11 @@ use PhpCsFixer\Preg;
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocNoAliasTagFixer extends AbstractProxyFixer implements ConfigurableFixerInterface
 {
@@ -55,6 +58,7 @@ final class PhpdocNoAliasTagFixer extends AbstractProxyFixer implements Configur
             'No alias PHPDoc tags should be used.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         /**
@@ -83,6 +87,32 @@ final class PhpdocNoAliasTagFixer extends AbstractProxyFixer implements Configur
                         }
 
                         PHP,
+=======
+                    '<?php
+/**
+ * @property string $foo
+ * @property-read string $bar
+ *
+ * @link baz
+ */
+final class Example
+{
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+/**
+ * @property string $foo
+ * @property-read string $bar
+ *
+ * @link baz
+ */
+final class Example
+{
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['replacements' => ['link' => 'website']]
                 ),
             ]

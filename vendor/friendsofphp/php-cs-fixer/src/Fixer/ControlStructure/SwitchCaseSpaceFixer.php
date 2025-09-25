@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * Fixer for rules defined in PSR2 ¶5.2.
  *
  * @author Sullivan Senechal <soullivaneuh@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SwitchCaseSpaceFixer extends AbstractFixer
 {
@@ -37,6 +40,7 @@ final class SwitchCaseSpaceFixer extends AbstractFixer
             'Removes extra spaces between colon and case value.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             switch($a) {
@@ -47,6 +51,16 @@ final class SwitchCaseSpaceFixer extends AbstractFixer
                             }
 
                         PHP
+=======
+                    '<?php
+    switch($a) {
+        case 1   :
+            break;
+        default     :
+            return 2;
+    }
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

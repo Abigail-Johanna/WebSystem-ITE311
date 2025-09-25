@@ -24,8 +24,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
 /**
  * @author Gert de Pagter
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpUnitSetUpTearDownVisibilityFixer extends AbstractPhpUnitFixer
 {
@@ -35,6 +38,7 @@ final class PhpUnitSetUpTearDownVisibilityFixer extends AbstractPhpUnitFixer
             'Changes the visibility of the `setUp()` and `tearDown()` functions of PHPUnit to `protected`, to match the PHPUnit TestCase.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         final class MyTest extends \PHPUnit_Framework_TestCase
@@ -52,6 +56,23 @@ final class PhpUnitSetUpTearDownVisibilityFixer extends AbstractPhpUnitFixer
                         }
 
                         PHP
+=======
+                    '<?php
+final class MyTest extends \PHPUnit_Framework_TestCase
+{
+    private $hello;
+    public function setUp()
+    {
+        $this->hello = "hello";
+    }
+
+    public function tearDown()
+    {
+        $this->hello = null;
+    }
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             null,

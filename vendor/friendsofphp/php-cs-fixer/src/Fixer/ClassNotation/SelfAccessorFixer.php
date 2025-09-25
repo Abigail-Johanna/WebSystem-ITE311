@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
 /**
  * @author Gregor Harlan <gharlan@web.de>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SelfAccessorFixer extends AbstractFixer
 {
@@ -37,6 +40,7 @@ final class SelfAccessorFixer extends AbstractFixer
             'Inside class or interface element `self` should be preferred to the class name itself.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         class Sample
@@ -51,6 +55,20 @@ final class SelfAccessorFixer extends AbstractFixer
                         }
 
                         PHP
+=======
+                    '<?php
+class Sample
+{
+    const BAZ = 1;
+    const BAR = Sample::BAZ;
+
+    public function getBar()
+    {
+        return Sample::BAR;
+    }
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             null,

@@ -2388,7 +2388,10 @@ return array(
     'PhpCsFixer\\Fixer\\ControlStructure\\TrailingCommaInMultilineFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/ControlStructure/TrailingCommaInMultilineFixer.php',
     'PhpCsFixer\\Fixer\\ControlStructure\\YodaStyleFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/ControlStructure/YodaStyleFixer.php',
     'PhpCsFixer\\Fixer\\DeprecatedFixerInterface' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/DeprecatedFixerInterface.php',
+<<<<<<< HEAD
     'PhpCsFixer\\Fixer\\DocBlockAnnotationTrait' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/DocBlockAnnotationTrait.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationArrayAssignmentFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationArrayAssignmentFixer.php',
     'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationBracesFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationBracesFixer.php',
     'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationIndentationFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationIndentationFixer.php',
@@ -2430,7 +2433,11 @@ return array(
     'PhpCsFixer\\Fixer\\Import\\OrderedImportsFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Import/OrderedImportsFixer.php',
     'PhpCsFixer\\Fixer\\Import\\SingleImportPerStatementFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Import/SingleImportPerStatementFixer.php',
     'PhpCsFixer\\Fixer\\Import\\SingleLineAfterImportsFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Import/SingleLineAfterImportsFixer.php',
+<<<<<<< HEAD
     'PhpCsFixer\\Fixer\\IndentationTrait' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/IndentationTrait.php',
+=======
+    'PhpCsFixer\\Fixer\\Indentation' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Indentation.php',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\Fixer\\InternalFixerInterface' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/InternalFixerInterface.php',
     'PhpCsFixer\\Fixer\\LanguageConstruct\\ClassKeywordFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/LanguageConstruct/ClassKeywordFixer.php',
     'PhpCsFixer\\Fixer\\LanguageConstruct\\ClassKeywordRemoveFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/LanguageConstruct/ClassKeywordRemoveFixer.php',
@@ -2535,7 +2542,10 @@ return array(
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocSingleLineVarSpacingFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocSingleLineVarSpacingFixer.php',
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocSummaryFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocSummaryFixer.php',
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagCasingFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagCasingFixer.php',
+<<<<<<< HEAD
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagNoNamedArgumentsFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagNoNamedArgumentsFixer.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagTypeFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagTypeFixer.php',
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocToCommentFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocToCommentFixer.php',
     'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTrimConsecutiveBlankLineSeparationFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTrimConsecutiveBlankLineSeparationFixer.php',
@@ -2587,7 +2597,10 @@ return array(
     'PhpCsFixer\\Fixer\\Whitespace\\TypeDeclarationSpacesFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Whitespace/TypeDeclarationSpacesFixer.php',
     'PhpCsFixer\\Fixer\\Whitespace\\TypesSpacesFixer' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/Whitespace/TypesSpacesFixer.php',
     'PhpCsFixer\\Fixer\\WhitespacesAwareFixerInterface' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Fixer/WhitespacesAwareFixerInterface.php',
+<<<<<<< HEAD
     'PhpCsFixer\\Future' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Future.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\Hasher' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Hasher.php',
     'PhpCsFixer\\Linter\\CachingLinter' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Linter/CachingLinter.php',
     'PhpCsFixer\\Linter\\Linter' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Linter/Linter.php',
@@ -2639,7 +2652,10 @@ return array(
     'PhpCsFixer\\RuleSet\\Sets\\PHP82MigrationSet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP82MigrationSet.php',
     'PhpCsFixer\\RuleSet\\Sets\\PHP83MigrationSet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP83MigrationSet.php',
     'PhpCsFixer\\RuleSet\\Sets\\PHP84MigrationSet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP84MigrationSet.php',
+<<<<<<< HEAD
     'PhpCsFixer\\RuleSet\\Sets\\PHP85MigrationSet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP85MigrationSet.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\RuleSet\\Sets\\PHPUnit100MigrationRiskySet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit100MigrationRiskySet.php',
     'PhpCsFixer\\RuleSet\\Sets\\PHPUnit30MigrationRiskySet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit30MigrationRiskySet.php',
     'PhpCsFixer\\RuleSet\\Sets\\PHPUnit32MigrationRiskySet' => $vendorDir . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit32MigrationRiskySet.php',
@@ -2678,7 +2694,10 @@ return array(
     'PhpCsFixer\\Runner\\Parallel\\ProcessFactory' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessFactory.php',
     'PhpCsFixer\\Runner\\Parallel\\ProcessIdentifier' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessIdentifier.php',
     'PhpCsFixer\\Runner\\Parallel\\ProcessPool' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessPool.php',
+<<<<<<< HEAD
     'PhpCsFixer\\Runner\\Parallel\\ProcessUtils' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessUtils.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     'PhpCsFixer\\Runner\\Parallel\\WorkerException' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/WorkerException.php',
     'PhpCsFixer\\Runner\\Runner' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/Runner.php',
     'PhpCsFixer\\Runner\\RunnerConfig' => $vendorDir . '/friendsofphp/php-cs-fixer/src/Runner/RunnerConfig.php',

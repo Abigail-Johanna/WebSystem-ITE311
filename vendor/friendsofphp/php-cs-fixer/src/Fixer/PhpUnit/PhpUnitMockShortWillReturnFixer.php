@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * @author Michał Adamski <michal.adamski@gmail.com>
  * @author Kuba Werłos <werlos@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpUnitMockShortWillReturnFixer extends AbstractPhpUnitFixer
 {
@@ -44,6 +47,7 @@ final class PhpUnitMockShortWillReturnFixer extends AbstractPhpUnitFixer
         return new FixerDefinition(
             'Usage of PHPUnit\'s mock e.g. `->will($this->returnValue(..))` must be replaced by its shorter equivalent such as `->willReturn(...)`.',
             [
+<<<<<<< HEAD
                 new CodeSample(
                     <<<'PHP'
                         <?php
@@ -62,6 +66,22 @@ final class PhpUnitMockShortWillReturnFixer extends AbstractPhpUnitFixer
 
                         PHP
                 ),
+=======
+                new CodeSample('<?php
+final class MyTest extends \PHPUnit_Framework_TestCase
+{
+    public function testSomeTest()
+    {
+        $someMock = $this->createMock(Some::class);
+        $someMock->method("some")->will($this->returnSelf());
+        $someMock->method("some")->will($this->returnValue("example"));
+        $someMock->method("some")->will($this->returnArgument(2));
+        $someMock->method("some")->will($this->returnCallback("str_rot13"));
+        $someMock->method("some")->will($this->returnValueMap(["a","b","c"]));
+    }
+}
+'),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             ],
             null,
             'Risky when PHPUnit classes are overridden or not accessible, or when project has PHPUnit incompatibilities.'

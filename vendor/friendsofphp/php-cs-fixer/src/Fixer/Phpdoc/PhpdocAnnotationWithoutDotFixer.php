@@ -25,13 +25,20 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocAnnotationWithoutDotFixer extends AbstractFixer
 {
     /**
+<<<<<<< HEAD
      * @var non-empty-list<string>
+=======
+     * @var list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private array $tags = ['throws', 'return', 'param', 'internal', 'deprecated', 'var', 'type'];
 
@@ -39,6 +46,7 @@ final class PhpdocAnnotationWithoutDotFixer extends AbstractFixer
     {
         return new FixerDefinition(
             'PHPDoc annotation descriptions should not be a sentence.',
+<<<<<<< HEAD
             [
                 new CodeSample(
                     <<<'PHP'
@@ -51,6 +59,14 @@ final class PhpdocAnnotationWithoutDotFixer extends AbstractFixer
                         PHP
                 ),
             ],
+=======
+            [new CodeSample('<?php
+/**
+ * @param string $bar Some string.
+ */
+function foo ($bar) {}
+')]
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         );
     }
 

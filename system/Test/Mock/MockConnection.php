@@ -27,8 +27,13 @@ class MockConnection extends BaseConnection
 {
     /**
      * @var array{
+<<<<<<< HEAD
      *   connect?: object|resource|false|list<object|resource|false>,
      *   execute?: object|resource|false,
+=======
+     *   connect?: false|list<false|object|resource>|object|resource,
+     *   execute?: false|object|resource,
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      * }
      */
     protected $returnValues = [];

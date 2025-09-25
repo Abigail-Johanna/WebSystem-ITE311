@@ -26,7 +26,10 @@ use PhpCsFixer\FixerConfiguration\FixerOptionBuilder;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\CT;
 use PhpCsFixer\Tokenizer\Token;
@@ -61,8 +64,11 @@ use Symfony\Component\OptionsResolver\Options;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author Darius Matulionis <darius@matulionis.lt>
  * @author Adriano Pilger <adriano.pilger@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -104,14 +110,22 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
     /**
      * Array of supported sort types in configuration.
      *
+<<<<<<< HEAD
      * @var non-empty-list<string>
+=======
+     * @var list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private const SUPPORTED_SORT_TYPES = [self::IMPORT_TYPE_CLASS, self::IMPORT_TYPE_CONST, self::IMPORT_TYPE_FUNCTION];
 
     /**
      * Array of supported sort algorithms in configuration.
      *
+<<<<<<< HEAD
      * @var non-empty-list<string>
+=======
+     * @var list<string>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private const SUPPORTED_SORT_ALGORITHMS = [self::SORT_ALPHA, self::SORT_LENGTH, self::SORT_NONE];
 
@@ -121,6 +135,7 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
             'Ordering `use` statements.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         use function AAC;
@@ -163,6 +178,35 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                         use function DDD;
 
                         PHP,
+=======
+                    "<?php\nuse function AAC;\nuse const AAB;\nuse AAA;\n"
+                ),
+                new CodeSample(
+                    "<?php\nuse function Aaa;\nuse const AA;\n",
+                    ['case_sensitive' => true]
+                ),
+                new CodeSample(
+                    '<?php
+use Acme\Bar;
+use Bar1;
+use Acme;
+use Bar;
+',
+                    ['sort_algorithm' => self::SORT_LENGTH]
+                ),
+                new CodeSample(
+                    '<?php
+use const AAAA;
+use const BBB;
+
+use Bar;
+use AAC;
+use Acme;
+
+use function CCC\AA;
+use function DDD;
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'sort_algorithm' => self::SORT_LENGTH,
                         'imports_order' => [
@@ -173,6 +217,7 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         use const BBB;
@@ -186,6 +231,19 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                         use function CCC\AA;
 
                         PHP,
+=======
+                    '<?php
+use const BBB;
+use const AAAA;
+
+use Acme;
+use AAC;
+use Bar;
+
+use function DDD;
+use function CCC\AA;
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'sort_algorithm' => self::SORT_ALPHA,
                         'imports_order' => [
@@ -196,6 +254,7 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         use const BBB;
@@ -209,6 +268,19 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                         use Bar;
 
                         PHP,
+=======
+                    '<?php
+use const BBB;
+use const AAAA;
+
+use function DDD;
+use function CCC\AA;
+
+use Acme;
+use AAC;
+use Bar;
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'sort_algorithm' => self::SORT_NONE,
                         'imports_order' => [
@@ -293,7 +365,11 @@ final class OrderedImportsFixer extends AbstractFixer implements ConfigurableFix
                 ->setDefault(self::SORT_ALPHA)
                 ->setNormalizer(static function (Options $options, ?string $value) use ($fixerName): ?string {
                     if (self::SORT_LENGTH === $value) {
+<<<<<<< HEAD
                         Future::triggerDeprecation(new InvalidFixerConfigurationException($fixerName, \sprintf(
+=======
+                        Utils::triggerDeprecation(new InvalidFixerConfigurationException($fixerName, \sprintf(
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                             'Option "sort_algorithm:%s" is deprecated and will be removed in version %d.0.',
                             self::SORT_LENGTH,
                             Application::getMajorVersion() + 1,

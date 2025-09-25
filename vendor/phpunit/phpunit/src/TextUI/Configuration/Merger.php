@@ -825,6 +825,7 @@ final readonly class Merger
             $displayDetailsOnAllIssues = true;
         }
 
+<<<<<<< HEAD
         if ($failOnDeprecation && !$doNotFailOnDeprecation) {
             $displayDetailsOnTestsThatTriggerDeprecations = true;
         }
@@ -846,6 +847,29 @@ final readonly class Merger
         }
 
         if ($failOnSkipped && !$doNotFailOnSkipped) {
+=======
+        if ($failOnDeprecation) {
+            $displayDetailsOnTestsThatTriggerDeprecations = true;
+        }
+
+        if ($failOnPhpunitDeprecation) {
+            $displayDetailsOnPhpunitDeprecations = true;
+        }
+
+        if ($failOnNotice) {
+            $displayDetailsOnTestsThatTriggerNotices = true;
+        }
+
+        if ($failOnWarning) {
+            $displayDetailsOnTestsThatTriggerWarnings = true;
+        }
+
+        if ($failOnIncomplete) {
+            $displayDetailsOnIncompleteTests = true;
+        }
+
+        if ($failOnSkipped) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $displayDetailsOnSkippedTests = true;
         }
 

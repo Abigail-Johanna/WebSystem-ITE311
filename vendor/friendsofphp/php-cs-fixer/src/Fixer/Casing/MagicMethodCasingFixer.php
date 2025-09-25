@@ -21,9 +21,12 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class MagicMethodCasingFixer extends AbstractFixer
 {
     /**
@@ -55,6 +58,7 @@ final class MagicMethodCasingFixer extends AbstractFixer
             'Magic method definitions and calls must be using the correct casing.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         class Foo
@@ -72,6 +76,21 @@ final class MagicMethodCasingFixer extends AbstractFixer
                         $foo->__INVOKE(1);
 
                         PHP
+=======
+                    '<?php
+class Foo
+{
+    public function __Sleep()
+    {
+    }
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+$foo->__INVOKE(1);
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

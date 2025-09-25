@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * @author ntzm
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class MagicConstantCasingFixer extends AbstractFixer
 {
@@ -68,7 +71,11 @@ final class MagicConstantCasingFixer extends AbstractFixer
     }
 
     /**
+<<<<<<< HEAD
      * @return non-empty-list<int>
+=======
+     * @return list<int>
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     private function getMagicConstantTokens(): array
     {

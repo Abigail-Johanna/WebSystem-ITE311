@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * @author Mark Scherer
  * @author Lucas Manzke <lmanzke@outlook.com>
  * @author Gregor Harlan <gharlan@web.de>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class NoUnreachableDefaultArgumentValueFixer extends AbstractFixer
 {
@@ -36,11 +39,17 @@ final class NoUnreachableDefaultArgumentValueFixer extends AbstractFixer
             'In function arguments there must not be arguments with default values before non-default ones.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         function example($foo = "two words", $bar) {}
 
                         PHP
+=======
+                    '<?php
+function example($foo = "two words", $bar) {}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ],
             null,
@@ -132,7 +141,11 @@ final class NoUnreachableDefaultArgumentValueFixer extends AbstractFixer
                 continue;
             }
 
+<<<<<<< HEAD
             if ($token->isGivenKind(\T_VARIABLE) && !$tokens[$tokens->getPrevMeaningfulToken($i)]->isGivenKind(\T_ELLIPSIS)) {
+=======
+            if ($token->isGivenKind(\T_VARIABLE) && !$this->isEllipsis($tokens, $i)) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 return $i;
             }
         }
@@ -140,6 +153,14 @@ final class NoUnreachableDefaultArgumentValueFixer extends AbstractFixer
         return null;
     }
 
+<<<<<<< HEAD
+=======
+    private function isEllipsis(Tokens $tokens, int $variableIndex): bool
+    {
+        return $tokens[$tokens->getPrevMeaningfulToken($variableIndex)]->isGivenKind(\T_ELLIPSIS);
+    }
+
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     private function getDefaultValueEndIndex(Tokens $tokens, int $index): int
     {
         do {

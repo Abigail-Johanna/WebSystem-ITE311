@@ -26,8 +26,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * Fixer for rules defined in PSR1 ¶2.1.
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class FullOpeningTagFixer extends AbstractFixer
 {
@@ -37,6 +40,7 @@ final class FullOpeningTagFixer extends AbstractFixer
             'PHP code must use the long `<?php` tags or short-echo `<?=` tags and not other tag variations.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?
 
@@ -51,6 +55,18 @@ final class FullOpeningTagFixer extends AbstractFixer
                         echo "Hello!";
 
                         PHP
+=======
+                    '<?
+
+echo "Hello!";
+'
+                ),
+                new CodeSample(
+                    '<?PHP
+
+echo "Hello!";
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

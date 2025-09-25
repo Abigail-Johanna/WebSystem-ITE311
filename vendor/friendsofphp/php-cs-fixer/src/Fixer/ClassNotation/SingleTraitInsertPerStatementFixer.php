@@ -23,9 +23,12 @@ use PhpCsFixer\Tokenizer\CT;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class SingleTraitInsertPerStatementFixer extends AbstractFixer
 {
     public function getDefinition(): FixerDefinitionInterface
@@ -34,6 +37,7 @@ final class SingleTraitInsertPerStatementFixer extends AbstractFixer
             'Each trait `use` must be done as single statement.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         final class Example
@@ -42,6 +46,14 @@ final class SingleTraitInsertPerStatementFixer extends AbstractFixer
                         }
 
                         PHP
+=======
+                    '<?php
+final class Example
+{
+    use Foo, Bar;
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

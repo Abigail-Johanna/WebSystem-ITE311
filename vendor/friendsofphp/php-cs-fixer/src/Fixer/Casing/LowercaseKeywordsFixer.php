@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  * Fixer for rules defined in PSR2 ¶2.5.
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class LowercaseKeywordsFixer extends AbstractFixer
 {
@@ -36,6 +39,7 @@ final class LowercaseKeywordsFixer extends AbstractFixer
             'PHP keywords MUST be in lower case.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             FOREACH($a AS $B) {
@@ -50,6 +54,20 @@ final class LowercaseKeywordsFixer extends AbstractFixer
                             }
 
                         PHP
+=======
+                    '<?php
+    FOREACH($a AS $B) {
+        TRY {
+            NEW $C($a, ISSET($B));
+            WHILE($B) {
+                INCLUDE "test.php";
+            }
+        } CATCH(\Exception $e) {
+            EXIT(1);
+        }
+    }
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

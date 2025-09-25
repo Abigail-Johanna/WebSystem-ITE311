@@ -22,8 +22,11 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 /**
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocNoAccessFixer extends AbstractProxyFixer
 {
@@ -33,6 +36,7 @@ final class PhpdocNoAccessFixer extends AbstractProxyFixer
             '`@access` annotations must be removed from PHPDoc.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         class Foo
@@ -45,6 +49,18 @@ final class PhpdocNoAccessFixer extends AbstractProxyFixer
                         }
 
                         PHP
+=======
+                    '<?php
+class Foo
+{
+    /**
+     * @internal
+     * @access private
+     */
+    private $bar;
+}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

@@ -20,8 +20,11 @@ use PhpCsFixer\Runner\Parallel\ParallelConfig;
  * @author Greg Korba <greg@codito.dev>
  *
  * @TODO 4.0 Include parallel runner config in main ConfigInterface
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 interface ParallelAwareConfigInterface extends ConfigInterface
 {

@@ -25,8 +25,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * Fixer for rules defined in PSR2 ¶5.2.
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class SwitchCaseSemicolonToColonFixer extends AbstractFixer
 {
@@ -36,6 +39,7 @@ final class SwitchCaseSemicolonToColonFixer extends AbstractFixer
             'A case should be followed by a colon and not a semicolon.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                             switch ($a) {
@@ -46,6 +50,16 @@ final class SwitchCaseSemicolonToColonFixer extends AbstractFixer
                             }
 
                         PHP
+=======
+                    '<?php
+    switch ($a) {
+        case 1;
+            break;
+        default;
+            break;
+    }
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

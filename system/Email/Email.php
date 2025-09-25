@@ -263,7 +263,11 @@ class Email
     /**
      * SMTP Connection socket placeholder
      *
+<<<<<<< HEAD
      * @var resource|null
+=======
+     * @var false|resource|null
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     protected $SMTPConnect;
 
@@ -1308,7 +1312,11 @@ class Email
                 . 'Content-Type: ' . $attachment['type'] . '; name="' . $name . '"' . $this->newline
                 . 'Content-Disposition: ' . $attachment['disposition'] . ';' . $this->newline
                 . 'Content-Transfer-Encoding: base64' . $this->newline
+<<<<<<< HEAD
                 . ($attachment['cid'] === '' ? '' : 'Content-ID: <' . $attachment['cid'] . '>' . $this->newline)
+=======
+                . (isset($attachment['cid']) && $attachment['cid'] !== '' ? 'Content-ID: <' . $attachment['cid'] . '>' . $this->newline : '')
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 . $this->newline
                 . $attachment['content'] . $this->newline;
         }
@@ -1886,7 +1894,11 @@ class Email
      */
     protected function SMTPConnect()
     {
+<<<<<<< HEAD
         if (is_resource($this->SMTPConnect)) {
+=======
+        if ($this->isSMTPConnected()) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             return true;
         }
 
@@ -1910,7 +1922,11 @@ class Email
             $this->SMTPTimeout,
         );
 
+<<<<<<< HEAD
         if (! is_resource($this->SMTPConnect)) {
+=======
+        if (! $this->isSMTPConnected()) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $this->setErrorMessage(lang('Email.SMTPError', [$errno . ' ' . $errstr]));
 
             return false;
@@ -2227,7 +2243,11 @@ class Email
 
     public function __destruct()
     {
+<<<<<<< HEAD
         if ($this->SMTPConnect !== null) {
+=======
+        if ($this->isSMTPConnected()) {
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             try {
                 $this->sendCommand('quit');
             } catch (ErrorException $e) {
@@ -2284,4 +2304,19 @@ class Email
 
         return $this->archive;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Checks if there is an active SMTP connection.
+     *
+     * @return bool True if SMTP connection is established and open, false otherwise
+     */
+    protected function isSMTPConnected(): bool
+    {
+        return $this->SMTPConnect !== null
+            && $this->SMTPConnect !== false
+            && get_debug_type($this->SMTPConnect) !== 'resource (closed)';
+    }
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 }

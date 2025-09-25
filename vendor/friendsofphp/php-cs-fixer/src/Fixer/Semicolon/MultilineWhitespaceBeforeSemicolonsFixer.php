@@ -40,8 +40,11 @@ use PhpCsFixer\Tokenizer\Tokens;
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Egidijus Girčys <e.gircys@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class MultilineWhitespaceBeforeSemicolonsFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -64,6 +67,7 @@ final class MultilineWhitespaceBeforeSemicolonsFixer extends AbstractFixer imple
             'Forbid multi-line whitespace before the closing semicolon or move the semicolon to the new line for chained calls.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         function foo() {
@@ -81,6 +85,21 @@ final class MultilineWhitespaceBeforeSemicolonsFixer extends AbstractFixer imple
                             ->method(3);
 
                         PHP,
+=======
+                    '<?php
+function foo() {
+    return 1 + 2
+        ;
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+$object->method1()
+    ->method2()
+    ->method(3);
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     ['strategy' => self::STRATEGY_NEW_LINE_FOR_CHAINED_CALLS]
                 ),
             ]

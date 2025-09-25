@@ -41,8 +41,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author Andreas Möller <am@localheinz.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class BlankLineBeforeStatementFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
 {
@@ -89,6 +92,7 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
             'An empty line feed must precede any configured statement.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         function A() {
@@ -110,11 +114,31 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+function A() {
+    echo 1;
+    return 1;
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+switch ($foo) {
+    case 42:
+        $bar->process();
+        break;
+    case 44:
+        break;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['break'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         foreach ($foo as $bar) {
@@ -125,11 +149,22 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+foreach ($foo as $bar) {
+    if ($bar->isTired()) {
+        $bar->sleep();
+        continue;
+    }
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['continue'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         $i = 0;
@@ -138,11 +173,20 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         } while ($i > 0);
 
                         PHP,
+=======
+                    '<?php
+$i = 0;
+do {
+    echo $i;
+} while ($i > 0);
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['do'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         if ($foo === false) {
@@ -153,11 +197,22 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+if ($foo === false) {
+    exit(0);
+} else {
+    $bar = 9000;
+    exit(1);
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['exit'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         a:
@@ -170,11 +225,24 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+a:
+
+if ($foo === false) {
+    goto a;
+} else {
+    $bar = 9000;
+    goto b;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['goto'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         $a = 9000;
@@ -183,11 +251,20 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+$a = 9000;
+if (true) {
+    $foo = $bar;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['if'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
 
@@ -197,11 +274,21 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+
+if (true) {
+    $foo = $bar;
+    return;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['return'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         $a = 9000;
@@ -211,11 +298,21 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+$a = 9000;
+switch ($a) {
+    case 42:
+        break;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['switch'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         if (null === $a) {
@@ -224,11 +321,20 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+if (null === $a) {
+    $foo->bar();
+    throw new \UnexpectedValueException("A cannot be null.");
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['throw'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         $a = 9000;
@@ -239,11 +345,22 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+$a = 9000;
+try {
+    $foo->bar();
+} catch (\Exception $exception) {
+    $a = -1;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['try'],
                     ]
                 ),
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         function getValues() {
@@ -254,6 +371,16 @@ final class BlankLineBeforeStatementFixer extends AbstractFixer implements Confi
                         }
 
                         PHP,
+=======
+                    '<?php
+function getValues() {
+    yield 1;
+    yield 2;
+    // comment
+    yield 3;
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     [
                         'statements' => ['yield'],
                     ]

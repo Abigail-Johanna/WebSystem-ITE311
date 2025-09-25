@@ -53,8 +53,11 @@ use Symfony\Component\Stopwatch\Stopwatch;
  * @final
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 #[AsCommand(name: 'fix', description: 'Fixes a directory or a file.')]
 /* final */ class FixCommand extends Command
@@ -217,7 +220,11 @@ use Symfony\Component\Stopwatch\Stopwatch;
         $formats = $reporterFactory->getFormats();
         array_unshift($formats, '@auto', '@auto,txt');
 
+<<<<<<< HEAD
         $progressOutputTypes = ProgressOutputType::all();
+=======
+        $progessOutputTypes = ProgressOutputType::all();
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         $this->setDefinition(
             [
@@ -239,7 +246,11 @@ use Symfony\Component\Stopwatch\Stopwatch;
                 new InputOption('diff', '', InputOption::VALUE_NONE, 'Prints diff for each file.'),
                 new InputOption('format', '', InputOption::VALUE_REQUIRED, HelpCommand::getDescriptionWithAllowedValues('To output results in other formats (%s).', $formats), null, $formats),
                 new InputOption('stop-on-violation', '', InputOption::VALUE_NONE, 'Stop execution on first violation.'),
+<<<<<<< HEAD
                 new InputOption('show-progress', '', InputOption::VALUE_REQUIRED, HelpCommand::getDescriptionWithAllowedValues('Type of progress indicator (%s).', $progressOutputTypes), null, $progressOutputTypes),
+=======
+                new InputOption('show-progress', '', InputOption::VALUE_REQUIRED, HelpCommand::getDescriptionWithAllowedValues('Type of progress indicator (%s).', $progessOutputTypes), null, $progessOutputTypes),
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 new InputOption('sequential', '', InputOption::VALUE_NONE, 'Enforce sequential analysis.'),
             ]
         );
@@ -426,10 +437,13 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
             if (\count($exceptionErrors) > 0) {
                 $errorOutput->listErrors('fixing', $exceptionErrors);
+<<<<<<< HEAD
                 \assert(isset($isParallel));
                 if ($isParallel) {
                     $stdErr->writeln('To see details of the error(s), re-run the command with `--sequential -vvv [file]`');
                 }
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             }
 
             if (\count($lintErrors) > 0) {

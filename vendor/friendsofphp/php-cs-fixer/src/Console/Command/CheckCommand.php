@@ -14,7 +14,10 @@ declare(strict_types=1);
 
 namespace PhpCsFixer\Console\Command;
 
+<<<<<<< HEAD
 use PhpCsFixer\Preg;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\ToolInfoInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,8 +27,11 @@ use Symfony\Component\Console\Input\InputOption;
  * @author Greg Korba <greg@codito.dev>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 #[AsCommand(name: 'check', description: 'Checks if configured files/directories comply with configured rules.')]
 final class CheckCommand extends FixCommand
@@ -43,7 +49,14 @@ final class CheckCommand extends FixCommand
 
     public function getHelp(): string
     {
+<<<<<<< HEAD
         return Preg::replace('@\v\V*<comment>--dry-run</comment>\V*\v@', '', parent::getHelp());
+=======
+        $help = explode('<comment>--dry-run</comment>', parent::getHelp());
+
+        return substr($help[0], 0, strrpos($help[0], "\n") - 1)
+            .substr($help[1], strpos($help[1], "\n"));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     protected function configure(): void

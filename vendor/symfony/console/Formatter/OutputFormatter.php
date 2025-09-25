@@ -275,6 +275,10 @@ class OutputFormatter implements WrappableOutputFormatterInterface
     {
         $encoding = mb_detect_encoding($text, null, true) ?: 'UTF-8';
 
+<<<<<<< HEAD
         return b($text)->toUnicodeString($encoding)->wordwrap($width, "\n", true)->toByteString($encoding);
+=======
+        return b($text)->toCodePointString($encoding)->wordwrap($width, "\n", true)->toByteString($encoding);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 }

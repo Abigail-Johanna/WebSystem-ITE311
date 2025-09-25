@@ -32,7 +32,10 @@ use PhpCsFixer\FixerDefinition\CodeSampleInterface;
 use PhpCsFixer\FixerDefinition\FileSpecificCodeSampleInterface;
 use PhpCsFixer\FixerDefinition\VersionSpecificCodeSampleInterface;
 use PhpCsFixer\FixerFactory;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Preg;
 use PhpCsFixer\RuleSet\DeprecatedRuleSetDescriptionInterface;
 use PhpCsFixer\RuleSet\RuleSets;
@@ -54,8 +57,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 #[AsCommand(name: 'describe', description: 'Describe rule / ruleset.')]
 final class DescribeCommand extends Command
@@ -173,7 +179,11 @@ final class DescribeCommand extends Command
                 : \sprintf('use %s instead', Utils::naturalLanguageJoinWithBackticks($successors));
 
             $endMessage = '. '.ucfirst($message);
+<<<<<<< HEAD
             Future::triggerDeprecation(new \RuntimeException(str_replace('`', '"', "Rule \"{$name}\" is deprecated{$endMessage}.")));
+=======
+            Utils::triggerDeprecation(new \RuntimeException(str_replace('`', '"', "Rule \"{$name}\" is deprecated{$endMessage}.")));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $message = Preg::replace('/(`[^`]+`)/', '<info>$1</info>', $message);
             $output->writeln(\sprintf('<error>DEPRECATED</error>: %s.', $message));
             $output->writeln('');
@@ -226,6 +236,7 @@ final class DescribeCommand extends Command
                 $allowed = HelpCommand::getDisplayableAllowedValues($option);
 
                 if (null === $allowed) {
+<<<<<<< HEAD
                     $allowedTypes = $option->getAllowedTypes();
                     if (null !== $allowedTypes) {
                         $allowed = array_map(
@@ -233,15 +244,25 @@ final class DescribeCommand extends Command
                             $allowedTypes,
                         );
                     }
+=======
+                    $allowed = array_map(
+                        static fn (string $type): string => '<comment>'.$type.'</comment>',
+                        $option->getAllowedTypes(),
+                    );
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 } else {
                     $allowed = array_map(static fn ($value): string => $value instanceof AllowedValueSubset
                         ? 'a subset of <comment>'.Utils::toString($value->getAllowedValues()).'</comment>'
                         : '<comment>'.Utils::toString($value).'</comment>', $allowed);
                 }
 
+<<<<<<< HEAD
                 if (null !== $allowed) {
                     $line .= ' ('.Utils::naturalLanguageJoin($allowed, '').')';
                 }
+=======
+                $line .= ' ('.Utils::naturalLanguageJoin($allowed, '').')';
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
                 $description = Preg::replace('/(`.+?`)/', '<info>$1</info>', OutputFormatter::escape($option->getDescription()));
                 $line .= ': '.lcfirst(Preg::replace('/\.$/', '', $description)).'; ';
@@ -341,7 +362,11 @@ final class DescribeCommand extends Command
         if ([] !== $ruleSetConfigs) {
             ksort($ruleSetConfigs);
             $plural = 1 !== \count($ruleSetConfigs) ? 's' : '';
+<<<<<<< HEAD
             $output->writeln("The fixer is part of the following rule set{$plural}:");
+=======
+            $output->writeln("Fixer is part of the following rule set{$plural}:");
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
             $ruleSetDefinitions = RuleSets::getSetDefinitions();
 
@@ -382,7 +407,11 @@ final class DescribeCommand extends Command
                 ? \sprintf('it will be removed in version %d.0', Application::getMajorVersion() + 1)
                 : \sprintf('use %s instead', Utils::naturalLanguageJoinWithBackticks($successors));
 
+<<<<<<< HEAD
             Future::triggerDeprecation(new \RuntimeException(str_replace('`', '"', "Set \"{$name}\" is deprecated, {$message}.")));
+=======
+            Utils::triggerDeprecation(new \RuntimeException(str_replace('`', '"', "Set \"{$name}\" is deprecated, {$message}.")));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             $message = Preg::replace('/(`[^`]+`)/', '<info>$1</info>', $message);
             $output->writeln(\sprintf('<error>DEPRECATED</error>: %s.', $message));
             $output->writeln('');

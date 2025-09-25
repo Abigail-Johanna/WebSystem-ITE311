@@ -20,8 +20,11 @@ namespace PhpCsFixer\FixerConfiguration;
  * @readonly
  *
  * @internal
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class AliasedFixerOption implements FixerOptionInterface
 {
@@ -55,11 +58,14 @@ final class AliasedFixerOption implements FixerOptionInterface
         return $this->fixerOption->hasDefault();
     }
 
+<<<<<<< HEAD
     /**
      * @return mixed
      *
      * @throws \LogicException when no default value is defined
      */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     public function getDefault()
     {
         return $this->fixerOption->getDefault();

@@ -45,8 +45,11 @@ use PhpCsFixer\Tokenizer\TokensAnalyzer;
  * @author Bram Gotink <bram@gotink.me>
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Kuba Werłos <werlos@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PsrAutoloadingFixer extends AbstractFixer implements ConfigurableFixerInterface
 {
@@ -59,6 +62,7 @@ final class PsrAutoloadingFixer extends AbstractFixer implements ConfigurableFix
             'Classes must be in a path that matches their namespace, be at least one namespace deep and the class name should match the file name.',
             [
                 new FileSpecificCodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         namespace PhpCsFixer\FIXER\Basic;
@@ -74,6 +78,19 @@ final class PsrAutoloadingFixer extends AbstractFixer implements ConfigurableFix
                         class InvalidName {}
 
                         PHP,
+=======
+                    '<?php
+namespace PhpCsFixer\FIXER\Basic;
+class InvalidName {}
+',
+                    new \SplFileInfo(__FILE__)
+                ),
+                new FileSpecificCodeSample(
+                    '<?php
+namespace PhpCsFixer\FIXER\Basic;
+class InvalidName {}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     new \SplFileInfo(__FILE__),
                     ['dir' => './src']
                 ),

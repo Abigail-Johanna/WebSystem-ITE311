@@ -25,9 +25,12 @@ use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\Tokenizer\TokensAnalyzer;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class SelfStaticAccessorFixer extends AbstractFixer
 {
     private const CLASSY_TYPES = [\T_CLASS, FCT::T_ENUM];
@@ -40,6 +43,7 @@ final class SelfStaticAccessorFixer extends AbstractFixer
             'Inside an enum or `final`/anonymous class, `self` should be preferred over `static`.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         final class Sample
@@ -111,6 +115,69 @@ final class SelfStaticAccessorFixer extends AbstractFixer
                         }
 
                         PHP,
+=======
+                    '<?php
+final class Sample
+{
+    private static $A = 1;
+
+    public function getBar()
+    {
+        return static::class.static::test().static::$A;
+    }
+
+    private static function test()
+    {
+        return \'test\';
+    }
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+final class Foo
+{
+    public function bar()
+    {
+        return new static();
+    }
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+final class Foo
+{
+    public function isBar()
+    {
+        return $foo instanceof static;
+    }
+}
+'
+                ),
+                new CodeSample(
+                    '<?php
+$a = new class() {
+    public function getBar()
+    {
+        return static::class;
+    }
+};
+'
+                ),
+                new VersionSpecificCodeSample(
+                    '<?php
+enum Foo
+{
+    public const A = 123;
+
+    public static function bar(): void
+    {
+        echo static::A;
+    }
+}
+',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     new VersionSpecification(8_01_00)
                 ),
             ]

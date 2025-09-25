@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace PhpCsFixer\Tokenizer;
 
 /**
+<<<<<<< HEAD
  * @phpstan-import-type _PhpTokenPrototype from Token
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
@@ -22,6 +23,11 @@ namespace PhpCsFixer\Tokenizer;
  * @internal
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+ * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * @internal
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 abstract class AbstractTypeTransformer extends AbstractTransformer
 {
@@ -37,7 +43,11 @@ abstract class AbstractTypeTransformer extends AbstractTransformer
     abstract protected function replaceToken(Tokens $tokens, int $index): void;
 
     /**
+<<<<<<< HEAD
      * @param _PhpTokenPrototype $originalToken
+=======
+     * @param array{0: int, 1: string}|string $originalToken
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
      */
     protected function doProcess(Tokens $tokens, int $index, $originalToken): void
     {

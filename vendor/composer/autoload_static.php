@@ -2665,7 +2665,10 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\Fixer\\ControlStructure\\TrailingCommaInMultilineFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/ControlStructure/TrailingCommaInMultilineFixer.php',
         'PhpCsFixer\\Fixer\\ControlStructure\\YodaStyleFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/ControlStructure/YodaStyleFixer.php',
         'PhpCsFixer\\Fixer\\DeprecatedFixerInterface' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/DeprecatedFixerInterface.php',
+<<<<<<< HEAD
         'PhpCsFixer\\Fixer\\DocBlockAnnotationTrait' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/DocBlockAnnotationTrait.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationArrayAssignmentFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationArrayAssignmentFixer.php',
         'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationBracesFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationBracesFixer.php',
         'PhpCsFixer\\Fixer\\DoctrineAnnotation\\DoctrineAnnotationIndentationFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/DoctrineAnnotation/DoctrineAnnotationIndentationFixer.php',
@@ -2707,7 +2710,11 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\Fixer\\Import\\OrderedImportsFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Import/OrderedImportsFixer.php',
         'PhpCsFixer\\Fixer\\Import\\SingleImportPerStatementFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Import/SingleImportPerStatementFixer.php',
         'PhpCsFixer\\Fixer\\Import\\SingleLineAfterImportsFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Import/SingleLineAfterImportsFixer.php',
+<<<<<<< HEAD
         'PhpCsFixer\\Fixer\\IndentationTrait' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/IndentationTrait.php',
+=======
+        'PhpCsFixer\\Fixer\\Indentation' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Indentation.php',
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\Fixer\\InternalFixerInterface' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/InternalFixerInterface.php',
         'PhpCsFixer\\Fixer\\LanguageConstruct\\ClassKeywordFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/LanguageConstruct/ClassKeywordFixer.php',
         'PhpCsFixer\\Fixer\\LanguageConstruct\\ClassKeywordRemoveFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/LanguageConstruct/ClassKeywordRemoveFixer.php',
@@ -2812,7 +2819,10 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocSingleLineVarSpacingFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocSingleLineVarSpacingFixer.php',
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocSummaryFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocSummaryFixer.php',
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagCasingFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagCasingFixer.php',
+<<<<<<< HEAD
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagNoNamedArgumentsFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagNoNamedArgumentsFixer.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTagTypeFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTagTypeFixer.php',
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocToCommentFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocToCommentFixer.php',
         'PhpCsFixer\\Fixer\\Phpdoc\\PhpdocTrimConsecutiveBlankLineSeparationFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Phpdoc/PhpdocTrimConsecutiveBlankLineSeparationFixer.php',
@@ -2864,7 +2874,10 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\Fixer\\Whitespace\\TypeDeclarationSpacesFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Whitespace/TypeDeclarationSpacesFixer.php',
         'PhpCsFixer\\Fixer\\Whitespace\\TypesSpacesFixer' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/Whitespace/TypesSpacesFixer.php',
         'PhpCsFixer\\Fixer\\WhitespacesAwareFixerInterface' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Fixer/WhitespacesAwareFixerInterface.php',
+<<<<<<< HEAD
         'PhpCsFixer\\Future' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Future.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\Hasher' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Hasher.php',
         'PhpCsFixer\\Linter\\CachingLinter' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Linter/CachingLinter.php',
         'PhpCsFixer\\Linter\\Linter' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Linter/Linter.php',
@@ -2916,7 +2929,10 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\RuleSet\\Sets\\PHP82MigrationSet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP82MigrationSet.php',
         'PhpCsFixer\\RuleSet\\Sets\\PHP83MigrationSet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP83MigrationSet.php',
         'PhpCsFixer\\RuleSet\\Sets\\PHP84MigrationSet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP84MigrationSet.php',
+<<<<<<< HEAD
         'PhpCsFixer\\RuleSet\\Sets\\PHP85MigrationSet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHP85MigrationSet.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\RuleSet\\Sets\\PHPUnit100MigrationRiskySet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit100MigrationRiskySet.php',
         'PhpCsFixer\\RuleSet\\Sets\\PHPUnit30MigrationRiskySet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit30MigrationRiskySet.php',
         'PhpCsFixer\\RuleSet\\Sets\\PHPUnit32MigrationRiskySet' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/RuleSet/Sets/PHPUnit32MigrationRiskySet.php',
@@ -2955,7 +2971,10 @@ class ComposerStaticInitcb6de461edbc6776b7c31936d97536ec
         'PhpCsFixer\\Runner\\Parallel\\ProcessFactory' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessFactory.php',
         'PhpCsFixer\\Runner\\Parallel\\ProcessIdentifier' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessIdentifier.php',
         'PhpCsFixer\\Runner\\Parallel\\ProcessPool' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessPool.php',
+<<<<<<< HEAD
         'PhpCsFixer\\Runner\\Parallel\\ProcessUtils' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/ProcessUtils.php',
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'PhpCsFixer\\Runner\\Parallel\\WorkerException' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Parallel/WorkerException.php',
         'PhpCsFixer\\Runner\\Runner' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/Runner.php',
         'PhpCsFixer\\Runner\\RunnerConfig' => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src/Runner/RunnerConfig.php',

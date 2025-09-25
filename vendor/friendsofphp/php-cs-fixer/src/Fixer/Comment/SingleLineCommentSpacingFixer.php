@@ -22,9 +22,12 @@ use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+<<<<<<< HEAD
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
  */
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 final class SingleLineCommentSpacingFixer extends AbstractFixer
 {
     public function getDefinition(): FixerDefinitionInterface
@@ -33,6 +36,7 @@ final class SingleLineCommentSpacingFixer extends AbstractFixer
             'Single-line comments must have proper spacing.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         //comment 1
@@ -40,6 +44,13 @@ final class SingleLineCommentSpacingFixer extends AbstractFixer
                         /*comment 3*/
 
                         PHP
+=======
+                    '<?php
+//comment 1
+#comment 2
+/*comment 3*/
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

@@ -27,7 +27,10 @@ use PhpCsFixer\Error\ErrorsManager;
 use PhpCsFixer\Error\SourceExceptionFactory;
 use PhpCsFixer\FileReader;
 use PhpCsFixer\Fixer\FixerInterface;
+<<<<<<< HEAD
 use PhpCsFixer\Future;
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use PhpCsFixer\Linter\LinterInterface;
 use PhpCsFixer\Linter\LintingException;
 use PhpCsFixer\Linter\LintingResultInterface;
@@ -43,6 +46,10 @@ use PhpCsFixer\Runner\Parallel\ProcessIdentifier;
 use PhpCsFixer\Runner\Parallel\ProcessPool;
 use PhpCsFixer\Runner\Parallel\WorkerException;
 use PhpCsFixer\Tokenizer\Tokens;
+<<<<<<< HEAD
+=======
+use PhpCsFixer\Utils;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 use React\EventLoop\StreamSelectLoop;
 use React\Socket\ConnectionInterface;
 use React\Socket\TcpServer;
@@ -56,8 +63,11 @@ use Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author Greg Korba <greg@codito.dev>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Runner
 {
@@ -263,13 +273,20 @@ final class Runner
                 (int) ceil($this->fileCount / $this->parallelConfig->getFilesPerProcess()),
             )
         );
+<<<<<<< HEAD
         $processFactory = new ProcessFactory();
+=======
+        $processFactory = new ProcessFactory($this->input);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
 
         for ($i = 0; $i < $processesToSpawn; ++$i) {
             $identifier = ProcessIdentifier::create();
             $process = $processFactory->create(
                 $streamSelectLoop,
+<<<<<<< HEAD
                 $this->input,
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 new RunnerConfig(
                     $this->isDryRun,
                     $this->stopOnViolation,
@@ -364,9 +381,13 @@ final class Runner
                     );
 
                     if ($errorsReported > 0) {
+<<<<<<< HEAD
                         throw WorkerException::fromRaw(
                             json_decode($matches[1][0], true, 512, \JSON_THROW_ON_ERROR)
                         );
+=======
+                        throw WorkerException::fromRaw(json_decode($matches[1][0], true));
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                     }
                 }
             );
@@ -431,7 +452,11 @@ final class Runner
         $tokens = Tokens::fromCode($old);
 
         if (
+<<<<<<< HEAD
             Future::isFutureModeEnabled() // @TODO 4.0 drop this line
+=======
+            Utils::isFutureModeEnabled() // @TODO 4.0 drop this line
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
             && !filter_var(getenv('PHP_CS_FIXER_NON_MONOLITHIC'), \FILTER_VALIDATE_BOOL)
             && !$tokens->isMonolithicPhp()
         ) {

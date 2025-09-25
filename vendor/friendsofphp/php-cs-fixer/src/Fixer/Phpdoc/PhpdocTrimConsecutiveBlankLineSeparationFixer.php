@@ -27,8 +27,11 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * @author Nobu Funaki <nobu.funaki@gmail.com>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class PhpdocTrimConsecutiveBlankLineSeparationFixer extends AbstractFixer
 {
@@ -38,6 +41,7 @@ final class PhpdocTrimConsecutiveBlankLineSeparationFixer extends AbstractFixer
             'Removes extra blank lines after summary and after description in PHPDoc.',
             [
                 new CodeSample(
+<<<<<<< HEAD
                     <<<'PHP'
                         <?php
                         /**
@@ -58,6 +62,26 @@ final class PhpdocTrimConsecutiveBlankLineSeparationFixer extends AbstractFixer
                         function fnc($foo) {}
 
                         PHP
+=======
+                    '<?php
+/**
+ * Summary.
+ *
+ *
+ * Description that contain 4 lines,
+ *
+ *
+ * while 2 of them are blank!
+ *
+ *
+ * @param string $foo
+ *
+ *
+ * @dataProvider provideFixCases
+ */
+function fnc($foo) {}
+'
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
                 ),
             ]
         );

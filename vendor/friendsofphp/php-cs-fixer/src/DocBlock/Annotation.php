@@ -23,17 +23,26 @@ use PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceUseAnalysis;
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
+<<<<<<< HEAD
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise.
+=======
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
  */
 final class Annotation
 {
     /**
      * All the annotation tag names with types.
      *
+<<<<<<< HEAD
      * @var non-empty-list<string>
      */
     public const TAGS_WITH_TYPES = [
+=======
+     * @var list<string>
+     */
+    private const TAGS = [
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
         'extends',
         'implements',
         'method',
@@ -121,6 +130,7 @@ final class Annotation
     /**
      * Get all the annotation tag names with types.
      *
+<<<<<<< HEAD
      * @return non-empty-list<string>
      *
      * @deprecated Use `Annotation::TAGS_WITH_TYPES` constant instead
@@ -130,6 +140,13 @@ final class Annotation
     public static function getTagsWithTypes(): array
     {
         return self::TAGS_WITH_TYPES;
+=======
+     * @return list<string>
+     */
+    public static function getTagsWithTypes(): array
+    {
+        return self::TAGS;
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**
@@ -304,7 +321,11 @@ final class Annotation
 
     public function supportTypes(): bool
     {
+<<<<<<< HEAD
         return \in_array($this->getTag()->getName(), self::TAGS_WITH_TYPES, true);
+=======
+        return \in_array($this->getTag()->getName(), self::TAGS, true);
+>>>>>>> d39136d55d0825ccb5c04d182acb375fd90c4e5d
     }
 
     /**
