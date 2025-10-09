@@ -68,6 +68,7 @@ dashboard
 
 
 <?php elseif ($user_role === 'student'): ?>
+
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card text-center p-3">
@@ -84,8 +85,80 @@ dashboard
     </div>
 
     <div class="alert alert-info">
-        Welcome to your student dashboard! Use the sidebar to navigate to your courses and deadlines.
+        Welcome to your student dashboard! You can view and enroll in available courses below.
     </div>
+
+    <div id="alert"></div>
+
+    <div class="row">
+        <!-- Enrolled Courses -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header fw-bold">My Enrolled Courses</div>
+                <div class="card-body">
+                    <ul id="enrolledList" class="list-group mb-3">
+                        <?php if (!empty($enrolledCourses)): ?>
+                            <?php foreach ($enrolledCourses as $course): ?>
+                                <li class="list-group-item">
+                                    <strong><?= esc($course['title']) ?></strong>
+                                    <p class="text-muted mb-0"><?= esc($course['description']) ?></p>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="list-group-item text-muted">You are not enrolled in any courses yet.</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Courses -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header fw-bold">Available Courses</div>
+                <div class="card-body">
+                    <ul id="availableList" class="list-group">
+                        <?php if (!empty($availableCourses)): ?>
+                            <?php foreach ($availableCourses as $course): ?>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong><?= esc($course['title']) ?></strong>
+                                        <p class="text-muted mb-0"><?= esc($course['description']) ?></p>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary enroll-btn" data-course-id="<?= $course['id'] ?>">Enroll</button>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="list-group-item text-muted">No available courses right now.</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AJAX Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(function() {
+        $('.enroll-btn').on('click', function() {
+            var btn = $(this);
+            var id = btn.data('course-id');
+
+            $.post('<?= site_url("course/enroll") ?>', {course_id: id}, function(res) {
+                if (res.success) {
+                    $('#alert').html('<div class="alert alert-success">' + res.message + '</div>');
+                    btn.prop('disabled', true).text('Enrolled');
+                    $('#enrolledList').append('<li class="list-group-item"><strong>' + res.course.title + '</strong></li>');
+                } else {
+                    $('#alert').html('<div class="alert alert-danger">' + res.message + '</div>');
+                }
+            }, 'json');
+        });
+    });
+    </script>
+
 <?php endif; ?>
+
 
 <?= $this->include('template/footer') ?>
