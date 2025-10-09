@@ -30,6 +30,7 @@ $routes->get('logout', 'Auth::logout');
 // ✅ Unified Dashboard (view inside views/auth/dashboard.php)
 $routes->get('dashboard', 'Auth::dashboard');
 
+$routes->get('/course', 'Course::index');
 $routes->post('/course/enroll', 'Course::enroll');
 
 
