@@ -1,0 +1,8 @@
+# Disable directory browsing
+Options -Indexes
+
+# Prevent direct access to files
+<FilesMatch "\.(pdf|doc|docx|ppt|pptx|txt|zip)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

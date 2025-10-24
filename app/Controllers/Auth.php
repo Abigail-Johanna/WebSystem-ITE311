@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\MaterialModel;
 use CodeIgniter\Controller;
 
 class Auth extends BaseController
 {
     protected $helpers = ['form', 'url'];
 
-    // ✅ LOGIN
+    // LOGIN
     public function login()
     {
         if (session()->get('logged_in')) {
@@ -49,6 +50,7 @@ class Auth extends BaseController
                 'user_id'   => $user['id'],
                 'user_name' => $user['name'],
                 'user_role' => strtolower($user['role']),
+                'role'      => strtolower($user['role']), // Add role alias for consistency
                 'logged_in' => true,
             ]);
 
@@ -56,7 +58,7 @@ class Auth extends BaseController
         }
     }
 
-    // ✅ REGISTER
+    // REGISTER
     public function register()
     {
         if ($this->request->getMethod() === 'GET') {
@@ -90,14 +92,14 @@ class Auth extends BaseController
         }
     }
 
-    // ✅ LOGOUT
+    // LOGOUT
     public function logout()
     {
         session()->destroy();
         return redirect()->to('/auth/login')->with('success', 'You have been logged out.');
     }
 
-    // ✅ DASHBOARD
+    // DASHBOARD
     public function dashboard()
     {
         $session = session();
@@ -117,18 +119,31 @@ class Auth extends BaseController
         $courses = [];
         $deadlines = [];
         $enrolledCourses = [];
+        $materials = [];
 
         try {
-            // ✅ ADMIN
+            // ADMIN
             if ($userRole === 'admin') {
                 $users = $userModel->select('id, name, email, role')->findAll();
 
                 if ($this->tableExists('courses')) {
                     $courses = $db->table('courses')->get()->getResultArray();
                 }
+
+                // Get all materials for admin
+                if ($this->tableExists('materials')) {
+                    $materialModel = new MaterialModel();
+                    $materials = $db->table('materials')
+                        ->select('materials.*, courses.title as course_name')
+                        ->join('courses', 'courses.id = materials.course_id')
+                        ->orderBy('materials.created_at', 'DESC')
+                        ->limit(5)
+                        ->get()
+                        ->getResultArray();
+                }
             }
 
-            // ✅ TEACHER
+            // TEACHER
             elseif ($userRole === 'teacher') {
                 if ($this->tableExists('courses')) {
                     $courses = $db->table('courses')
@@ -136,9 +151,21 @@ class Auth extends BaseController
                         ->get()
                         ->getResultArray();
                 }
+
+                // Get materials for teacher's courses
+                if ($this->tableExists('materials')) {
+                    $materials = $db->table('materials')
+                        ->select('materials.*, courses.title as course_name')
+                        ->join('courses', 'courses.id = materials.course_id')
+                        ->where('courses.instructor_id', $userId)
+                        ->orderBy('materials.created_at', 'DESC')
+                        ->limit(5)
+                        ->get()
+                        ->getResultArray();
+                }
             }
 
-            // ✅ STUDENT
+            // STUDENT
             elseif ($userRole === 'student') {
                 if ($this->tableExists('courses')) {
                     $courses = $db->table('courses')
@@ -160,6 +187,12 @@ class Auth extends BaseController
                     $enrolledIds = array_column($enrolledCourses, 'id');
                     $courses = array_filter($courses, fn($c) => !in_array($c['id'], $enrolledIds));
                 }
+
+                // Get materials for enrolled courses
+                if ($this->tableExists('materials')) {
+                    $materialModel = new MaterialModel();
+                    $materials = $materialModel->getMaterialsForEnrolledCourses($userId);
+                }
             }
         } catch (\Throwable $e) {
             log_message('error', 'Dashboard error: ' . $e->getMessage());
@@ -177,19 +210,18 @@ class Auth extends BaseController
             'enrolledCourses'  => $enrolledCourses,
             'stats'            => $stats,
             'deadlines'        => $deadlines,
+            'materials'        => $materials,
         ];
 
         return view('auth/dashboard', $data);
     }
 
-    // ✅ Helper: check if a table exists
     private function tableExists($tableName): bool
     {
         $db = \Config\Database::connect();
         return $db->query("SHOW TABLES LIKE " . $db->escape($tableName))->getNumRows() > 0;
     }
 
-    // ✅ Helper: check if a column exists
     private function columnExists($tableName, $columnName): bool
     {
         $db = \Config\Database::connect();

@@ -2,6 +2,23 @@
 
 <?php if ($user_role === 'admin'): ?>
 
+    <!-- Success/Error Messages -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i> <strong>Success!</strong> <?= $_SESSION['success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>Error!</strong> <?= $_SESSION['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
     <div class="row mb-4">
         <div class="col-md-3">
             <div class="card text-center p-3">
@@ -29,37 +46,229 @@
         </div>
     </div>
 
-<?php elseif ($user_role === 'teacher'): ?>
-
+    <!-- Courses Management Section for Admin -->
     <div class="card mt-4">
-        <div class="card-header fw-bold">My Courses</div>
+        <div class="card-header fw-bold"><i class="bi bi-book"></i> Courses Management</div>
         <div class="card-body">
             <?php if (!empty($courses)): ?>
-                <table class="table table-bordered table-striped align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Course Title</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($courses as $index => $c): ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-light">
                             <tr>
-                                <td><?= $index + 1 ?></td>
-                                <td><?= esc($c['title']) ?></td>
-                                <td><?= esc($c['description'] ?? '') ?></td>
+                                <th width="5%">#</th>
+                                <th width="25%">Course Title</th>
+                                <th width="40%">Description</th>
+                                <th width="15%">Created</th>
+                                <th width="15%">Actions</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($courses as $index => $course): ?>
+                                <tr>
+                                    <td><?= $index + 1 ?></td>
+                                    <td><strong><?= esc($course['title']) ?></strong></td>
+                                    <td><?= esc(substr($course['description'] ?? 'No description', 0, 60)) ?><?= strlen($course['description'] ?? '') > 60 ? '...' : '' ?></td>
+                                    <td><?= isset($course['created_at']) ? date('M d, Y', strtotime($course['created_at'])) : 'N/A' ?></td>
+                                    <td>
+                                        <a href="<?= site_url('/admin/course/' . $course['id'] . '/upload') ?>" 
+                                           class="btn btn-sm btn-primary"
+                                           title="Upload material for this course">
+                                            <i class="bi bi-upload"></i> Upload
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             <?php else: ?>
                 <p class="text-muted mb-0">No courses found.</p>
             <?php endif; ?>
         </div>
     </div>
 
+    <!-- Course Materials Section for Admin -->
+    <div class="card mt-4">
+        <div class="card-header fw-bold d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-file-earmark-text"></i> Recent Course Materials</span>
+            <?php if (!empty($materials)): ?>
+                <span class="badge bg-success"><?= count($materials) ?> materials</span>
+            <?php endif; ?>
+        </div>
+        <div class="card-body">
+            <?php if (!empty($materials)): ?>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Course</th>
+                                <th>File Name</th>
+                                <th>Uploaded</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($materials as $material): ?>
+                                <tr>
+                                    <td><span class="badge bg-primary"><?= esc($material['course_name'] ?? 'N/A') ?></span></td>
+                                    <td><i class="bi bi-file-earmark-pdf text-danger"></i> <?= esc($material['file_name']) ?></td>
+                                    <td><?= date('M d, Y', strtotime($material['created_at'] ?? 'now')) ?></td>
+                                    <td>
+                                        <a href="<?= site_url('/materials/download/' . $material['id']) ?>" class="btn btn-sm btn-success" title="Download">
+                                            <i class="bi bi-download"></i>
+                                        </a>
+                                        <a href="<?= site_url('/materials/delete/' . $material['id']) ?>" 
+                                           class="btn btn-sm btn-danger" 
+                                           title="Delete"
+                                           onclick="return confirm('Delete this material?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-info mb-0">
+                    <i class="bi bi-info-circle"></i> No materials uploaded yet. Click the "Upload" button on any course above to add materials.
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<?php elseif ($user_role === 'teacher'): ?>
+
+    <!-- Success/Error Messages -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i> <strong>Success!</strong> <?= $_SESSION['success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>Error!</strong> <?= $_SESSION['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <div class="card mt-4">
+        <div class="card-header fw-bold"><i class="bi bi-book"></i> My Courses</div>
+        <div class="card-body">
+            <?php if (!empty($courses)): ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th width="5%">#</th>
+                                <th width="25%">Course Title</th>
+                                <th width="40%">Description</th>
+                                <th width="15%">Created</th>
+                                <th width="15%">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($courses as $index => $c): ?>
+                                <tr>
+                                    <td><?= $index + 1 ?></td>
+                                    <td><strong><?= esc($c['title']) ?></strong></td>
+                                    <td><?= esc(substr($c['description'] ?? 'No description', 0, 60)) ?><?= strlen($c['description'] ?? '') > 60 ? '...' : '' ?></td>
+                                    <td><?= isset($c['created_at']) ? date('M d, Y', strtotime($c['created_at'])) : 'N/A' ?></td>
+                                    <td>
+                                        <a href="<?= site_url('/admin/course/' . $c['id'] . '/upload') ?>" 
+                                           class="btn btn-sm btn-primary"
+                                           title="Upload material for this course">
+                                            <i class="bi bi-upload"></i> Upload
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <p class="text-muted mb-0">No courses assigned to you yet.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Course Materials Section -->
+    <div class="card mt-4">
+        <div class="card-header fw-bold d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-file-earmark-text"></i> Recent Course Materials</span>
+            <?php if (!empty($materials)): ?>
+                <span class="badge bg-success"><?= count($materials) ?> materials</span>
+            <?php endif; ?>
+        </div>
+        <div class="card-body">
+            <?php if (!empty($materials)): ?>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Course</th>
+                                <th>File Name</th>
+                                <th>Uploaded</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($materials as $material): ?>
+                                <tr>
+                                    <td><span class="badge bg-primary"><?= esc($material['course_name'] ?? 'N/A') ?></span></td>
+                                    <td><i class="bi bi-file-earmark-pdf text-danger"></i> <?= esc($material['file_name']) ?></td>
+                                    <td><?= date('M d, Y', strtotime($material['created_at'] ?? 'now')) ?></td>
+                                    <td>
+                                        <a href="<?= site_url('/materials/download/' . $material['id']) ?>" class="btn btn-sm btn-success">
+                                            <i class="bi bi-download"></i>
+                                        </a>
+                                        <a href="<?= site_url('/materials/delete/' . $material['id']) ?>" 
+                                           class="btn btn-sm btn-danger" 
+                                           onclick="return confirm('Delete this material?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-info mb-0">
+                    <i class="bi bi-info-circle"></i> No materials uploaded yet. Click the "Upload" button on any course above to add materials for your students.
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 <?php elseif ($user_role === 'student'): ?>
+
+    <!-- Success/Error Messages -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i> <strong>Success!</strong> <?= $_SESSION['success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>Error!</strong> <?= $_SESSION['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
 
     <div class="row mb-4">
         <div class="col-md-6">
@@ -80,16 +289,13 @@
         Welcome to your student dashboard! You can view and enroll in available courses below.
     </div>
 
-    <!-- ✅ CSRF Token -->
     <div id="csrfToken" style="display:none;">
         <?= csrf_field() ?>
     </div>
 
-    <!-- ✅ Alert Box -->
     <div id="alertBox" class="alert d-none mt-3"></div>
 
     <div class="row">
-        <!-- ✅ Enrolled Courses -->
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-header fw-bold">My Enrolled Courses</div>
@@ -110,7 +316,6 @@
             </div>
         </div>
 
-        <!-- ✅ Available Courses -->
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-header fw-bold">Available Courses</div>
@@ -135,10 +340,57 @@
         </div>
     </div>
 
-    <!-- ✅ jQuery -->
+    <!-- Course Materials Section -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header fw-bold d-flex justify-content-between align-items-center">
+                    <span><i class="bi bi-file-earmark-text"></i> My Course Materials</span>
+                    <a href="<?= site_url('materials') ?>" class="btn btn-sm btn-primary">View All</a>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($materials)): ?>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Course</th>
+                                        <th>File Name</th>
+                                        <th>Uploaded</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach (array_slice($materials, 0, 5) as $material): ?>
+                                        <tr>
+                                            <td><span class="badge bg-primary"><?= esc($material['course_name'] ?? 'N/A') ?></span></td>
+                                            <td><i class="bi bi-file-earmark-pdf text-danger"></i> <?= esc($material['file_name']) ?></td>
+                                            <td><?= date('M d, Y', strtotime($material['created_at'] ?? 'now')) ?></td>
+                                            <td>
+                                                <a href="<?= site_url('/materials/download/' . $material['id']) ?>" class="btn btn-sm btn-success">
+                                                    <i class="bi bi-download"></i> Download
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php else: ?>
+                        <p class="text-muted mb-0">No materials available yet. Enroll in courses to access materials.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- ✅ AJAX Enroll -->
+    <!-- AJAX Enroll -->
     <script>
     $(document).ready(function() {
         $('.enroll-btn').click(function() {

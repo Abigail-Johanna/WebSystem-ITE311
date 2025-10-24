@@ -9,7 +9,6 @@ class Course extends BaseController
 {
     public function enroll()
     {
-        // ✅ Check session
         if (!session()->get('logged_in')) {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -20,7 +19,6 @@ class Course extends BaseController
         $user_id = session()->get('user_id');
         $course_id = $this->request->getPost('course_id');
 
-        // ✅ Validate course_id
         if (empty($course_id)) {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -30,7 +28,6 @@ class Course extends BaseController
 
         $enrollmentModel = new EnrollmentModel();
 
-        // ✅ Check if already enrolled
         if ($enrollmentModel->isAlreadyEnrolled($user_id, $course_id)) {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -38,7 +35,6 @@ class Course extends BaseController
             ]);
         }
 
-        // ✅ Insert enrollment
         $data = [
             'user_id' => $user_id,
             'course_id' => $course_id,

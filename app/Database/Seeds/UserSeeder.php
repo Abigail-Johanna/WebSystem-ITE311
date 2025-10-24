@@ -15,19 +15,19 @@ class UserSeeder extends Seeder
             [
                 'name'     => 'Admin User',
                 'email'    => 'admin@example.com',
-                'password' => password_hash('admin123', PASSWORD_DEFAULT), // ✅ hashed password
+                'password' => password_hash('admin123', PASSWORD_DEFAULT), 
                 'role'     => 'admin'
             ],
             [
                 'name'     => 'Teacher User',
                 'email'    => 'teacher@example.com',
-                'password' => password_hash('teacher123', PASSWORD_DEFAULT), // ✅ hashed password
+                'password' => password_hash('teacher123', PASSWORD_DEFAULT), 
                 'role'     => 'teacher'
             ],
             [
                 'name'     => 'Student User',
                 'email'    => 'student@example.com',
-                'password' => password_hash('student123', PASSWORD_DEFAULT), // ✅ hashed password
+                'password' => password_hash('student123', PASSWORD_DEFAULT), 
                 'role'     => 'student'
             ],
         ];
