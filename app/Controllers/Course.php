@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\EnrollmentModel;
+use App\Models\NotificationModel;
 use CodeIgniter\Controller;
 
 class Course extends BaseController
@@ -43,6 +44,24 @@ class Course extends BaseController
 
         try {
             if ($enrollmentModel->insert($data)) {
+                // Create notification for the student
+                try {
+                    $db = \Config\Database::connect();
+                    $row = $db->table('courses')->select('title')->where('id', $course_id)->get()->getRowArray();
+                    $title = $row['title'] ?? 'the course';
+
+                    $notifModel = new NotificationModel();
+                    $notifModel->insert([
+                        'user_id'    => (int) $user_id,
+                        'message'    => 'You have been enrolled in ' . $title,
+                        'is_read'    => 0,
+                        'created_at' => date('Y-m-d H:i:s'),
+                    ]);
+                } catch (\Throwable $e) {
+                    // Log but do not block the enrollment response
+                    log_message('error', 'Notification insert failed: ' . $e->getMessage());
+                }
+
                 return $this->response->setJSON([
                     'status' => 'success',
                     'message' => 'Enrollment successful!'

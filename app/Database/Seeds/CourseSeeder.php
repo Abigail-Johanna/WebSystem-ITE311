@@ -30,6 +30,13 @@ class CourseSeeder extends Seeder
                 'created_at'   => date('Y-m-d H:i:s'),
                 'updated_at'   => date('Y-m-d H:i:s'),
             ],
+            [
+                'title' => 'Networking Fundamentals',
+                'description' => 'Understand the basics of computer networking and protocols.',
+                'instructor_id'=> 2,
+                'created_at'   => date('Y-m-d H:i:s'),
+                'updated_at'   => date('Y-m-d H:i:s'),
+            ],
         ];
 
         $this->db->table('courses')->insertBatch($data);

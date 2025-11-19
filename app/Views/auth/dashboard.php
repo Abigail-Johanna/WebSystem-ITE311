@@ -8,6 +8,16 @@
             <i class="bi bi-check-circle-fill"></i> <strong>Success!</strong> <?= $_SESSION['success'] ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <script>
+        $(document).ready(function() {
+            // Refresh notifications after successful upload
+            if (window.Notif && typeof window.Notif.refresh === 'function') {
+                setTimeout(function() {
+                    window.Notif.refresh();
+                }, 1000);
+            }
+        });
+        </script>
         <?php unset($_SESSION['success']); ?>
     <?php endif; ?>
 
@@ -148,6 +158,16 @@
             <i class="bi bi-check-circle-fill"></i> <strong>Success!</strong> <?= $_SESSION['success'] ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <script>
+        $(document).ready(function() {
+            // Refresh notifications after successful upload
+            if (window.Notif && typeof window.Notif.refresh === 'function') {
+                setTimeout(function() {
+                    window.Notif.refresh();
+                }, 1000);
+            }
+        });
+        </script>
         <?php unset($_SESSION['success']); ?>
     <?php endif; ?>
 
@@ -423,6 +443,10 @@
                         });
 
                         $('.no-enrollment-msg').remove();
+
+                        if (window.Notif && typeof window.Notif.refresh === 'function') {
+                            window.Notif.refresh();
+                        }
                     } else {
                         $('#alertBox')
                             .removeClass('d-none alert-success')

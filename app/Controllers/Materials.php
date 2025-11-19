@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\MaterialModel;
 use App\Models\EnrollmentModel;
-use CodeIgniter\Controller;
+use App\Models\NotificationModel;
 
 class Materials extends BaseController
 {
@@ -71,6 +71,23 @@ class Materials extends BaseController
                 ];
 
                 if ($model->insert($data)) {
+                    // Create notification for successful upload
+                    try {
+                        $db = \Config\Database::connect();
+                        $courseRow = $db->table('courses')->select('title')->where('id', $course_id)->get()->getRowArray();
+                        $courseTitle = $courseRow['title'] ?? 'a course';
+                        
+                        $notifModel = new NotificationModel();
+                        $notifModel->insert([
+                            'user_id'    => (int) session()->get('user_id'),
+                            'message'    => 'You have successfully uploaded a file to ' . $courseTitle,
+                            'is_read'    => 0,
+                            'created_at' => date('Y-m-d H:i:s'),
+                        ]);
+                    } catch (\Throwable $e) {
+                        log_message('error', 'File upload notification failed: ' . $e->getMessage());
+                    }
+                    
                     $_SESSION['success'] = 'File uploaded successfully!';
                     return redirect()->to('/dashboard');
                 } else {
