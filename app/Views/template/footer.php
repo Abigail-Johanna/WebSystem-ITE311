@@ -77,6 +77,9 @@
             </div>
         </div>
 
+        <a href="<?= site_url('/dashboard') ?>">📊 Dashboard</a>
+        <a href="<?= site_url('/courses') ?>">📚 Courses</a>
+        <a href="<?= site_url('/materials') ?>">📄 Materials</a>
         <a href="<?= site_url('/auth/logout') ?>">🚪 Logout</a>
     </div>
 
