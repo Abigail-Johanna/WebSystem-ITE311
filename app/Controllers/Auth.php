@@ -396,8 +396,24 @@ class Auth extends BaseController
         }
 
         // Deactivate: set status to 'inactive'
-        $userModel->update($userId, ['status' => 'inactive']);
-
+        $db = \Config\Database::connect();
+        $userId = (int)$userId;
+        
+        // Use simpleQuery for reliable update
+        $sql = "UPDATE `users` SET `status` = 'inactive' WHERE `id` = " . (int)$userId;
+        $db->simpleQuery($sql);
+        
+        // Verify
+        $verify = $db->query("SELECT `status` FROM `users` WHERE `id` = " . (int)$userId);
+        $row = $verify->getRowArray();
+        
+        if ($row && isset($row['status']) && $row['status'] === 'inactive') {
+            return redirect()->to('/manage-users')->with('success', 'User deactivated successfully.');
+        }
+        
+        // Fallback: Use table builder
+        $db->table('users')->where('id', $userId)->update(['status' => 'inactive']);
+        
         return redirect()->to('/manage-users')->with('success', 'User deactivated successfully.');
     }
 
@@ -519,8 +535,24 @@ class Auth extends BaseController
         }
 
         // Activate: set status to 'active'
-        $userModel->update($userId, ['status' => 'active']);
-
+        $db = \Config\Database::connect();
+        $userId = (int)$userId;
+        
+        // Use simpleQuery for reliable update
+        $sql = "UPDATE `users` SET `status` = 'active' WHERE `id` = " . (int)$userId;
+        $db->simpleQuery($sql);
+        
+        // Verify
+        $verify = $db->query("SELECT `status` FROM `users` WHERE `id` = " . (int)$userId);
+        $row = $verify->getRowArray();
+        
+        if ($row && isset($row['status']) && $row['status'] === 'active') {
+            return redirect()->to('/manage-users')->with('success', 'User activated successfully.');
+        }
+        
+        // Fallback: Use table builder
+        $db->table('users')->where('id', $userId)->update(['status' => 'active']);
+        
         return redirect()->to('/manage-users')->with('success', 'User activated successfully.');
     }
 

@@ -156,6 +156,12 @@
                                                     Restore
                                                 </a>
                                             <?php elseif ($status === 'active'): ?>
+                                                <a href="<?= site_url('manage-users/deactivate/' . $user['id']) ?>" 
+                                                   class="btn btn-sm btn-warning" 
+                                                   onclick="return confirm('Are you sure you want to deactivate this user?')"
+                                                   title="Deactivate">
+                                                    Deactivate
+                                                </a>
                                                 <a href="<?= site_url('manage-users/delete/' . $user['id']) ?>" 
                                                    class="btn btn-sm btn-danger" 
                                                    onclick="return confirm('Are you sure you want to delete this user? The user will be removed from admin view but data will be preserved in the database.')"
