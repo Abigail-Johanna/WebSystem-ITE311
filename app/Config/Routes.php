@@ -18,6 +18,13 @@ $routes->get('auth/logout', 'Auth::logout');
 
 $routes->get('dashboard', 'Auth::dashboard');
 $routes->get('manage-users', 'Auth::manageUsers');
+$routes->post('manage-users/create', 'Auth::createUser');
+$routes->get('manage-users/delete/(:num)', 'Auth::deleteUser/$1');
+$routes->get('manage-users/restore/(:num)', 'Auth::restoreUser/$1');
+$routes->get('manage-users/deactivate/(:num)', 'Auth::deactivateUser/$1');
+$routes->get('manage-users/activate/(:num)', 'Auth::activateUser/$1');
+$routes->post('manage-users/change-role', 'Auth::changeRole');
+$routes->match(['get', 'post'], 'change-password', 'Auth::changePassword');
 $routes->get('manage-courses', 'Auth::manageCourses');
 
 // Aliases

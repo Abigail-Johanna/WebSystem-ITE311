@@ -66,7 +66,7 @@
 
 <?php if ($isAuth): ?>
     <div class="sidebar">
-
+        <?php if (in_array(session('user_role'), ['teacher', 'student'])): ?>
         <div class="notif-container dropdown">
             <a href="javascript:void(0)" id="notifButton" class="position-relative">
                 🔔 Notifications
@@ -76,10 +76,17 @@
                 <div id="notifList"></div>
             </div>
         </div>
+        <?php endif; ?>
 
-        <a href="<?= site_url('/dashboard') ?>">📊 Dashboard</a>
-        <a href="<?= site_url('/courses') ?>">📚 Courses</a>
-        <a href="<?= site_url('/materials') ?>">📄 Materials</a>
+        <a href="<?= site_url('/dashboard') ?>" class="<?= (current_url() == site_url('/dashboard')) ? 'active' : '' ?>">📊 Dashboard</a>
+        <?php if (session('user_role') === 'admin'): ?>
+        <a href="<?= site_url('/manage-users') ?>" class="<?= (current_url() == site_url('/manage-users')) ? 'active' : '' ?>">👥 Manage Users</a>
+        <?php endif; ?>
+        <?php if (in_array(session('user_role'), ['teacher', 'student'])): ?>
+        <a href="<?= site_url('/change-password') ?>" class="<?= (current_url() == site_url('/change-password')) ? 'active' : '' ?>">🔒 Change Password</a>
+        <?php endif; ?>
+        <a href="<?= site_url('/courses') ?>" class="<?= (current_url() == site_url('/courses')) ? 'active' : '' ?>">📚 Courses</a>
+        <a href="<?= site_url('/materials') ?>" class="<?= (current_url() == site_url('/materials')) ? 'active' : '' ?>">📄 Materials</a>
         <a href="<?= site_url('/auth/logout') ?>">🚪 Logout</a>
     </div>
 
@@ -92,6 +99,7 @@
 
 <script>
 // Inline notification system for reliability
+<?php if ($isAuth && in_array(session('user_role'), ['teacher', 'student'])): ?>
 (function() {
   var notificationEndpoint = '<?= site_url('notifications') ?>';
   var markReadEndpoint = '<?= site_url('notifications/mark_read') ?>';
@@ -186,4 +194,5 @@
     window.Notif.refresh = fetchNotifications;
   });
 })();
+<?php endif; ?>
 </script>

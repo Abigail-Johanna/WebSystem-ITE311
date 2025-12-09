@@ -231,4 +231,416 @@ class Auth extends BaseController
         $fields = $db->getFieldNames($tableName);
         return in_array($columnName, $fields);
     }
+
+    // MANAGE USERS (Admin only)
+    public function manageUsers()
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        $userModel = new UserModel();
+        
+        // Get all users (including deleted ones so they can be restored)
+        // Users with status 'deleted' will still appear in the table with a "Restore" button
+        $db = \Config\Database::connect();
+        
+        // Get all users - including deleted ones so admin can restore them
+        $users = $db->table('users')
+                    ->orderBy('created_at', 'DESC')
+                    ->get()
+                    ->getResultArray();
+
+        $data = [
+            'title'     => 'Manage Users',
+            'user_name' => $session->get('user_name'),
+            'user_role' => $userRole,
+            'users'     => $users,
+        ];
+
+        return view('auth/manage_users', $data);
+    }
+
+    // DELETE USER (Soft delete - set status to 'deleted')
+    public function deleteUser($userId)
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        $userModel = new UserModel();
+        $currentUserId = $session->get('user_id');
+
+        // Prevent self-deletion
+        if ($userId == $currentUserId) {
+            return redirect()->to('/manage-users')->with('error', 'You cannot delete your own account.');
+        }
+
+        // Get user to check if protected
+        $user = $userModel->find($userId);
+        if (!$user) {
+            return redirect()->to('/manage-users')->with('error', 'User not found.');
+        }
+
+        // Check if user is the first admin (protected) - only id=1 admin is fully protected
+        if ($user['id'] == 1 && $user['role'] === 'admin') {
+            return redirect()->to('/manage-users')->with('error', 'This admin account is protected and cannot be deleted.');
+        }
+
+        // Soft delete: set status to 'deleted'
+        $db = \Config\Database::connect();
+        $userId = (int)$userId;
+        
+        // First, check and modify status column if it's an ENUM that doesn't include 'deleted'
+        try {
+            $columnInfo = $db->query("SHOW COLUMNS FROM `users` LIKE 'status'")->getRowArray();
+            if ($columnInfo && isset($columnInfo['Type'])) {
+                $columnType = $columnInfo['Type'];
+                // If it's an ENUM without 'deleted', modify it
+                if (stripos($columnType, 'enum') !== false && stripos($columnType, 'deleted') === false) {
+                    $db->query("ALTER TABLE `users` MODIFY COLUMN `status` VARCHAR(20) DEFAULT NULL");
+                }
+            }
+        } catch (\Exception $e) {
+            // Column might not exist, create it
+            try {
+                $db->query("ALTER TABLE `users` ADD COLUMN `status` VARCHAR(20) DEFAULT NULL");
+            } catch (\Exception $e2) {
+                // Column might already exist, ignore
+            }
+        }
+        
+        // Use simpleQuery - executes SQL directly without returning results
+        $sql = "UPDATE `users` SET `status` = 'deleted' WHERE `id` = " . (int)$userId;
+        $db->simpleQuery($sql);
+        
+        // Verify the update worked
+        $verify = $db->query("SELECT `status` FROM `users` WHERE `id` = " . (int)$userId);
+        $row = $verify->getRowArray();
+        
+        if ($row && isset($row['status']) && $row['status'] === 'deleted') {
+            return redirect()->to('/manage-users')->with('success', 'User removed from admin view successfully! (User data preserved in database)');
+        }
+        
+        // If simpleQuery didn't work, try table builder
+        $updateResult = $db->table('users')->where('id', $userId)->update(['status' => 'deleted']);
+        
+        if ($updateResult) {
+            $check = $db->table('users')->where('id', $userId)->get()->getRowArray();
+            if ($check && isset($check['status']) && $check['status'] === 'deleted') {
+                return redirect()->to('/manage-users')->with('success', 'User removed from admin view successfully! (User data preserved in database)');
+            }
+        }
+        
+        // Last resort: Model update
+        $userModel->skipValidation(true);
+        if ($userModel->update($userId, ['status' => 'deleted'])) {
+            $final = $userModel->find($userId);
+            if ($final && isset($final['status']) && $final['status'] === 'deleted') {
+                return redirect()->to('/manage-users')->with('success', 'User removed from admin view successfully! (User data preserved in database)');
+            }
+        }
+        
+        // If all failed, get current status
+        $current = $db->table('users')->where('id', $userId)->get()->getRowArray();
+        $currentStatus = $current['status'] ?? 'NULL';
+        
+        return redirect()->to('/manage-users')->with('error', 'Failed to update user status. Current status: ' . $currentStatus);
+    }
+
+    // DEACTIVATE USER (Set status to 'inactive')
+    public function deactivateUser($userId)
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        $userModel = new UserModel();
+        $currentUserId = $session->get('user_id');
+
+        // Prevent self-deactivation
+        if ($userId == $currentUserId) {
+            return redirect()->to('/manage-users')->with('error', 'You cannot deactivate your own account.');
+        }
+
+        // Get user to check if protected
+        $user = $userModel->find($userId);
+        if (!$user) {
+            return redirect()->to('/manage-users')->with('error', 'User not found.');
+        }
+
+        // Check if user is the first admin (protected) - only id=1 admin is fully protected
+        if ($user['id'] == 1 && $user['role'] === 'admin') {
+            return redirect()->to('/manage-users')->with('error', 'This admin account is protected and cannot be deactivated.');
+        }
+
+        // Deactivate: set status to 'inactive'
+        $userModel->update($userId, ['status' => 'inactive']);
+
+        return redirect()->to('/manage-users')->with('success', 'User deactivated successfully.');
+    }
+
+    // CHANGE USER ROLE
+    public function changeRole()
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        if ($this->request->getMethod() !== 'POST') {
+            return redirect()->to('/manage-users')->with('error', 'Invalid request method.');
+        }
+
+        $userId = $this->request->getPost('user_id');
+        $newRole = $this->request->getPost('role');
+
+        if (!$userId || !$newRole) {
+            return redirect()->to('/manage-users')->with('error', 'Missing required parameters.');
+        }
+
+        // Only allow changing to teacher or student (admin is protected)
+        if (!in_array($newRole, ['teacher', 'student'])) {
+            return redirect()->to('/manage-users')->with('error', 'Invalid role selected. Only teacher and student roles can be assigned.');
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        if (!$user) {
+            return redirect()->to('/manage-users')->with('error', 'User not found.');
+        }
+
+        // Check if user is the first admin (protected) - only id=1 admin is fully protected
+        if ($user['id'] == 1 && $user['role'] === 'admin') {
+            return redirect()->to('/manage-users')->with('error', 'This admin account is protected and its role cannot be changed.');
+        }
+
+        // Update role
+        $userModel->update($userId, ['role' => strtolower($newRole)]);
+
+        return redirect()->to('/manage-users')->with('success', 'User role updated successfully.');
+    }
+
+    // RESTORE USER (Set status from 'deleted' to 'active')
+    public function restoreUser($userId)
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        if (!$user) {
+            return redirect()->to('/manage-users')->with('error', 'User not found.');
+        }
+
+        // Check if user is actually deleted
+        if (isset($user['status']) && $user['status'] !== 'deleted') {
+            return redirect()->to('/manage-users')->with('error', 'User is not deleted. Cannot restore.');
+        }
+
+        // Restore: set status to 'active'
+        $db = \Config\Database::connect();
+        $userId = (int)$userId;
+        
+        // Use simpleQuery for direct execution
+        $sql = "UPDATE `users` SET `status` = 'active' WHERE `id` = " . (int)$userId;
+        $db->simpleQuery($sql);
+        
+        // Verify the update worked
+        $verify = $db->query("SELECT `status` FROM `users` WHERE `id` = " . (int)$userId);
+        $row = $verify->getRowArray();
+        
+        if ($row && isset($row['status']) && $row['status'] === 'active') {
+            return redirect()->to('/manage-users')->with('success', 'User restored successfully! Status changed to active.');
+        }
+        
+        // Fallback: Use table builder
+        $db->table('users')->where('id', $userId)->update(['status' => 'active']);
+        
+        return redirect()->to('/manage-users')->with('success', 'User restored successfully! Status changed to active.');
+    }
+
+    // ACTIVATE USER (Set status to 'active')
+    public function activateUser($userId)
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        if (!$user) {
+            return redirect()->to('/manage-users')->with('error', 'User not found.');
+        }
+
+        // Activate: set status to 'active'
+        $userModel->update($userId, ['status' => 'active']);
+
+        return redirect()->to('/manage-users')->with('success', 'User activated successfully.');
+    }
+
+    // CREATE USER (Admin only - with auto-generated password)
+    public function createUser()
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        if ($userRole !== 'admin') {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. Admin only.');
+        }
+
+        if ($this->request->getMethod() !== 'POST') {
+            return redirect()->to('/manage-users')->with('error', 'Invalid request method.');
+        }
+
+        if (!$this->validate([
+            'name'     => 'required|min_length[3]|max_length[255]',
+            'email'    => 'required|valid_email|is_unique[users.email]',
+            'role'     => 'required|in_list[admin,teacher,student]',
+            'status'   => 'permit_empty|in_list[active,inactive]',
+        ])) {
+            return redirect()->to('/manage-users')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $userModel = new UserModel();
+        
+        // Generate role-based password
+        $role = strtolower($this->request->getPost('role'));
+        $password = $this->generateRoleBasedPassword($role);
+        
+        $result = $userModel->createAccount([
+            'name'     => $this->request->getPost('name'),
+            'email'    => $this->request->getPost('email'),
+            'password' => $password,
+            'role'     => $role,
+            'status'   => $this->request->getPost('status') ?? 'active',
+        ]);
+
+        if (is_array($result)) {
+            return redirect()->to('/manage-users')->withInput()->with('errors', $result);
+        }
+
+        return redirect()->to('/manage-users')->with('success', 'User created successfully! Auto-generated password: ' . $password . ' (Please save this password)');
+    }
+
+    // Generate role-based password
+    private function generateRoleBasedPassword($role)
+    {
+        $role = strtolower($role);
+        switch ($role) {
+            case 'admin':
+                return 'admin123';
+            case 'teacher':
+                return 'teacher123';
+            case 'student':
+                return 'student123';
+            default:
+                return 'password123';
+        }
+    }
+
+    // CHANGE PASSWORD (For teachers and students only)
+    public function changePassword()
+    {
+        $session = session();
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/auth/login')->with('error', 'Please login first.');
+        }
+
+        $userRole = strtolower($session->get('user_role'));
+        
+        // Only teachers and students can change their password
+        if (!in_array($userRole, ['teacher', 'student'])) {
+            return redirect()->to('/dashboard')->with('error', 'Only teachers and students can change their password.');
+        }
+
+        if ($this->request->getMethod() === 'GET') {
+            $data = [
+                'title'     => 'Change Password',
+                'user_name' => $session->get('user_name'),
+                'user_role' => $userRole,
+            ];
+            return view('auth/change_password', $data);
+        }
+
+        if ($this->request->getMethod() === 'POST') {
+            if (!$this->validate([
+                'current_password' => 'required',
+                'new_password'     => 'required|min_length[6]',
+                'confirm_password' => 'required|matches[new_password]',
+            ])) {
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+
+            $userModel = new UserModel();
+            $userId = $session->get('user_id');
+            $user = $userModel->find($userId);
+
+            if (!$user) {
+                return redirect()->back()->with('error', 'User not found.');
+            }
+
+            // Verify current password
+            if (!password_verify($this->request->getPost('current_password'), $user['password'])) {
+                return redirect()->back()->with('error', 'Current password is incorrect.');
+            }
+
+            // Update password
+            $userModel->update($userId, [
+                'password' => password_hash($this->request->getPost('new_password'), PASSWORD_DEFAULT)
+            ]);
+
+            return redirect()->to('/dashboard')->with('success', 'Password changed successfully.');
+        }
+    }
 }
